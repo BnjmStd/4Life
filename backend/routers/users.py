@@ -1,5 +1,7 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+
+router = APIRouter()
 
 # entidad users
 
@@ -15,13 +17,13 @@ users_list = [User(id = 1, name = "benja", username = "javier", url = "asd", age
         User(id = 3, name = "benja", username = "javier", url = "asd", age = 13)]
 
 
-app = FastAPI()
 
-@app.get("/users")
+
+@router.get("/users")
 async def users():
     return users_list
 
-@app.get("/users/{id}")
+@router.get("/users/{id}")
 async def search_user(id: int):
     a = filter(lambda user: user.id == id, users_list)
     try:
@@ -29,7 +31,7 @@ async def search_user(id: int):
     except:
         return {"benja": "hola"}
 
-@app.post("/user/", response_model = User, status_code=201)
+@router.post("/user/", response_model = User, status_code=201)
 async def add_user(user: User):
     
     if type(search_user(user.id)) == User:
@@ -42,7 +44,7 @@ async def add_user(user: User):
 # path para actualizar una sola variable del usaurio
 # put usuario completo
 
-@app.put("/user/")
+@router.put("/user/")
 async def user_update(user:User):
     found = False
     
@@ -56,9 +58,8 @@ async def user_update(user:User):
         return user
 
 
-@app.delete("/user/{id}")
+@router.delete("/user/{id}")
 async def user_delete(id: int):
     for index, saved_user in enumerate(users_list):
         if saved_user.id == id:
             del users_list[index]
-
