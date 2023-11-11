@@ -4,8 +4,6 @@ from routers import documents, users
 # resource static
 from fastapi.staticfiles import StaticFiles
 
-
-
 app = FastAPI()
 
 # routers
