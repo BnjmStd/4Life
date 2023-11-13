@@ -23,7 +23,7 @@ async def add_user(user: User):
     
     del user_dict["id"]
     
-
+    # arreglar coneccion
     id = db_client.test.users.insert_one(user_dict).inserted_id
     print (id)
     # new_user = user_schema(db_client.test.users.find_one({"_id": id}))
