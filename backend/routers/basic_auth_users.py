@@ -42,6 +42,7 @@ async def current_user(token: str = Depends(oauth2)):
         raise HTTPException(status_code=401, detail="no pass")
     if user.disabled:
         raise HTTPException(status_code=401, detail="no pass")
+    
 @app.post("/login")
 async def login(form: OAuth2PasswordRequestForm = Depends()):
     user_db = users_db.get(form.username)

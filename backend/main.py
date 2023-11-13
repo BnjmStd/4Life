@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import documents, users
+from routers import documents, users, users_db
 
 # resource static
 #from fastapi.staticfiles import StaticFiles
@@ -9,6 +9,7 @@ app = FastAPI()
 # routers
 app.include_router(documents.router)
 app.include_router(users.router)
+app.include_router(users_db.router)
 
 # static
 #app.mount("/static", StaticFiles(directory="static"), name ="static" )
