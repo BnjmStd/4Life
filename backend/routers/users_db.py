@@ -26,8 +26,9 @@ async def get_document(id: int):
 
 @router.post("/", response_model = User)
 async def add_user(user: User):
-    collection.insert_one(dict(user))
-    return []
+    inserted_user = collection.insert_one(dict(user))
+    new_user = collection.find_one({"_id": inserted_user.inserted_id})
+    return new_user
 
 @router.put("/{id}")
 async def put_user(id: str, user: User):
