@@ -1,6 +1,14 @@
 from fastapi import APIRouter, HTTPException, status
+from bson import ObjectId
+
+# models
 from db.models.users import User
-from db.client import db_client
+
+# collection
+from db.client import collection
+
+# schemas
+from db.schemas.user import list_serial
 from db.schemas.user import user_schema
 
 router = APIRouter(prefix="/db", tags = ["dbs"], responses = {404:{"message": "no encontrado"}})
@@ -9,7 +17,8 @@ documents_list = ["asd", "asd"]
 
 @router.get("/")
 async def get_documents():
-    return documents_list
+    todos = list_serial(collection.find())
+    return todos
 
 @router.get("/{id}")
 async def get_document(id: int):
@@ -17,18 +26,17 @@ async def get_document(id: int):
 
 @router.post("/", response_model = User)
 async def add_user(user: User):
-    
-    # convierto el user en un diccionario
-    user_dict = dict(user)
-    
-    del user_dict["id"]
-    
-    # arreglar coneccion
-    id = db_client.test.users.insert_one(user_dict).inserted_id
-    print (id)
-    # new_user = user_schema(db_client.test.users.find_one({"_id": id}))
+    collection.insert_one(dict(user))
+    return []
 
-    return [] # User(**new_user)
+@router.put("/{id}")
+async def put_user(id: str, user: User):
+    collection.find_one_and_update({"_id": ObjectId(id)}, {"$set": dict(user)})
+
+# delete
+@router.delete("/{id}")
+async def delete_user(id: str, user: User):
+    collection.find_one_and_delete({"_id": ObjectId(id)})
 
 
 

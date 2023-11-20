@@ -1,19 +1,22 @@
-
-from pymongo import MongoClient
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
+
 import os
 
 load_dotenv()
 
-user = os.getenv("DATABASE_USER")
-pwd = os.getenv("DATABASE_PASSWORD")
+uri = os.getenv("uri")
 
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+# Send a ping to confirm a successful connection
 
-db_client = MongoClient()
+db = client.test
+collection = db["users"]
 
-
-
-
-# Configuración de la conexión a MongoDB en Atlas
-mongodb_url = "`mongodb+srv://{}:<{}>@cluster0.q04hfcj.mongodb.net/?retryWrites=true&w=majority`".format(user, pwd)
-client = MongoClient(mongodb_url)
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
