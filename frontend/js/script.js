@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataContainer = document.getElementById("data-container");
 
     // Función para realizar la solicitud GET a la API
-    fetch('http://127.0.0.1:8000/users')
+    fetch('http://127.0.0.1:8000/db')
         .then(response => response.json()) // Parsea la respuesta a JSON
         .then(data => {
             // Maneja los datos recibidos de la API
