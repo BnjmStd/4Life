@@ -11,18 +11,24 @@ from db.client import collection
 from db.schemas.user import list_serial
 from db.schemas.user import user_schema
 
-router = APIRouter(prefix="/db", tags = ["dbs"], responses = {404:{"message": "no encontrado"}})
+router = APIRouter(prefix="/user", tags = ["user"], responses = {404:{"message": "no encontrado"}})
 
 documents_list = ["asd", "asd"]
 
 @router.get("/")
-async def get_documents():
-    todos = list_serial(collection.find())
-    return todos
+async def get_users():
+    users_lists = list_serial(collection.find())
+    return users_lists
 
 @router.get("/{id}")
-async def get_document(id: int):
-    return documents_list
+async def get_document(id: str, user: User):
+    # user_find = collection.find_one({"_id": ObjectId(id)})
+    user_find = collection.find_one({"username": id})
+    
+    if user_find:
+        return user_find
+    else:
+        raise HTTPException(status_code = 404, detail = "User not found")
 
 @router.post("/", response_model = User)
 async def add_user(user: User):

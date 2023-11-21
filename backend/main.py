@@ -1,7 +1,6 @@
 from fastapi import FastAPI
-from routers import documents, users, users_db
+from routers import documents, users_db
 from fastapi.middleware.cors import CORSMiddleware
-
 
 # resource static
 #from fastapi.staticfiles import StaticFiles
@@ -21,7 +20,6 @@ app.add_middleware(
 
 # routers
 app.include_router(documents.router)
-app.include_router(users.router)
 app.include_router(users_db.router)
 
 # static
