@@ -1,3 +1,3 @@
 # Lechuga
 
-my first proyect in astro
+backend python???
