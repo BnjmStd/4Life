@@ -1,0 +1,108 @@
+
+@import 'root.css';
+
+body {
+    height: 100vh; /*Ocupa toda la pantalla posible*/
+  }
+
+header{
+  background: var(--color-WALNUTBROWN);
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 9%;
+  border-bottom: 0.5vw solid var(--color-negro);
+  transition: all .5s ease;
+}
+
+header .logo{
+  color: #fff;
+  font-weight: 800;
+  font-size: large;
+  padding-left: 20px;
+}
+
+
+/*Animación logo*/
+
+/*end animated*/
+
+.navbar{
+  display: flex;
+}
+
+.navbar a {
+  display: inline-block;
+  margin: 0 30px;
+  color: var(--text-color);
+  font-size: var(--p-font);
+  transition: all .6s;
+  font-weight: 600;
+}
+
+.navbar a:hover{
+  transform: translateY(-5px);
+  color: var(--color-SALMONPINK);
+}
+
+
+.nav-right {
+  color: #fff;
+}
+
+.nav-right a {
+  color: #fff;
+}
+
+.nav-btn {
+  display: inline-block;
+  background: var(--color-negro);
+  border-radius: 16px;
+  color: #fff;
+  padding: 12px 30px;
+  margin-right: 20px;
+  transition: all .6s ease;
+  
+}
+
+.nav-btn:hover {
+  background: var(--color-SALMONPINK);
+  transform: translateY(-5px);
+  color: #101010;
+}
+
+
+/*SECTION*/
+
+.hero{
+
+}
+
+.hero-text {
+
+}
+
+.hero-text span{
+
+}
+
+.hero-text h5{
+
+}
+
+.hero-text h1{
+
+}
+
+.hero-text p {
+
+}
+
+.hero-btn {
+
+}
+
+.hero-img{
+
+}

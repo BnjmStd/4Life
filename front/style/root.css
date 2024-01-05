@@ -1,0 +1,23 @@
+
+/* Colores de paleta
+https://coolors.co/496ddb-c2eabd-ff9fb2-89daff-58504a
+*/
+
+:root {
+    --color-ROYALBLUE: #496DDB;
+    --color-TEAGREEN: #C2EABD;
+    --color-SALMONPINK: #FF9FB2; 
+    --color-PALEAZURE: #89DAFF;
+    --color-WALNUTBROWN: #58504A;
+    --color-negro: #101010;
+  }
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    text-decoration: none;
+    background: var(--color-WALNUTBROWN);
+}
