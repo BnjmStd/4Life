@@ -3,13 +3,14 @@
 
 body {
     height: 100vh; /*Ocupa toda la pantalla posible*/
+    background: linear-gradient(250.59deg, #496DDB 0%, #514e61 28.53%, #89DAFF);
   }
 
 header{
-  background: var(--color-WALNUTBROWN);
+  background: linear-gradient(250.59deg, #496DDB 0%, #514e61 28.53%, #89DAFF);
   display: flex;
   width: auto;
-  align-items: center;
+  align-items: center;  
   justify-content: space-between;
   padding: 32px 9%;
   border-bottom: 0.5vw solid var(--color-negro);
@@ -17,17 +18,14 @@ header{
 }
 
 header .logo{
-  color: #fff;
+  color: var(--color-negro);
   font-weight: 800;
   font-size: large;
   padding-left: 20px;
 }
-
-
 /*Animación logo*/
 
 /*end animated*/
-
 .navbar{
   display: flex;
 }
@@ -35,7 +33,7 @@ header .logo{
 .navbar a {
   display: inline-block;
   margin: 0 30px;
-  color: var(--text-color);
+  color: var(--color-negro);
   font-size: var(--p-font);
   transition: all .6s;
   font-weight: 600;
@@ -43,9 +41,7 @@ header .logo{
 
 .navbar a:hover{
   transform: translateY(-5px);
-  color: var(--color-SALMONPINK);
 }
-
 
 .nav-right {
   color: #fff;
@@ -62,47 +58,59 @@ header .logo{
   color: #fff;
   padding: 12px 30px;
   margin-right: 20px;
-  transition: all .6s ease;
-  
+  border: 2px solid var(--color-blanco);
+  transition: all .6s ease; 
 }
 
 .nav-btn:hover {
-  background: var(--color-SALMONPINK);
   transform: translateY(-5px);
-  color: #101010;
 }
 
+/* 
+ SECTION */
 
-/*SECTION*/
-
-.hero{
-
+section{
+  padding: 32px 9%;
 }
 
-.hero-text {
-
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.hero-text span{
-
+.hero-text span {
+  color: var(--main-color);
+  font-size: 22px;
+  letter-spacing: 5px;
 }
 
-.hero-text h5{
-
+.hero-text h5 {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--color-negro);
+  margin: 15px 0;
 }
 
-.hero-text h1{
-
+.hero-text h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: var(--h1-font);
+  line-height: 1;
+  margin: 0 0 35px;
 }
 
 .hero-text p {
-
+  width: 100%;
+  max-width: 500px;
+  font-size: var(--p-font);
+  line-height: 32px;
+  margin-bottom: 40px;
 }
 
-.hero-btn {
-
-}
-
-.hero-img{
-
+.hero-img img {
+  width: 100%;
+  height: auto;
 }
