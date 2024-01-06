@@ -114,3 +114,22 @@ section{
   width: 100%;
   height: auto;
 }
+
+.social-icons {
+  position: absolute;
+  top: 50%;
+  padding: 0%;
+  transform: translateY(-50%);
+}
+
+.social-icons i {
+  display: block;
+  margin: 25px 0;
+  color: var(--color-negro);
+  font-size: 25px;
+  transition: all .6s;
+}
+
+.social-icons i:hover {
+  transform: rotate3d(0, 0, 1, 360deg);
+}
