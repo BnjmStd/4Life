@@ -3,17 +3,16 @@
 
 body {
     height: 100vh; /*Ocupa toda la pantalla posible*/
-    background: linear-gradient(250.59deg, #496DDB 0%, #514e61 28.53%, #89DAFF);
+    color: var(--color-negro);
   }
 
 header{
-  background: linear-gradient(250.59deg, #496DDB 0%, #514e61 28.53%, #89DAFF);
+  background: var(--color-blanco);
   display: flex;
   width: auto;
   align-items: center;  
   justify-content: space-between;
-  padding: 32px 9%;
-  border-bottom: 0.5vw solid var(--color-negro);
+  padding: 0.4rem 9%;
   transition: all .5s ease;
 }
 
@@ -43,27 +42,18 @@ header .logo{
   transform: translateY(-5px);
 }
 
-.nav-right {
-  color: #fff;
-}
-
-.nav-right a {
-  color: #fff;
-}
-
 .nav-btn {
   display: inline-block;
-  background: var(--color-negro);
+  background: transparent;
   border-radius: 16px;
-  color: #fff;
-  padding: 12px 30px;
-  margin-right: 20px;
-  border: 2px solid var(--color-blanco);
+  color: var(--color-negro);
+  padding: 16px 16px;
   transition: all .6s ease; 
 }
 
 .nav-btn:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  background-color: gray;
 }
 
 /* 
@@ -71,6 +61,7 @@ header .logo{
 
 section{
   padding: 32px 9%;
+  background: var(--color-blanco);
 }
 
 .hero {
@@ -115,21 +106,46 @@ section{
   height: auto;
 }
 
-.social-icons {
-  position: absolute;
-  top: 50%;
-  padding: 0%;
-  transform: translateY(-50%);
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
 }
 
-.social-icons i {
-  display: block;
-  margin: 25px 0;
-  color: var(--color-negro);
-  font-size: 25px;
-  transition: all .6s;
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.social-icons i:hover {
-  transform: rotate3d(0, 0, 1, 360deg);
+.footer-info,
+.footer-social {
+  flex: 1;
+}
+
+.footer-info h2,
+.footer-social h2 {
+  color: #fff;
+  font-size: 20px;
+}
+
+.footer-info p {
+  margin: 5px 0;
+}
+
+.footer-social ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-social ul li {
+  margin-bottom: 10px;
+}
+
+.footer-social ul li a {
+  color: #fff;
+  text-decoration: none;
 }
