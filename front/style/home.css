@@ -3,14 +3,15 @@
 
 body {
    /*Ocupa toda la pantalla posible*/
-  color: var(--color-negro);
+  color: var(--color-blanco);
   width: 100%; /* Ocupa todo el ancho disponible */
   height: 100vh; /* Ocupa toda la altura de la pantalla */
-
+  background: gray;
   }
 
 header{
-  background: var(--color-blanco);
+  background: var(--color-GREEN);
+  color: var(--color-blanco);
   display: flex;
   padding: 0 3%;
   width: auto;
@@ -18,15 +19,13 @@ header{
   justify-content: space-between;
   margin: 1rem 3rem;
   border-radius: 9px;
-  transition: all .8s ease-out;
 }
-
-
 
 header .logo{
   color: var(--color-negro);
   font-weight: 800;
   font-size: large;
+  text-decoration: none;
 }
 
 .navbar{
@@ -57,70 +56,20 @@ header .logo{
 
 .nav-btn:hover {
   transform: translateY(-3px);
-  background-color: gray;
+  background-color: var(--color-blanco);
 }
 
 /* 
  SECTION */
 
-section{
-  padding: 32px 9%;
-  background: var(--color-blanco);
+section {
+  padding: 0 3%;
+  background: black;
+  margin: 2rem;
 }
+
 
 .card {
-  border: 0.5rem solid;
-  border-color: var(--color-negro);
-  height: 30rem;
-  width: 500rem;
-  border-radius: 16px;
-  padding: 9%;
-}
-
-.hero {
-  position: flex;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.hero-text{
-  align-items: center;
-}
-
-.hero-text span {
-  color: var(--main-color);
-  padding-left: 20%;
-  padding-bottom: 5%;
-  font-size: 40px;
-  font-weight: 800;
-  letter-spacing: 5px;
-  backface-visibility: hidden;
-}
-
-.blur{
-  box-shadow: 0 0 1000px 50px #6986d6;
-  z-index: -100;
-}
-
-.hero-text h1 {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: var(--h1-font);
-  line-height: 1;
-  margin: 0 0 35px;
-}
-
-.hero-text p {
-  width: 100%;
-  max-width: 500px;
-  font-size: var(--p-font);
-  line-height: 32px;
-  margin-bottom: 40px;
-}
-
-.hero-img img {
-  width: 100%;
-  height: auto;
+  border: 10px solid;
+  border-color: violet;
 }

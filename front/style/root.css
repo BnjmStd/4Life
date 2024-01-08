@@ -4,27 +4,10 @@ https://coolors.co/496ddb-c2eabd-ff9fb2-89daff-58504a
 */
 
 :root {
-    --color-ROYALBLUE: #496DDB;
+    --color-GREEN: aqua;
     --color-negro: #101010;
     --color-blanco: #ffffff;
   }
-
-
-@media (prefers-color-scheme: dark){
-
-  body{
-    background-color: var(--color-negro);
-    color: var(--color-blanco);
-  }
-}
-
-@media (prefers-color-scheme: light){
-  
-  body{
-    background-color: var(--color-blanco);
-    color: var(--color-negro);
-  }
-}
 
 * {
     padding: 0;
