@@ -2,31 +2,35 @@
 @import 'root.css';
 
 body {
-    height: 100vh; /*Ocupa toda la pantalla posible*/
-    color: var(--color-negro);
+   /*Ocupa toda la pantalla posible*/
+  color: var(--color-negro);
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+
   }
 
 header{
   background: var(--color-blanco);
   display: flex;
+  padding: 0 3%;
   width: auto;
   align-items: center;  
   justify-content: space-between;
-  padding: 0.4rem 9%;
-  transition: all .5s ease;
+  margin: 1rem 3rem;
+  border-radius: 9px;
+  transition: all .8s ease-out;
 }
+
+
 
 header .logo{
   color: var(--color-negro);
   font-weight: 800;
   font-size: large;
-  padding-left: 20px;
 }
-/*Animación logo*/
 
-/*end animated*/
 .navbar{
-  display: flex;
+  display: none;
 }
 
 .navbar a {
@@ -64,8 +68,17 @@ section{
   background: var(--color-blanco);
 }
 
+.card {
+  border: 0.5rem solid;
+  border-color: var(--color-negro);
+  height: 30rem;
+  width: 500rem;
+  border-radius: 16px;
+  padding: 9%;
+}
+
 .hero {
-  position: relative;
+  position: flex;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -73,17 +86,23 @@ section{
   justify-content: space-between;
 }
 
-.hero-text span {
-  color: var(--main-color);
-  font-size: 22px;
-  letter-spacing: 5px;
+.hero-text{
+  align-items: center;
 }
 
-.hero-text h5 {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--color-negro);
-  margin: 15px 0;
+.hero-text span {
+  color: var(--main-color);
+  padding-left: 20%;
+  padding-bottom: 5%;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  backface-visibility: hidden;
+}
+
+.blur{
+  box-shadow: 0 0 1000px 50px #6986d6;
+  z-index: -100;
 }
 
 .hero-text h1 {
@@ -104,48 +123,4 @@ section{
 .hero-img img {
   width: 100%;
   height: auto;
-}
-
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 40px 0;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.footer-info,
-.footer-social {
-  flex: 1;
-}
-
-.footer-info h2,
-.footer-social h2 {
-  color: #fff;
-  font-size: 20px;
-}
-
-.footer-info p {
-  margin: 5px 0;
-}
-
-.footer-social ul {
-  padding: 0;
-  list-style: none;
-}
-
-.footer-social ul li {
-  margin-bottom: 10px;
-}
-
-.footer-social ul li a {
-  color: #fff;
-  text-decoration: none;
 }
