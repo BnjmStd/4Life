@@ -4,9 +4,9 @@ https://coolors.co/496ddb-c2eabd-ff9fb2-89daff-58504a
 */
 
 :root {
-    --color-GREEN: aqua;
     --color-negro: #101010;
-    --color-blanco: #ffffff;
+    --color-blanco: #ffffffa6;
+    font-family: cursive;
   }
 
 * {
@@ -14,6 +14,5 @@ https://coolors.co/496ddb-c2eabd-ff9fb2-89daff-58504a
     margin: 0;
     outline: none;
     border: none;
-    box-sizing: border-box;
     text-decoration: none;
-}
+} 

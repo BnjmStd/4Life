@@ -61,4 +61,3 @@ async def delete_user(id: str, user: User):
 
 
 
-

@@ -32,6 +32,21 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def root():
     return {"Hello": "World"}
 
+@app.post("/test_conexion")
+async def test_conexion(data: dict):
+    try:
+        # Aquí puedes trabajar con los datos que llegan en 'data'
+        # Realiza las operaciones necesarias con estos datos
+        print(data)
+        
+        return {"mensaje": "Datos recibidos correctamente"}
+    
+    except Exception as e:
+        return {'hello':'asd'}
+        # raise HTTPException(status_code=400, detail=str(e))
+
+
+
 if __name__ == "__main__":
     uvicorn.run(main, host="0.0.0.0", port=8000)
 
