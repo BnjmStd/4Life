@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background: linear-gradient(35deg, #0f0a0a,
+    70%, #17a7ba);
+    height: 100vh;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 10%;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.header .logo {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.header .navbar a {
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 35px;
+    position: relative;
+    padding: 10px 15px;
+    z-index: 1;
+}
+
+.header .navbar a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #17a7ba;
+    box-shadow: 0 0 5px #0f0a0a, inset
+    0 0 5px #0f0a0a;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    z-index: -1;
+    scale: 0;
+    transition: .6s ease;
+}
+
+.navbar a:hover::before {
+    scale: 1;
+}
+
+/*Section*/
+
+.home {
+    display: flex;
+    height: 100vh;
+    padding: 10rem 9% 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home img {
+    height: 600px;
+    filter: grayscale(100%);
+}
+
+.home .text-content h2 {
+    font-size: 50px;
+}
+
+.text-content p{
+    font-size: 13px;
+    max-width: 700px;
+}
+
+.btn {
+    height: 50px;
+    width: 150px;
+    border: 2px solid rgba(23, 167, 180, .7);
+    background: transparent;
+    border-radius: 12px;
+    font-size: 15px;
+    margin: 20px 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(35deg, #17a7ba, 70%, #0f0a0a);
+    z-index: -1;
+    transition: .6s ease;
+    transform-origin: left bottom;
+}
+
+.btn:nth-child(2)::before {
+    width: 0%;
+    transform: skew(35deg);
+}
+
+.btn:nth-child(2):hover::before {
+    width: 100%;
+    transform: skew(0deg);
+}
+
+.btn:hover::before{
+    width: 0;
+    transform: skew(35deg);
+}
