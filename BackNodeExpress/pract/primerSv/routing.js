@@ -14,6 +14,7 @@ const sv = http.createServer((req, res) => {
         case 'POST':
             return manejarSolicitudPost(req,res);
         default:
+            res.statusCode = 501;
             console.log(`${method} not proccessing`);
     }
 
@@ -30,10 +31,11 @@ function manejarSolicitudGet(req, res) {
     const path = req.url;
 
     if (path === '/'){
+        res.writeHead(200, {'content-Type': 'applicaction/json'});
         return res.end('Bienvenido a svBnjmn');
-    } else if (path === '/cursos') {
+    } else if (path === '/api/cursos') {
         return res.end(JSON.stringify(cursos.infoCursos));
-    } else if (path === '/cursos/programacion') {
+    } else if (path === '/api/cursos/programacion') {
         return res.end(JSON.stringify(cursos.infoCursos.programacion));
     }
     res.statusCode = 404;
