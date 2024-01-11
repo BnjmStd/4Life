@@ -1,39 +1,32 @@
-let infoCursos = {
-    programacion: [
-        {
-            id: 1,
-            titulo: 'Python',
-            nivel: 'basico'
-        },
-        {
-            id: 2,
-            titulo: 'Js',
-            nivel: 'basico'
-        }
-    ],
-    matematicas: [
-        {
-            id: 1,
-            titulo: 'Calculo',
-            nivel: 'basico'
-        },
-        {
-            id: 2,
-            titulo: 'Modelos Math',
-            nivel: 'basico'
-        }
-    ]
-}
+let listaUsuarios = [
+    {
+        id: 1,
+        nombre: 'Juan Pérez',
+        edad: 25,
+        correo: 'juan@example.com',
+        password: 'admin',
+        tipo: 'admin'
+    },
+    {
+        id: 2,
+        nombre: 'María López',
+        edad: 30,
+        correo: 'maria@example.com',
+        password: 'admin',
+        tipo: 'usuario',
+    },
+    {
+        id: 3,
+        nombre: 'María López',
+        edad: 30,
+        correo: 'benja@example.com',
+        password: 'admin',
+        tipo: 'med',
+    },
 
-let users = {
-    Admin: [
-        {
-            id: 1,
-            password: 'admin',
-        },
-    ]
-}
+    // Puedes agregar más usuarios según sea necesario
+    ];
 
 module.exports = {
-    infoCursos: infoCursos,
+    usuarios: listaUsuarios,
 }

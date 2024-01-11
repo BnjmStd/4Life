@@ -1,19 +1,18 @@
 const express = require('express');
-const routerProgramacion = express.Router();
+const routerUsuarios = express.Router();
 
-const {programacion} = require('../bd/bd').infoCursos;
+const listaUsuarios = require('../bd/bd');
 //middleware function next
-
-routerProgramacion.use(express.json());
-
+routerUsuarios.use(express.json());
 
 
-routerProgramacion.get('/', (req, res) => {
+
+routerUsuarios.get('/', (req, res) => {
     res.send(JSON.stringify(programacion));
 });
 
 
-routerProgramacion.get('/:lenguaje', (req, res) => {
+routerUsuarios.get('/:lenguaje', (req, res) => {
     const lenguaje =  req.params.lenguaje;
     const result = programacion.filter(curso => curso.titulo === lenguaje);
 
@@ -26,7 +25,7 @@ routerProgramacion.get('/:lenguaje', (req, res) => {
 });
 
 
-routerProgramacion.post('/', (req, res) => {
+routerUsuarios.post('/', (req, res) => {
     let cursonew = req.body;
 
     programacion.push(cursonew);
@@ -35,7 +34,7 @@ routerProgramacion.post('/', (req, res) => {
 });
 
 
-routerProgramacion.put('/:id', (req, res) => {
+routerUsuarios.put('/:id', (req, res) => {
     const cursoActualizado = req.body;
     const id = req.params.id;
 
@@ -50,7 +49,7 @@ routerProgramacion.put('/:id', (req, res) => {
 });
 
 
-routerProgramacion.patch('/:id', (req, res) => {
+routerUsuarios.patch('/:id', (req, res) => {
     const infoActualizada = req.body;
     const id = req.params.id;
     const indice = programacion.findIndex(curso => curso.id == id);
@@ -65,7 +64,7 @@ routerProgramacion.patch('/:id', (req, res) => {
 
 });
 
-routerProgramacion.delete('/:id', (req, res) => {
+routerUsuarios.delete('/:id', (req, res) => {
     const id = req.params.id;
     const indice = programacion.findIndex(curso => curso.id == id);
 
@@ -78,5 +77,5 @@ routerProgramacion.delete('/:id', (req, res) => {
 });
 
 module.exports = {
-    routerProgramacion: routerProgramacion,
+    routerUsuarios: routerUsuarios,
 }
