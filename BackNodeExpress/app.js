@@ -1,32 +1,17 @@
-
-// bd
-const bd = require('./bd');
-
-
 const express = require('express');
-
-
 const app = express();
+const cors = require('cors');
 
-//routing
-app.get('/', (req, res) => {
-    res.send('Sv on');
-});
+//cors
 
-app.get('/api/cursos', (req, res) => {
-    res.send(JSON.stringify(bd.infoCursos));
-});
+app.use(cors());
 
-app.get('/api/cursos/programacion', (req, res) => {
-    res.send(JSON.stringify(bd.infoCursos.programacion));
-});
 
-app.get('/api/cursos/matematica', (req, res) => {
-    res.send(JSON.stringify(bd.infoCursos.matematicas));
-});
+// Routers
+const routerProgramacion = require('./routers/user.js');
+app.use('/api/cursos/programacion', routerProgramacion.routerProgramacion);
 
 const PUERTO = process.env.PORT || 3000;
-
 
 app.listen(PUERTO, () => {
     console.log(`escuchando en: ${PUERTO}`);

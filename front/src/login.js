@@ -14,19 +14,18 @@ form.addEventListener('submit', async (event) => {
     password,
     };
 
-    /*const response = await fetch("http://127.0.0.1:8000/test_conexion", {
-        method: "post",
+    const response = await fetch("http://localhost:3000/api/cursos/programacion", {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
     });
     if (response.ok){
         console.log("ok");
+        console.log(response);
     } else {
         // El inicio de sesión ha fallado
         const error = await response.json();
         alert(error.message);
-    }*/
-    console.log(data);
+    }
 });

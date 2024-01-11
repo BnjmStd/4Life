@@ -1,0 +1,20 @@
+//npm uninstall express
+//npm install --save-dev
+
+
+modulo event
+    definir
+    emitir
+    escuchar
+
+
+const EventEmitter = require('events');
+
+const emisorProductos = new EventEmitter();
+
+emisorProductos.on('compra', ()=> {
+    console.log("se realizo");
+});
+
+
+emisorProductos.emit('compra');
