@@ -1,13 +1,63 @@
+
+<!--
+    <H5>ASD</H5>
+
+
+
+-->
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin CRUD</title>
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="style/admin.css">
 </head>
 <body>
-    <H5>ASD</H5>
-    <button>HOLA</button>
+    <header>
+        <h1>Panel de Administración</h1>
+    </header>
+    
+    <nav>
+        <a href="#">Inicio</a> |
+        <a href="#">Usuarios</a> |
+        <a href="#">Productos</a> |
+        <button id="bye">Cerrar sesión</button>
+    </nav>
+
+    <section>
+        <h2>Listado de Usuarios</h2>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Datos de usuarios se agregarán aquí dinámicamente -->
+            </tbody>
+        </table>
+
+        <h2>Agregar Nuevo Usuario</h2>
+        <form id="userForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Agregar Usuario">
+        </form>
+    </section>
+
     <script src="src/admin.js"></script>
 </body>
 </html>
