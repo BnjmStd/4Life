@@ -1,5 +1,9 @@
 const form = document.querySelector("#newform");
 
+
+const msgError = document.getElementsByClassName("error")[0];
+
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
     // Evita que el formulario se envíe de forma convencional
@@ -12,7 +16,7 @@ form.addEventListener('submit', async (event) => {
     const password = passwordInput.value;
     const password2 = passwordRepeatInput.value;
 
-    
+
     const response = await fetch("http://localhost:3000/api/register", {
         method: "POST",
         headers: {
@@ -21,11 +25,13 @@ form.addEventListener('submit', async (event) => {
         body: JSON.stringify({username, password, password2}),
     });
     if (response.ok){
-        console.log("ok");
-        console.log(response);
+        resJson = await response.json();
+        if (resJson.redirect){
+            window.location.href = resJson.redirect;
+        }
     } else {
-        // El inicio de sesión ha fallado
         const error = await response.json();
-        alert(error.message);
+        msgError.textContent = error.message;
+        return msgError.classList.toggle('escondido', false);
     } 
 });
