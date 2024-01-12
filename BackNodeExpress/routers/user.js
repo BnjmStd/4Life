@@ -8,7 +8,8 @@ routerUsuarios.use(express.json());
 
 
 routerUsuarios.get('/', (req, res) => {
-    res.send(JSON.stringify(programacion));
+    console.log("hola");
+    res.send(JSON.stringify(listaUsuarios));
 });
 
 

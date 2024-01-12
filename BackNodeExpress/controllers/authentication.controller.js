@@ -66,7 +66,7 @@ async function register( req, res ){
     bd.usuarios.push({correo: mail, password: hashPwd});
 
     console.log(bd.usuarios);
-    return res.status(201).send({status: 'ok', message: `Usuario registrado`, redirect: '/'});
+    return res.status(201).send({status: 'ok', message: `Usuario registrado`, redirect: '/login'});
 
 }
 
