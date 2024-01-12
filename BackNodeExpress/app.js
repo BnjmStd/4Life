@@ -8,8 +8,6 @@ const cors = require('cors');
 const path = require('path');
 const methods = require('./middlewares/authorization.js');
 
-
-
 const controllers = require('./controllers/authentication.controller.js');
 
 // Middleware para servir archivos estáticos desde la carpeta 'front'

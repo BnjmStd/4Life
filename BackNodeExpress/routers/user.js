@@ -1,14 +1,11 @@
 const express = require('express');
 const routerUsuarios = express.Router();
-
 const listaUsuarios = require('../bd/bd');
-//middleware function next
 routerUsuarios.use(express.json());
 
 
 
 routerUsuarios.get('/', (req, res) => {
-    console.log("hola");
     res.send(JSON.stringify(listaUsuarios));
 });
 

@@ -28,6 +28,7 @@ form.addEventListener('submit', async (event) => {
         resJson = await response.json();
         if (resJson.redirect){
             window.location.href = resJson.redirect;
+            alert(resJson.message);
         }
     } else {
         const error = await response.json();

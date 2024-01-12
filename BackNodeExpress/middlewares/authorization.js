@@ -12,17 +12,21 @@ function soloAdmin(req, res, next){
     return res.redirect('/');
 }
 
+
 function soloPublic(req, res, next){
     const logeado = revisarCookie(req);
 
-    if (!logeado) return next();
-
+    if (!logeado) {
+        console.log(logeado);
+        return next();
+    }
+    console.log('asd');
     return res.redirect('/admin');
 }
 
 function revisarCookie(req){
     try {
-        console.log( "cookie", req.headers.cookie);
+        // console.log( "cookie", req.headers.cookie);
         const cookieJWT = req.headers.cookie.split('; ').find(cookie => cookie.startsWith('jwt')).slice(4);
 
         const cookieDecof = JsonWebTokenError.verify(cookieJWT, process.env.JWT_SECRET);

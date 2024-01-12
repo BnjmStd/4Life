@@ -1,0 +1,76 @@
+@import 'root.css';
+
+body {
+    color: var(--color-blanco);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background: linear-gradient(to bottom, #9c43f0, #b57fa7, #fff);
+}
+
+
+header{
+    display: flex;
+    padding: 10px 3%;
+    width: auto;
+    align-items: center;  
+    justify-content: space-between;
+    margin: 1rem 1rem;
+    border-bottom: 2px solid var(--color-negro);
+}
+header .logo{
+    color: var(--color-negro);
+    font-weight: 800;
+    font-size: large;
+    text-decoration: none;
+    align-content: center;
+}
+
+nav {
+    width: 200px;
+    height: 100vh;
+    position: flex;
+    top: 0;
+    left: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    height: 100vh;
+}
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #fad390;
+    color: #fff;
+}
+.icon {
+margin-right: 10px;
+}
+
+h2 {
+    color: #333;
+}
+
+.nav-btn {
+    display: inline-block;
+    background: var(--color-blanco);
+    border-radius: 16px;
+    color: var(--color-negro);
+    padding: 16px 16px;
+    transition: all .6s ease; 
+  }
+  
+  .nav-btn:hover {
+    transform: translateY(-3px);
+    
+    text-decoration-skip-ink: none;
+  }
