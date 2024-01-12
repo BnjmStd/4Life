@@ -1,14 +1,52 @@
+const { Schema, model } = require('mongoose');
+
+const usuarioSchema = new Schema({
+    nombre: { type: String, required: true },
+    correo: { type: String, required: true, unique: true },
+});
+
+const Usuario = model('Usuario', usuarioSchema);
+
+
 const express = require('express');
 const routerUsuarios = express.Router();
-const listaUsuarios = require('../bd/bd');
+
+
 routerUsuarios.use(express.json());
 
+routerUsuarios.post('/usuarios', async (req, res) => {
+    try {
+      // Crear un nuevo usuario basado en los datos recibidos en el cuerpo de la solicitud
+        const nuevoUsuario = new Usuario({
+            nombre: req.body.nombre,
+            correo: req.body.correo,
+        });
+        // Guardar el nuevo usuario en la base de datos
+        const usuarioGuardado = await nuevoUsuario.save();
 
+        // Responder con el usuario recién creado
+        res.status(201).json(usuarioGuardado);
+        
+    } catch (error) {
+        console.log(error);
+        // Manejar errores de validación o cualquier otro error
+        res.status(500).json({ error: 'Error al agregar usuario' });
+    }
+});
+
+// Ruta GET para obtener todos los usuarios
+routerUsuarios.get('/usuarios', async (req, res) => {
+    try {
+        const usuarios = await Usuario.find();
+        res.json(usuarios);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener usuarios' });
+    }
+});
 
 routerUsuarios.get('/', (req, res) => {
     res.send(JSON.stringify(listaUsuarios));
 });
-
 
 routerUsuarios.get('/:lenguaje', (req, res) => {
     const lenguaje =  req.params.lenguaje;
