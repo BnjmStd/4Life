@@ -8,11 +8,11 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault(); 
     // Evita que el formulario se envíe de forma convencional
     
-    const usernameInput = document.querySelector("input[name='emailR']");
+    const mailInput = document.querySelector("input[name='emailR']");
     const passwordInput = document.querySelector("input[name='pwdR']");
     const passwordRepeatInput = document.querySelector("input[name='pwd2']");
 
-    const username = usernameInput.value;
+    const mail = mailInput.value;
     const password = passwordInput.value;
     const password2 = passwordRepeatInput.value;
 
@@ -22,7 +22,7 @@ form.addEventListener('submit', async (event) => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({username, password, password2}),
+        body: JSON.stringify({mail, password, password2}),
     });
     if (response.ok){
         resJson = await response.json();
