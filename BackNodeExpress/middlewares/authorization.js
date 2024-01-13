@@ -2,9 +2,14 @@ const  JsonWebTokenError  = require('jsonwebtoken');
 const bd =  require('../bd/bd.js');
 const dotenv = require('dotenv');
 
+
+/* Cargar Modelos */
+const Usuario = require('../model/usuario.js');
+
+/* Cargar variables de entorno */
 dotenv.config();
 
-function soloAdmin(req, res, next){
+function soloLogeado(req, res, next){
     const logeado = revisarCookie(req);
 
     if (logeado) return next();
@@ -13,38 +18,51 @@ function soloAdmin(req, res, next){
 }
 
 
-function soloPublic(req, res, next){
-    const logeado = revisarCookie(req);
+async function soloPublic(req, res, next) {
+    try {
+        const logeado = await revisarCookie(req);
 
-    if (!logeado) {
-        console.log(logeado);
-        return next();
+        if (!logeado) {
+            return next();  // Continuar con el siguiente middleware o ruta
+        }
+
+        console.log('Usuario logeado, redireccionando a /user');
+        return res.redirect('/user');  // Redireccionar a la página de administrador
+    } catch (error) {
+        console.error('Error al verificar la cookie:', error);
+        return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
     }
-    console.log('asd');
-    return res.redirect('/admin');
 }
 
-function revisarCookie(req){
+async function revisarCookie(req) {
     try {
-        // console.log( "cookie", req.headers.cookie);
-        const cookieJWT = req.headers.cookie.split('; ').find(cookie => cookie.startsWith('jwt')).slice(4);
+        const cookies = req.headers.cookie;
 
-        const cookieDecof = JsonWebTokenError.verify(cookieJWT, process.env.JWT_SECRET);
-        
-        const usuarioRevisar = bd.usuarios.find(usuarios => usuarios.correo === cookieDecof.nombre);
-
-        if(!usuarioRevisar) {
+        if (!cookies) {
             return false;
         }
-        return true;
-        
+
+        const cookieJWT = cookies.split('; ').find(cookie => cookie.startsWith('jwt'));
+
+        if (!cookieJWT) {
+            return false;
+        }
+
+        const token = cookieJWT.slice(4);
+        const cookieDecof = JsonWebTokenError.verify(token, process.env.JWT_SECRET);
+
+        const usuarioRevisar = await Usuario.findOne({ correo: cookieDecof.nombre });
+
+        return !!usuarioRevisar;
+
     } catch (error) {
+        console.error('Error al revisar la cookie:', error);
         return false;
     }
 }
 
 
 module.exports = {
-    soloAdmin,
+    soloLogeado,
     soloPublic,
 }

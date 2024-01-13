@@ -43,13 +43,13 @@ async function login( req, res ){
         };
 
         res.cookie('jwt', token, cookieOption);
-        return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: '/admin' });
+        return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: '/user' });
+
     } catch (error) {
         console.error('Error al procesar la solicitud:', error);
         return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
     }
 }
-
 
 async function register( req, res ){
     try {
@@ -84,6 +84,7 @@ async function register( req, res ){
             const nuevoUsuario = new Usuario({
                 correo: correo,
                 password: hashPwd,
+                tipoUsuario: 2, 
             });
 
             // Guardar el nuevo usuario en la base de datos

@@ -28,10 +28,12 @@ app.get('/', methods.soloPublic, (req, res) => {
 app.get('/login', methods.soloPublic, (req, res) => {
     res.sendFile(path.join(__dirname, '../front/loginPage.html'));
 });
-app.get('/admin',methods.soloAdmin, (req, res) => {
+app.get('/admin',methods.soloLogeado, (req, res) => {
     res.sendFile(path.join(__dirname, '../front/admin.html'));
 });
-
+app.get('/user',methods.soloLogeado, (req, res) => {
+    res.sendFile(path.join(__dirname, '../front/user.html'));
+});
 /* Login & Registro */
 app.post('/api/register', controllers.register);
 app.post('/api/login', controllers.login);
