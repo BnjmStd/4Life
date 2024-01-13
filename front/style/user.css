@@ -25,39 +25,72 @@ header .logo{
     align-content: center;
 }
 
-nav {
-    width: 200px;
-    height: 100vh;
-    position: flex;
-    top: 0;
-    left: 0;
+
+.banner {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 300px;
-    height: 100vh;
+.banner h2 {
+    color: #333;
 }
-li a {
+
+.contenedor_primario {
+    display: flex;
+    align-items: center;
+
+}
+
+.contendor_secundario{
+    margin-top: 5%;
+    margin-left: 5%;
+    padding-bottom: 1rem;
+    width: 50rem;
+    position: flex;
+
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: #333;
+
+
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+}
+
+nav {
+    margin-top: 10%;
+    margin-left: 5%;
+    padding-bottom: 1rem;
+    width: 200px;
+    position: flex;
+
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: #333;
+
+
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+}
+
+nav ul {
+    list-style-type: none;
+    width: 200px;
+}
+nav ul li a {
     display: block;
     color: #000;
     padding: 8px 16px;
+    margin-top: 1rem;
     text-decoration: none;
 }
 
-
-li a:hover {
+nav ul li a:hover {
     background-color: #fad390;
     color: #fff;
-}
-.icon {
-margin-right: 10px;
-}
-
-h2 {
-    color: #333;
 }
 
 .nav-btn {
@@ -67,10 +100,10 @@ h2 {
     color: var(--color-negro);
     padding: 16px 16px;
     transition: all .6s ease; 
-  }
-  
-  .nav-btn:hover {
+}
+
+.nav-btn:hover {
     transform: translateY(-3px);
-    
+
     text-decoration-skip-ink: none;
-  }
+}
