@@ -7,8 +7,8 @@ const Documento = require('../model/documento.js');
 routerUsuarios.use(express.json());
 
 
-// Ruta GET para obtener todos los usuarios
-routerUsuarios.get('/usuarios', async (req, res) => {
+/* Ruta GET para obtener todos los usuarios */
+routerUsuarios.get('/', async (req, res) => {
     try {
         const usuarios = await Usuario.find();
         res.json(usuarios);
@@ -17,9 +17,17 @@ routerUsuarios.get('/usuarios', async (req, res) => {
     }
 });
 
-routerUsuarios.get('/', (req, res) => {
-    res.send(JSON.stringify(listaUsuarios));
+
+
+routerUsuarios.get('/:id', async (req, res) => {
+    try {
+        const usuarios = await Usuario.find();
+        res.json(usuarios);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener usuarios' });
+    }
 });
+
 
 routerUsuarios.get('/:lenguaje', (req, res) => {
     const lenguaje =  req.params.lenguaje;

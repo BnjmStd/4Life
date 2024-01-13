@@ -31,8 +31,12 @@ async function login( req, res ){
             return res.status(400).send({ status: 'error', message: 'Usuario o contraseña incorrectos' });
         }
 
+        /* aqui trabajaré exponiendo la _id de la bd en la URL,
+        averigue que por buenas prácticas no se hace pero para enfocarme en la funconalidad final 
+        de la práctica lo omitiré  */
+
         const token = JsonWebTokenError.sign(
-            { nombre: usuarioRevisar.correo },
+            { id: usuarioRevisar._id.toString() }, // Convertir el ObjectId a una cadena
             process.env.JWT_SECRET,
             { expiresIn: process.env.JWT_TIME },
         );
@@ -43,7 +47,7 @@ async function login( req, res ){
         };
 
         res.cookie('jwt', token, cookieOption);
-        return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: '/user' });
+        return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: `/user/${usuarioRevisar._id.toString()}` });  //redireccionar a la ID PERSONAL
 
     } catch (error) {
         console.error('Error al procesar la solicitud:', error);
@@ -91,7 +95,7 @@ async function register( req, res ){
             const usuarioGuardado = await nuevoUsuario.save();
 
             // Responder con el usuario recién creado
-            return res.status(201).send({ status: 'ok', message: 'Usuario registrado exitosamente' , redirect: '/login'});
+            return res.status(201).send({ status: 'ok', message: `Usuario registrado exitosamente: ${usuarioGuardado}` , redirect: '/login'});
         }
     } catch (error) {
         console.log(error);

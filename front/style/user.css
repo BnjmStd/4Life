@@ -4,7 +4,7 @@ body {
     color: var(--color-blanco);
     width: 100%; /* Ocupa todo el ancho disponible */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background: linear-gradient(to bottom, #9c43f0, #b57fa7, #fff);
+    background: linear-gradient(to bottom, #14ee85, #5786cd, #7cb0aa);
 }
 
 
