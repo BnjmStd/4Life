@@ -1,38 +1,11 @@
-const { Schema, model } = require('mongoose');
-
-const usuarioSchema = new Schema({
-    nombre: { type: String, required: true },
-    correo: { type: String, required: true, unique: true },
-});
-
-const Usuario = model('Usuario', usuarioSchema);
-
-
 const express = require('express');
 const routerUsuarios = express.Router();
-
+// models
+const Usuario = require('../model/usuario.js');
+const Documento = require('../model/documento.js');
 
 routerUsuarios.use(express.json());
 
-routerUsuarios.post('/usuarios', async (req, res) => {
-    try {
-      // Crear un nuevo usuario basado en los datos recibidos en el cuerpo de la solicitud
-        const nuevoUsuario = new Usuario({
-            nombre: req.body.nombre,
-            correo: req.body.correo,
-        });
-        // Guardar el nuevo usuario en la base de datos
-        const usuarioGuardado = await nuevoUsuario.save();
-
-        // Responder con el usuario recién creado
-        res.status(201).json(usuarioGuardado);
-        
-    } catch (error) {
-        console.log(error);
-        // Manejar errores de validación o cualquier otro error
-        res.status(500).json({ error: 'Error al agregar usuario' });
-    }
-});
 
 // Ruta GET para obtener todos los usuarios
 routerUsuarios.get('/usuarios', async (req, res) => {
@@ -58,15 +31,6 @@ routerUsuarios.get('/:lenguaje', (req, res) => {
         // return res.status(404).end();
     }
     res.send(JSON.stringify(result));
-});
-
-
-routerUsuarios.post('/', (req, res) => {
-    let cursonew = req.body;
-
-    programacion.push(cursonew);
-
-    res.send(JSON.stringify(programacion));
 });
 
 

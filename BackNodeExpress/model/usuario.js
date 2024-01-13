@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const usuarioSchema = new mongoose.Schema({
-    id: { type: Number, required: true },
-    nombre: { type: String, required: true, maxlength: 45 },
     correo: { type: String, required: true, maxlength: 45 },
+    nombre: { type: String,  maxlength: 45 },
     password: { type: String, required: true },
     peso: { type: Number },
     edad: { type: Number },
