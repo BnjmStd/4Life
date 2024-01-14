@@ -17,6 +17,8 @@ app.use(express.static(path.join(__dirname, '../front'))); // Servir archivos es
 /* Routers */
 const routerUsuarios = require('./routers/user.js');
 app.use('/api/users', routerUsuarios.routerUsuarios);
+const routerDocumento = require('./routers/documento.js');
+app.use('/api/documentos', routerDocumento.routerDocumento);
 
 /* Pages Front*/
 app.get('/', (req, res) => {

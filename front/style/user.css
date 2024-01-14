@@ -111,10 +111,10 @@ nav ul li a:hover {
 }
 
 .encuestaForm  {
-    display: none;
     width: 100%; /* Garantiza que el formulario ocupe el 100% del ancho disponible */
     margin: 20px auto; /* Centra el formulario en la página */
 }
+
 
 label {
     display: block;
@@ -223,4 +223,8 @@ textarea {
     padding: 0.5rem 1rem;
     color: #000;
     cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }

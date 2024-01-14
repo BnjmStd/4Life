@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const documentoSchema = new mongoose.Schema({
-  idDocumento: { type: mongoose.Schema.Types.ObjectId, required: true },
   nombre: { type: String, required: true },
   descripcion: { type: String },
   formato: { type: String },

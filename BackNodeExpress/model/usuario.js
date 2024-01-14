@@ -10,7 +10,6 @@ tipoUsuario = {
 
 */
 
-
 const usuarioSchema = new mongoose.Schema({
     correo: { type: String, required: true, maxlength: 45 },
     nombre: { type: String,  maxlength: 45 },
