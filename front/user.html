@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" type="text/css" href="style/user.css">
+
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
+    rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -26,30 +31,85 @@
     <div class="contenedor_primario">
         <nav>
             <ul>
-                <li><a href="#" class="active">
-                    
-                Home</a></li>
-                <li><a href="#">
-                    
-                Profile</a></li>
-                <li><a href="#">
-                    
-                Documentos</a></li>
-                <li><a href="#"> 
-                    
-                Notificaciones</a></li>
+                <li>
+                    <a href="#" class="active">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#"> 
+                        Subir Documentos
+                    </a>
+                </li>
+                <li>
+                    <a href="#"> 
+                        Documentos
+                    </a>
+                </li>
             </ul>
         </nav>
         <div>
             <div class="contendor_secundario">
-                <a href="#">Información</a>
-            </div>
+                <form  class="encuestaForm" method="POST">
+                    <label for="correo">Correo:</label>
+                    <input type="email" id="correo" name="correo" required>
+                
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre">
+                
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                
+                    <label for="peso">Peso:</label>
+                    <input type="number" id="peso" name="peso">
+                
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad">
+                
+                    <label for="altura">Altura:</label>
+                    <input type="number" id="altura" name="altura">
+                
+                    <label for="enfermedades_existentes">Enfermedades Existentes:</label>
+                    <textarea id="enfermedades_existentes" name="enfermedades_existentes"></textarea>
+                
+                    <label for="alergias">Alergias:</label>
+                    <textarea id="alergias" name="alergias"></textarea>
+                
+                    <label for="documentos">Documentos:</label>
+                    <input type="text" id="documentos" name="documentos">
+                
+                    <button class="nav-btn" type="submit">Guardar Usuario</button>
+                </form>
 
+
+                <form class="dropzone-box">
+                    <h2>Cargar y adjuntar tus exámenes</h2>
+                    <p>Adjuntar archivos en este proyecto</p>
+                    <div class="dropzone-area">
+                        <div class="file-upload-icon">
+                            <i class="ri-file-add-line fa-file"></i>
+                        </div>
+                        <p>Haga click para cargar archivos, arrastre o suelte</p>
+                        <input type="file" required id="upload-file" name="uploaded-file"> 
+                        <p class="message"> No hay archivos seleccionados </p>
+                    </div>
+                    <div class="dropzone-actions">
+                        <button type="reset">Cancelar</button>
+                        <button type="submit" id="submit-button" class="subUpload">Subir</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     
 
 
-
+    <script src="src/usuario.js"></script>
 </body>
 </html>

@@ -4,9 +4,7 @@ body {
     color: var(--color-blanco);
     width: 100%; /* Ocupa todo el ancho disponible */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background: linear-gradient(to bottom, #14ee85, #5786cd, #7cb0aa);
 }
-
 
 header{
     display: flex;
@@ -27,7 +25,7 @@ header .logo{
 
 
 .banner {
-    background: #fff;
+    background: #8cbde0;
     padding: 20px;
     text-align: center;
 }
@@ -43,18 +41,23 @@ header .logo{
 }
 
 .contendor_secundario{
+    padding: 5%;
     margin-top: 5%;
     margin-left: 5%;
     padding-bottom: 1rem;
-    width: 50rem;
+    width: 45rem;
     position: flex;
 
+    max-width: 50rem; /* Establece el ancho máximo del formulario */
+    max-height: 550px;
+    overflow-y: auto;
+
+
+    background-color: #a3a0a0;
 
     border-width: 2px;
     border-style: solid;
     border-color: #333;
-
-
     border-radius: 16px;
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
 }
@@ -89,13 +92,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #fad390;
+    background-color:#8cbde0;;
     color: #fff;
 }
 
 .nav-btn {
     display: inline-block;
-    background: var(--color-blanco);
+    background: #8cbde0;
     border-radius: 16px;
     color: var(--color-negro);
     padding: 16px 16px;
@@ -104,6 +107,120 @@ nav ul li a:hover {
 
 .nav-btn:hover {
     transform: translateY(-3px);
-
     text-decoration-skip-ink: none;
+}
+
+.encuestaForm  {
+    display: none;
+    width: 100%; /* Garantiza que el formulario ocupe el 100% del ancho disponible */
+    margin: 20px auto; /* Centra el formulario en la página */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+
+input,
+textarea {
+    width: 70%;
+    padding: 8px;
+    margin-bottom: 16px;
+    color: #000;
+}
+
+/*Subir documento
+    backdrop-filter: blur(50px);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0px 8px 24px #fff;*/
+
+.dropzone-box {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 36rem;
+    width: 100%;
+}
+
+.fa-file {
+    font-size: 80px;
+    margin-bottom: 25px;
+}
+
+.dropzone-box h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropzone-area {
+    padding: 1rem;
+    position: relative;
+    margin-top: 1rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed #fff;
+    border-radius: 1rem;
+    color: #fff;
+}
+
+.dropzone-area:hover {
+    color: #000;
+}
+
+.dropzone-area [type="file"] {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dropzone-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid #8cbde0;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.dropzone-actions button {
+    flex-wrap: 1;
+    min-height: 3rem;
+    font-size: 1.2rem;
+}
+
+.subUpload:hover {
+    background-color: #fff;
+}
+.dropzone-actions button[type='reset']:hover{
+    background-color: red;
+}
+
+.dropzone-actions button[type='reset']{
+    background-color: transparent;
+    border: 1px solid #8cbde0;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dropzone-actions button {
+    background-color: aquamarine;
+    border: 1px solid aquamarine;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    color: #000;
+    cursor: pointer;
 }
