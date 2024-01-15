@@ -1,18 +1,7 @@
-let listaUsuarios = [
-    {
-        id: 1,
-        nombre: 'Juan Pérez',
-        correo: 'juan@example.com',
-    },
-    ];
-
-
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 dotenv.config();
-
-
-const mongoose = require('mongoose');
 
 const uri = process.env.URI_DB;
 
@@ -25,7 +14,6 @@ mongoose
     console.error('Error de conexión a MongoDB:', error);
     });
 
-// También puedes manejar eventos después de la conexión
 const connection = mongoose.connection;
 connection.on('error', console.error.bind(console, 'Error de conexión a MongoDB:'));
 connection.once('open', () => {

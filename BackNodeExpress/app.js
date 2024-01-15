@@ -6,10 +6,13 @@ const path = require('path');
 /* Middlewares & controllers */ 
 const methods = require('./middlewares/authorization.js');
 const controllers = require('./controllers/authentication.controller.js');
+const fileUpload = require('express-fileupload');
 
 /*  Config  */
 const app = express();
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // json
+app.use(fileUpload());
 app.use(cors()); // Cors a todos *
 app.use(cookieParser()); // config cookis reads
 app.use(express.static(path.join(__dirname, '../front'))); // Servir archivos estáticos desde la carpeta 'front'

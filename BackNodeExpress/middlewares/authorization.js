@@ -91,6 +91,9 @@ async function revisarIdentidad(req, res, next){
     }
 }
 
+
+
+
 module.exports = {
     soloLogeado,
     soloPublic,

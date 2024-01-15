@@ -82,7 +82,7 @@
                 </form>
 
 
-                <form class="dropzone-box hidden " id="documentosForm">
+                <form class="dropzone-box hidden " id="documentosForm" enctype="multipart/form-data">
                     <h2>Cargar y adjuntar tus exámenes</h2>
                     <p>Adjuntar archivos en este proyecto</p>
                     <div class="dropzone-area">
@@ -90,7 +90,7 @@
                             <i class="ri-file-add-line fa-file"></i>
                         </div>
                         <p>Haga click para cargar archivos, arrastre o suelte</p>
-                        <input type="file" required id="upload-file" name="uploaded-file"> 
+                        <input type="file" required id="upload-file" name="uploadedFile"> 
                         <p class="message"> No hay archivos seleccionados </p>
                     </div>
                     <div class="dropzone-actions">
