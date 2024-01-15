@@ -81,25 +81,25 @@ dropzoneBox.addEventListener("submit", (e) => {
         // Crear un objeto FormData para enviar el archivo
         const formData = new FormData();
         formData.append('uploadedFile', file);
-
-        console.log(`Tiene: ${formData.get('uploadedFile')}`);
-        
         // Realizar la solicitud fetch y manejarla como una promesa
         fetch('http://localhost:3000/api/documentos', {
             method: 'POST',
             body: formData,
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
         })
         .then(response => {
             if (response.ok) {
-                console.log('Documento enviado con éxito.');
+                alert('Documento enviado con éxito.');
             } else {
-                console.error('Error al enviar el documento:', response.statusText);
+                alert('Error al enviar el documento:', response.message);
             }
         })
         .catch(error => {
             console.error('Error en la solicitud fetch:', error);
         });
     } else {
-        console.warn('No se ha seleccionado ningún archivo.');
+        alert('No se ha seleccionado ningún archivo.');
     }
 });

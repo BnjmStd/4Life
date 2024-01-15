@@ -1,4 +1,4 @@
-const  JsonWebTokenError  = require('jsonwebtoken');
+const JsonWebTokenError  = require('jsonwebtoken');
 const bd =  require('../bd/bd.js');
 const dotenv = require('dotenv');
 
@@ -43,7 +43,8 @@ async function soloLogeado(req, res, next) {
 
 async function revisarCookie(req) {
     try {
-        const cookies = req.headers.cookie;
+        let cookies = req.headers.cookie;
+
         if (!cookies) {
             return false;
         }
@@ -56,7 +57,8 @@ async function revisarCookie(req) {
         const cookieDecof = JsonWebTokenError.verify(token, process.env.JWT_SECRET);
 
         const usuarioRevisar = await Usuario.findOne({ _id: cookieDecof.id });
-
+        req.usuarioId = cookieDecof.id;
+        
         return !!usuarioRevisar;
 
     } catch (error) {
@@ -67,7 +69,8 @@ async function revisarCookie(req) {
 
 async function revisarIdentidad(req, res, next){
     try {
-        const cookies = req.headers.cookie;
+        let cookies = req.headers.cookie;
+        
         const cookieJWT = cookies.split('; ').find(cookie => cookie.startsWith('jwt'));
 
         if (!cookieJWT) {
@@ -91,6 +94,26 @@ async function revisarIdentidad(req, res, next){
     }
 }
 
+async function CookieDocumento(req, res, next){
+
+    let cookies = req.headers.authorization;
+
+    if (!cookies) {
+
+        return res.status(500).send({ status: 'error', message: 'Error interno Cookie del servidor' });
+    }
+    const cookieJWT = cookies.split('; ').find(cookie => cookie.startsWith('jwt'));
+    if (!cookieJWT) {
+        console.log('llegue al cookie');
+        return res.status(500).send({ status: 'error', message: 'Error interno Cookie del servidor' });
+    }
+    const token = cookieJWT.slice(4);
+    const cookieDecof = JsonWebTokenError.verify(token, process.env.JWT_SECRET);
+
+    const usuarioRevisar = await Usuario.findOne({ _id: cookieDecof.id });
+    req.usuarioId = cookieDecof.id;
+    return next();
+};
 
 
 
@@ -98,4 +121,5 @@ module.exports = {
     soloLogeado,
     soloPublic,
     revisarIdentidad,
+    CookieDocumento, 
 }
