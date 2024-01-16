@@ -5,14 +5,28 @@ https://coolors.co/496ddb-c2eabd-ff9fb2-89daff-58504a
 
 :root {
     --color-negro: #101010;
-    --color-blanco: #ffffffa6;
+    --color-blanco: #ffffff;
     font-family: cursive;
   }
 
 * {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     outline: none;
     border: none;
     text-decoration: none;
+    min-width: 0;
 } 
+
+body {
+  min-height: 100dvh;
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}

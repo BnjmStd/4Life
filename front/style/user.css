@@ -40,41 +40,15 @@ header .logo{
 
 }
 
-.contendor_secundario{
-    padding: 5%;
-    margin-top: 5%;
-    margin-left: 5%;
-    padding-bottom: 1rem;
-    width: 45rem;
-    position: flex;
-
-    max-width: 50rem; /* Establece el ancho máximo del formulario */
-    max-height: 400px;
-    overflow-y: auto;
-
-
-    background-color: #a3a0a0;
-
-    border-width: 2px;
-    border-style: solid;
-    border-color: #333;
-    border-radius: 16px;
-    box-shadow: 5px 5px 10px rgb(0, 0, 0);
-}
-
 nav {
     margin-top: 10%;
-    margin-left: 5%;
+    margin-left: 10%;
     padding-bottom: 1rem;
     width: 200px;
     position: flex;
-
-
     border-width: 2px;
     border-style: solid;
     border-color: #333;
-
-
     border-radius: 16px;
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
 }
@@ -103,6 +77,7 @@ nav ul li a:hover {
     color: var(--color-negro);
     padding: 16px 16px;
     transition: all .6s ease; 
+    cursor: pointer;
 }
 
 .nav-btn:hover {
@@ -110,11 +85,36 @@ nav ul li a:hover {
     text-decoration-skip-ink: none;
 }
 
+.contendor_secundario{
+    padding-left: 5%;
+    padding-bottom: 1rem;
+
+    margin-top: 5%;
+    margin-left: 5%;
+
+    width: 45rem;
+    position: flex;
+    max-height: 550px;
+    min-height: 550px;
+    overflow-y: auto;
+    
+    
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--color-negro);
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+}
+
 .encuestaForm  {
     width: 100%; /* Garantiza que el formulario ocupe el 100% del ancho disponible */
     margin: 20px auto; /* Centra el formulario en la página */
+    max-width: 50rem; 
 }
 
+.encuestaForm h1 {
+    color: var(--color-negro);
+}
 
 label {
     display: block;
@@ -122,18 +122,20 @@ label {
     color: #000;
 }
 
-
 input,
 textarea {
     width: 70%;
     padding: 8px;
     margin-bottom: 16px;
     color: #000;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--color-negro);
 }
 
-
 .dropzone-box {
-
+    padding-top: 2%;
+    color: var(--color-negro);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -160,13 +162,13 @@ textarea {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px dashed #fff;
+    border: 2px dashed var(--color-negro);
     border-radius: 1rem;
-    color: #fff;
+    color: var(--color-negro);
 }
 
 .dropzone-area:hover {
-    color: #000;
+    color: red;
 }
 
 .dropzone-area [type="file"] {
@@ -184,7 +186,7 @@ textarea {
     justify-content: space-between;
     padding-top: 1.5rem;
     margin-top: 1.5rem;
-    border-top: 1px solid #8cbde0;
+    border-top: 1px solid var(--color-negro);
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -195,34 +197,13 @@ textarea {
     font-size: 1.2rem;
 }
 
-.subUpload:hover {
-    background-color: #fff;
-}
-.dropzone-actions button[type='reset']:hover{
-    background-color: red;
-}
-
 .dropzone-actions button[type='reset']{
-    background-color: transparent;
-    border: 1px solid #8cbde0;
-    border-radius: 0.5rem;
+    background-color: red;
     padding: 0.5rem 1rem;
     color: #fff;
-    cursor: pointer;
 }
 
-.dropzone-actions button {
-    background-color: aquamarine;
-    border: 1px solid aquamarine;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    color: #000;
-    cursor: pointer;
-}
-
-.hidden {
-    display: none;
-}
+/* tabla */
 
 #documentosTable {
     border-collapse: collapse;
@@ -234,6 +215,7 @@ textarea {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    color: var(--color-negro);
 }
 
 #documentosTable img {
@@ -244,7 +226,7 @@ textarea {
 
 #documentosTable button {
     background-color: #4caf50;
-    color: white;
+    color: var(--color-negro);
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -252,4 +234,8 @@ textarea {
 
 #documentosTable button:hover {
     background-color: #45a049;
+}
+
+.hidden {
+    display: none;
 }

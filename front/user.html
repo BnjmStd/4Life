@@ -32,10 +32,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#" class="active" onclick="cambiarContenido('Home')">Home</a>
+                    <a href="#" class="active" onclick="cambiarContenido('Home')">Inicio</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('Profile')">Profile</a>
+                    <a href="#" onclick="cambiarContenido('Profile')">Perfil</a>
                 </li>
                 <li>
                     <a href="#" onclick="cambiarContenido('Subir Documentos')">Subir Documentos</a>
@@ -46,79 +46,76 @@
             </ul>
         </nav>
 
+        <div class="contendor_secundario" id="contenido">
+                
+            <form  id="profileForm" class="encuestaForm hidden" method="POST">
+                <h1> Formulario inicial </h1>
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+            
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+            
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <label for="peso">Peso:</label>
+                <input type="number" id="peso" name="peso">
+            
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" name="edad">
+            
+                <label for="altura">Altura:</label>
+                <input type="number" id="altura" name="altura">
+            
+                <label for="enfermedades_existentes">Enfermedades Existentes:</label>
+                <textarea id="enfermedades_existentes" name="enfermedades_existentes"></textarea>
+            
+                <label for="alergias">Alergias:</label>
+                <textarea id="alergias" name="alergias"></textarea>
+            
+                <label for="documentos">Documentos:</label>
+                <input type="text" id="documentos" name="documentos">
+            
+                <button class="nav-btn" type="submit">Guardar Usuario</button>
+            </form>
 
 
-
-            <div class="contendor_secundario" id="contenido">
-                
-                <form  id="profileForm" class="encuestaForm hidden" method="POST">
-                    <label for="correo">Correo:</label>
-                    <input type="email" id="correo" name="correo" required>
-                
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre">
-                
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" required>
-                
-                    <label for="peso">Peso:</label>
-                    <input type="number" id="peso" name="peso">
-                
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" name="edad">
-                
-                    <label for="altura">Altura:</label>
-                    <input type="number" id="altura" name="altura">
-                
-                    <label for="enfermedades_existentes">Enfermedades Existentes:</label>
-                    <textarea id="enfermedades_existentes" name="enfermedades_existentes"></textarea>
-                
-                    <label for="alergias">Alergias:</label>
-                    <textarea id="alergias" name="alergias"></textarea>
-                
-                    <label for="documentos">Documentos:</label>
-                    <input type="text" id="documentos" name="documentos">
-                
-                    <button class="nav-btn" type="submit">Guardar Usuario</button>
-                </form>
-
-
-                <form class="dropzone-box hidden " id="documentosForm" enctype="multipart/form-data">
-                    <h2>Cargar y adjuntar tus exámenes</h2>
-                    <p>Adjuntar archivos en este proyecto</p>
-                    <div class="dropzone-area">
-                        <div class="file-upload-icon">
-                            <i class="ri-file-add-line fa-file"></i>
-                        </div>
-                        <p>Haga click para cargar archivos, arrastre o suelte</p>
-                        <input type="file" required id="upload-file" name="uploadedFile"> 
-                        <p class="message"> No hay archivos seleccionados </p>
+            <form class="dropzone-box hidden " id="documentosForm" enctype="multipart/form-data">
+                <h2>Cargar y adjuntar tus exámenes</h2>
+                <p>Adjuntar archivos en este proyecto</p>
+                <div class="dropzone-area">
+                    <div class="file-upload-icon">
+                        <i class="ri-file-add-line fa-file"></i>
                     </div>
-                    <div class="dropzone-actions">
-                        <button type="reset">Cancelar</button>
-                        <button type="submit" id="submit-button" class="subUpload">Subir</button>
-                    </div>
-                </form>
-
-                <div id="pdfViewer" class="pdf hidden">
-                    <table id="documentosTable">
-                        <thead>
-                            <tr>
-                                <th>Formato</th>
-                                <th>Nombre del Documento</th>
-                                <th>Fecha de Creación</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- fetch GET -->
-                        </tbody>
-                    </table>
+                    <p>Haga click para cargar archivos, arrastre o suelte</p>
+                    <input type="file" required id="upload-file" name="uploadedFile"> 
+                    <p class="message"> No hay archivos seleccionados </p>
                 </div>
+                <div class="dropzone-actions">
+                    <button class="nav-btn" type="reset">Cancelar</button>
+                    <button type="submit" id="submit-button" class="nav-btn">Subir</button>
+                </div>
+            </form>
 
-            </div>
-        </div>
-    </div>
+            <div id="pdfViewer" class="pdf hidden">
+                <table id="documentosTable">
+                    <thead>
+                        <tr>
+                            <th>Formato</th>
+                            <th>Nombre del Documento</th>
+                            <th>Fecha de Creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- fetch GET -->
+                    </tbody>
+                </table>
+            </div> 
+
+        </div> <!-- Fin secundario-->
+    </div> <!-- Fin div primario-->
     
     <script src="/src/usuario.js"></script>
 </body>

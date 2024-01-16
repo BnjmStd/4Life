@@ -1,11 +1,15 @@
-@import 'root.css';
+
+:root {
+    --color-negro: #101010;
+    --color-blanco: #ffffff;
+    font-family: cursive;
+}
 
 body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: linear-gradient(to bottom, #14ee85, #5786cd, #7cb0aa);
 }
 .main{
 	width: 350px;
@@ -23,7 +27,7 @@ body{
 	height: 100%;
 }
 label{
-	color: #fff;
+	color: var(--color-negro);
 	font-size: 2.3em;
 	justify-content: center;
 	display: flex;
@@ -71,7 +75,7 @@ button{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	background: #8cbde0;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -81,18 +85,21 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
+
 button:hover{
-	background: #6d44b8;
+	background: #54a8e4;
 }
+
 .login{
 	height: 460px;
 	background: #eee;
 	border-radius: 9%;
+	border-color: var(--color-negro);
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #573b8a;
+	color: var(--color-negro);
 	transform: scale(.6);
 }
 
