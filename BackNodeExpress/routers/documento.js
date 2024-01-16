@@ -17,8 +17,8 @@ routerDocumento.use(express.json());
 
 /* Ruta GET para obtener los documentos del usuario */
 routerDocumento.get('/', CookieDocumento, async (req, res) => {
-    console.log(req.usuarioId);
     try {
+        console.log('asd', req.usuarioId);
       // Obtener el usuario actual
         const usuario = await Usuario.findById(req.usuarioId).populate('documentos');
 
@@ -28,9 +28,10 @@ routerDocumento.get('/', CookieDocumento, async (req, res) => {
 
         // Devolver la lista de documentos del usuario
         return res.status(200).send({ status: 'success', documentos: usuario.documentos });
-        } catch (error) {
-            console.error('Error al obtener documentos del usuario:', error);
-            return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
+
+    } catch (error) {
+        console.error('Error al obtener documentos del usuario:', error);
+        return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
     }
 });
 

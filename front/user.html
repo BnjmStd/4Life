@@ -9,6 +9,7 @@
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
     rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 </head>
 <body>
     <header>
@@ -18,7 +19,7 @@
         </a>
         <div class="nav-right">
             <a id="nombre_id"></a>
-            <a  id= "loginButton"  class="nav-btn" >  Cerrar Sesión <i class="ri-login-circle-line"></i></a>
+            <a  id= "bye"  class="nav-btn" >  Cerrar Sesión <i class="ri-login-circle-line"></i></a>
         </div>
     </header>
 
@@ -99,18 +100,21 @@
                     </div>
                 </form>
 
-
-                <table id="documentos-table" class="tableDocument hidden">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Formato</th>
-                            <th>Fecha de Creación</th>
-                        </tr>
-                    </thead>
-                    <tbody id="documentos-body"></tbody>
-                </table>
+                <div id="pdfViewer" class="pdf hidden">
+                    <table id="documentosTable">
+                        <thead>
+                            <tr>
+                                <th>Formato</th>
+                                <th>Nombre del Documento</th>
+                                <th>Fecha de Creación</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- fetch GET -->
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>

@@ -97,7 +97,6 @@ async function revisarIdentidad(req, res, next){
 async function CookieDocumento(req, res, next){
 
     let cookies = req.headers.authorization;
-    console.log(cookies);
 
     if (!cookies) {
 
@@ -111,7 +110,6 @@ async function CookieDocumento(req, res, next){
     const token = cookieJWT.slice(4);
     const cookieDecof = JsonWebTokenError.verify(token, process.env.JWT_SECRET);
 
-    const usuarioRevisar = await Usuario.findOne({ _id: cookieDecof.id });
     req.usuarioId = cookieDecof.id;
     return next();
 };

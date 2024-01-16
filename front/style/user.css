@@ -223,3 +223,33 @@ textarea {
 .hidden {
     display: none;
 }
+
+#documentosTable {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px; /* Espacio superior */
+}
+
+#documentosTable th, #documentosTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#documentosTable img {
+    max-width: 30px;
+    max-height: 30px;
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+#documentosTable button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#documentosTable button:hover {
+    background-color: #45a049;
+}
