@@ -4,6 +4,7 @@ body {
     color: var(--color-blanco);
     width: 100%; /* Ocupa todo el ancho disponible */
     height: 100vh; /* Ocupa toda la altura de la pantalla */
+    background-color: var(--color-negro);
 }
 
 header{
@@ -16,7 +17,7 @@ header{
     border-bottom: 2px solid var(--color-negro);
 }
 header .logo{
-    color: var(--color-negro);
+    color: var(--color-blanco);
     font-weight: 800;
     font-size: large;
     text-decoration: none;
@@ -25,13 +26,13 @@ header .logo{
 
 
 .banner {
-    background: #8cbde0;
+    background: var(--color-azul);
     padding: 20px;
     text-align: center;
 }
 
 .banner h2 {
-    color: #333;
+    color: var(--color-blanco);
 }
 
 .contenedor_primario {
@@ -48,9 +49,9 @@ nav {
     position: flex;
     border-width: 2px;
     border-style: solid;
-    border-color: #333;
+    border-color: var(--color-blanco);
     border-radius: 16px;
-    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    box-shadow: 5px 20px 50px #7c7b7be7;
 }
 
 nav ul {
@@ -62,19 +63,20 @@ nav ul li a {
     color: #000;
     padding: 8px 16px;
     margin-top: 1rem;
+    color: var(--color-blanco);
     text-decoration: none;
 }
 
 nav ul li a:hover {
-    background-color:#8cbde0;;
-    color: #fff;
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
 }
 
 .nav-btn {
     display: inline-block;
-    background: #8cbde0;
+    background: var(--color-azul);
     border-radius: 16px;
-    color: var(--color-negro);
+    color: var(--color-blanco);
     padding: 16px 16px;
     transition: all .6s ease; 
     cursor: pointer;
@@ -92,7 +94,7 @@ nav ul li a:hover {
     margin-top: 5%;
     margin-left: 5%;
 
-    width: 45rem;
+    width: 55rem;
     position: flex;
     max-height: 550px;
     min-height: 550px;
@@ -101,9 +103,9 @@ nav ul li a:hover {
     
     border-width: 2px;
     border-style: solid;
-    border-color: var(--color-negro);
+    border-color: var(--color-blanco);
     border-radius: 16px;
-    box-shadow: 5px 5px 10px rgb(0, 0, 0);
+    box-shadow: 5px 20px 50px #7c7b7be7;
 }
 
 .encuestaForm  {
@@ -113,13 +115,13 @@ nav ul li a:hover {
 }
 
 .encuestaForm h1 {
-    color: var(--color-negro);
+    color: var(--color-blanco);
 }
 
 label {
     display: block;
     margin-bottom: 8px;
-    color: #000;
+    color: var(--color-blanco);
 }
 
 input,
@@ -130,12 +132,12 @@ textarea {
     color: #000;
     border-style: solid;
     border-width: 2px;
-    border-color: var(--color-negro);
+    border-color: var(--color-blanco);
 }
 
 .dropzone-box {
     padding-top: 2%;
-    color: var(--color-negro);
+    color: var(--color-blanco);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -162,9 +164,9 @@ textarea {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px dashed var(--color-negro);
+    border: 2px dashed var(--color-blanco);
     border-radius: 1rem;
-    color: var(--color-negro);
+    color: var(--color-blanco);
 }
 
 .dropzone-area:hover {
@@ -186,7 +188,7 @@ textarea {
     justify-content: space-between;
     padding-top: 1.5rem;
     margin-top: 1.5rem;
-    border-top: 1px solid var(--color-negro);
+    border-top: 1px solid var(--color-blanco);
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -204,6 +206,13 @@ textarea {
 }
 
 /* tabla */
+.pdf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    margin-right: 50px;
+}
 
 #documentosTable {
     border-collapse: collapse;
@@ -215,7 +224,7 @@ textarea {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    color: var(--color-negro);
+    color: var(--color-blanco);
 }
 
 #documentosTable img {

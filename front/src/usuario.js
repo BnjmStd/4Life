@@ -28,63 +28,61 @@ async function tablaDocumentosInfo() {
 }
 
 function agregarDocumentos(resJson) {
-    const pdfContainer = document.getElementById('pdfViewer');
-
-    // Quitar la clase 'hidden' para mostrar la tabla
-    pdfContainer.classList.remove('hidden');
-
     const tbody = document.querySelector('#documentosTable tbody');
+    const fragmento = document.createDocumentFragment();
 
-    // Limpiar el contenido de la tabla 
-    tbody.innerHTML = '';
+    // Elemento estático: Ícono PDF
+    const pdfIcon = document.createElement('img');
+    pdfIcon.src = '../img/pdf.png';  // Reemplaza con la ruta de tu ícono
+    pdfIcon.alt = 'PDF Icon';
 
-    // lista de documentos
+    // Iterar sobre la lista de documentos
     resJson.documentos.forEach(doc => {
-        // Crear una fila de la tabla
         const fila = document.createElement('tr');
 
-        // Crear una celda para el ícono
+        // Celda para el ícono
         const celdaIcono = document.createElement('td');
-        const pdfIcon = document.createElement('img');
-        pdfIcon.src = '../img/pdf.png';  // Reemplaza con la ruta de tu ícono
-        pdfIcon.alt = 'PDF Icon';
-        celdaIcono.appendChild(pdfIcon);
-
-        // Crear una celda para el nombre del documento
+        celdaIcono.appendChild(pdfIcon.cloneNode(true));
+    
+        // Celda para el nombre del documento
         const celdaNombre = document.createElement('td');
         const pdfName = document.createElement('span');
         pdfName.textContent = doc.nombre || 'Documento PDF';
         celdaNombre.appendChild(pdfName);
-
-        // Crear una celda para la fecha del documento
+    
+        // Celda para la fecha del documento
         const celdaFecha = document.createElement('td');
         const pdfFecha = document.createElement('span');
-        pdfFecha.textContent = new Date(doc.fechaCreacion).toLocaleDateString(); 
+        pdfFecha.textContent = new Date(doc.fechaCreacion).toLocaleDateString();
         celdaFecha.appendChild(pdfFecha);
-
-        // Crear una celda para el botón
+    
+        // Celda para el botón
         const celdaBoton = document.createElement('td');
         const boton = document.createElement('button');
-        boton.textContent = 'Analizar'; 
+        boton.textContent = 'Analizar';
         boton.addEventListener('click', () => {
-            console.log('Algo pasa aqui:', doc.nombre);
+            console.log('Algo pasa aquí:', doc.nombre);
         });
         celdaBoton.appendChild(boton);
-
+    
         // Agregar las celdas a la fila
         fila.appendChild(celdaIcono);
         fila.appendChild(celdaNombre);
         fila.appendChild(celdaFecha);
         fila.appendChild(celdaBoton);
-
-        // Agregar la fila a la tabla
-        tbody.appendChild(fila);
+    
+        // Agregar la fila al fragmento
+        fragmento.appendChild(fila);
     });
+
+    // Limpiar el contenido de la tabla y agregar el fragmento
+    tbody.innerHTML = '';
+    tbody.appendChild(fragmento);
 }
 
-async function cambiarContenido(seccion) {
+function cambiarContenido(seccion) {
     // Ocultar todos los formularios
-    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box .pdf');
+    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf');
     formularios.forEach(form => form.classList.add('hidden'));
 
     // Mostrar el formulario específico
@@ -103,8 +101,10 @@ async function cambiarContenido(seccion) {
     } else if (seccion === 'Documentos') {
         const tablaDocumentos = document.getElementById('pdfViewer');
         if (tablaDocumentos) {
-
-            await tablaDocumentosInfo();
+            const pdfContainer = document.getElementById('pdfViewer');
+            // Quitar la clase 'hidden' para mostrar la tabla
+            pdfContainer.classList.remove('hidden');
+            tablaDocumentosInfo();
         }
         
     }

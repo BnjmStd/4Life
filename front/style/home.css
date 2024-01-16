@@ -5,6 +5,7 @@ body {
   color: var(--color-blanco);
   width: 100%; /* Ocupa todo el ancho disponible */
   height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background: var(--color-negro);
   }
 
 header{
@@ -14,11 +15,11 @@ header{
   align-items: center;  
   justify-content: space-between;
   margin: 1rem 1rem;
-  border-bottom: 2px solid var(--color-negro);
+  border-bottom: 2px solid var(--color-blanco);
 }
 
 header .logo{
-  color: var(--color-negro);
+  color: var(--color-blanco);
   font-weight: 800;
   font-size: large;
   text-decoration: none;
@@ -26,9 +27,9 @@ header .logo{
 
 .nav-btn {
   display: inline-block;
-  background: #8cbde0;
+  background: var(--color-azul);
   border-radius: 16px;
-  color: var(--color-negro);
+  color: var(--color-blanco);
   padding: 16px 16px;
   transition: all .6s ease; 
 }
@@ -39,7 +40,7 @@ header .logo{
 }
 
 section {
-  color: var(--color-negro);
+  color: var(--color-blanco);
   padding: 0 3%;
   margin: 5rem 5rem;
   border-radius: 10px;
@@ -49,7 +50,7 @@ section {
 }
 
 section a {
-  color: var(--color-negro);
+  color: var(--color-azul);
 }
 
 section h1 {
