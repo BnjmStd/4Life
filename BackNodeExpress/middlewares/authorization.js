@@ -97,6 +97,7 @@ async function revisarIdentidad(req, res, next){
 async function CookieDocumento(req, res, next){
 
     let cookies = req.headers.authorization;
+    console.log(cookies);
 
     if (!cookies) {
 

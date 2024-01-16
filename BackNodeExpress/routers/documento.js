@@ -15,13 +15,22 @@ const dotenv = require('dotenv');
 dotenv.config();
 routerDocumento.use(express.json());
 
-/* Ruta GET para obtener todos los usuarios */
-routerDocumento.get('/', async (req, res) => {
+/* Ruta GET para obtener los documentos del usuario */
+routerDocumento.get('/', CookieDocumento, async (req, res) => {
+    console.log(req.usuarioId);
     try {
-        const documentos = await Documento.find(); // Cambié el nombre de la variable a "documentos"
-        res.json(documentos);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener todos los documentos' });
+      // Obtener el usuario actual
+        const usuario = await Usuario.findById(req.usuarioId).populate('documentos');
+
+        if (!usuario) {
+            return res.status(404).send({ status: 'error', message: 'Usuario no encontrado' });
+        }
+
+        // Devolver la lista de documentos del usuario
+        return res.status(200).send({ status: 'success', documentos: usuario.documentos });
+        } catch (error) {
+            console.error('Error al obtener documentos del usuario:', error);
+            return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
     }
 });
 

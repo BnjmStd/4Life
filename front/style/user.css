@@ -49,7 +49,7 @@ header .logo{
     position: flex;
 
     max-width: 50rem; /* Establece el ancho máximo del formulario */
-    max-height: 550px;
+    max-height: 400px;
     overflow-y: auto;
 
 
@@ -131,11 +131,6 @@ textarea {
     color: #000;
 }
 
-/*Subir documento
-    backdrop-filter: blur(50px);
-    border-radius: 2rem;
-    padding: 2rem;
-    box-shadow: 0px 8px 24px #fff;*/
 
 .dropzone-box {
 

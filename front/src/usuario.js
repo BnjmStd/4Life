@@ -1,13 +1,36 @@
+async function tablaDocumentosInfo() {
+    try {
+        const res = await fetch('http://localhost:3000/api/documentos', {
+            method: 'GET',
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+        });
+
+        if (!res.ok) {
+            throw new Error('Error en la solicitud fetch');
+        }
+
+        const resJson = await res.json();
+        return resJson;
+
+    } catch (error) {
+        console.error('Error en procesar la solicitud', error);
+        throw error; 
+    }
+}
+
+async function cambiarContenidoTabla(documentoJson){
+    alert(documentoJson);
+}
+
 function cambiarContenido(seccion) {
     // Ocultar todos los formularios
-    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box');
+    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box .tableDocument');
     formularios.forEach(form => form.classList.add('hidden'));
 
     // Mostrar el formulario específico
     if (seccion === 'Home') {
-        const cookies = document.cookie;
-
-        console.log(cookies);
 
     } else if (seccion === 'Profile') {
         const formularioProfile = document.getElementById('profileForm');
@@ -20,10 +43,12 @@ function cambiarContenido(seccion) {
             formularioDocumentos.classList.remove('hidden');
         }
     } else if (seccion === 'Documentos') {
-        const tablaDocumentos = document.getElementById('tablaDocumentos');
+        const tablaDocumentos = document.getElementById('documentos-table');
         if (tablaDocumentos) {
             tablaDocumentos.classList.remove('hidden');
+                tablaDocumentosInfo();
         }
+        
     }
 }
 
@@ -44,7 +69,6 @@ inputElement.addEventListener("change", (e) => {
             const maxSizeMB = 3;
             const maxSizeBytes = maxSizeMB * 1024 * 1024;
             if (file.size <= maxSizeBytes) {
-                // Realizar acciones adicionales si es un PDF y el tamaño es aceptable
                 updateDropzoneFileList(dropzoneElement, file);
             } else {
                 let dropzoneFileMessage = dropzoneElement.querySelector(".message");
