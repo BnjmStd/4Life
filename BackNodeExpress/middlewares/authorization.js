@@ -2,7 +2,6 @@ const JsonWebTokenError  = require('jsonwebtoken');
 const bd =  require('../bd/bd.js');
 const dotenv = require('dotenv');
 
-
 /* Cargar Modelos */
 const Usuario = require('../model/usuario.js');
 

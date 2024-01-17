@@ -18,7 +18,6 @@ routerDocumento.use(express.json());
 /* Ruta GET para obtener los documentos del usuario */
 routerDocumento.get('/', CookieDocumento, async (req, res) => {
     try {
-        console.log('asd', req.usuarioId);
       // Obtener el usuario actual
         const usuario = await Usuario.findById(req.usuarioId).populate('documentos');
 
@@ -32,6 +31,29 @@ routerDocumento.get('/', CookieDocumento, async (req, res) => {
     } catch (error) {
         console.error('Error al obtener documentos del usuario:', error);
         return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
+    }
+});
+
+routerDocumento.delete('/:id', CookieDocumento, async (req, res) => {
+    try {
+        const doc = req.params.id;
+        const user = req.usuarioId;
+
+        console.log('Preparando eliminación documento');
+        console.log(`Documento: ${doc} del usuario: ${user}`);
+
+        const resultado = await Documento.deleteOne({ _id: doc, usuario: user});
+
+        if (resultado.deletedCount === 1) {
+            console.log('Documento eliminado exitosamente.');
+        } else {
+            console.log('No se encontró el documento para eliminar.');
+        }
+
+        return res.status(204).send(); // 204 significa "No Content" después de una eliminación exitosa
+    } catch (error) {
+        console.error('Error al intentar eliminar el documento:', error);
+        return res.status(500).send('Error interno del servidor');
     }
 });
 
@@ -65,22 +87,18 @@ routerDocumento.post('/', CookieDocumento, async (req, res) => {
             console.error('Usuario no encontrado con el ID:', req.usuarioId);
             return res.status(500).send('Error interno del servidor');
         }
-        // Antes de agregar el nuevo documento
+        
         console.log('Documentos del usuario antes:', usuario.documentos);
 
-        // Esperar a que la promesa del documento se resuelva y obtener el ID
         const documentoGuardado = await documentoGuardadoPromise;
         usuario.documentos.push(documentoGuardado._id);
 
-        // Después de agregar el nuevo documento
         console.log('Documentos del usuario después:', usuario.documentos);
 
-        // Guardar el usuario actualizado
         await usuario.save();
 
         return res.status(201).send('Documento guardado con éxito');
     } catch (error) {
-      // Manejar errores y enviar una respuesta de error
         console.error('Error al procesar el documento:', error);
         return res.status(500).json({ error: error.message });
     }

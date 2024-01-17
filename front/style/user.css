@@ -233,16 +233,17 @@ textarea {
     margin-right: 5px; /* Espacio entre el ícono y el texto */
 }
 
-#documentosTable button {
-    background-color: #4caf50;
+.btn-new {
     color: var(--color-negro);
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    background: var(--color-azul);
+    gap: 10px;
 }
 
-#documentosTable button:hover {
-    background-color: #45a049;
+.btn-new[type="borrar"] {
+    background: red;
 }
 
 .hidden {
