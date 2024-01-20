@@ -102,7 +102,6 @@ async function CookieDocumento(req, res, next){
     }
     const cookieJWT = cookies.split('; ').find(cookie => cookie.startsWith('jwt'));
     if (!cookieJWT) {
-        console.log('llegue al cookie');
         return res.status(500).send({ status: 'error', message: 'Error interno Cookie del servidor' });
     }
     const token = cookieJWT.slice(4);

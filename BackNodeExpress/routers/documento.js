@@ -36,16 +36,33 @@ routerDocumento.get('/', CookieDocumento, async (req, res) => {
 
 routerDocumento.delete('/:id', CookieDocumento, async (req, res) => {
     try {
-        const doc = req.params.id;
-        const user = req.usuarioId;
+        const documentoId = req.params.id;
+        const usuarioId = req.usuarioId;
 
         console.log('Preparando eliminación documento');
-        console.log(`Documento: ${doc} del usuario: ${user}`);
+        console.log(`Documento: ${documentoId} del usuario: ${usuarioId}`);
 
-        const resultado = await Documento.deleteOne({ _id: doc, usuario: user});
+        // Elimina el documento
+        const resultado = await Documento.deleteOne({ _id: documentoId, usuario: usuarioId });
 
         if (resultado.deletedCount === 1) {
             console.log('Documento eliminado exitosamente.');
+
+            // Carga la instancia del usuario
+            const usuario = await Usuario.findById(usuarioId);
+
+            // Encuentra el índice del documento que se va a eliminar
+            const indiceDocumento = usuario.documentos.findIndex(doc => doc.equals(documentoId));
+
+            if (indiceDocumento === -1) {
+                return res.status(404).json({ message: 'Documento no encontrado para este usuario' });
+            }
+
+            // Elimina el documento del array de documentos del usuario
+            usuario.documentos.splice(indiceDocumento, 1);
+
+            // Guarda el usuario actualizado
+            await usuario.save();
         } else {
             console.log('No se encontró el documento para eliminar.');
         }
