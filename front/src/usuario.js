@@ -163,37 +163,6 @@ function agregarDocumentos(resJson) {
     tbody.appendChild(fragmento);
 }
 
-
-function cambiarContenido(seccion) {
-    // Ocultar todos los formularios
-    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf');
-    formularios.forEach(form => form.classList.add('hidden'));
-
-    // Mostrar el formulario específico
-    if (seccion === 'Home') {
-
-    } else if (seccion === 'Profile') {
-        const formularioProfile = document.getElementById('profileForm');
-        if (formularioProfile) {
-            formularioProfile.classList.remove('hidden');
-        }
-    } else if (seccion === 'Subir Documentos') {
-        const formularioDocumentos = document.getElementById('documentosForm');
-        if (formularioDocumentos) {
-            formularioDocumentos.classList.remove('hidden');
-        }
-    } else if (seccion === 'Documentos') {
-        const tablaDocumentos = document.getElementById('pdfViewer');
-        if (tablaDocumentos) {
-            const pdfContainer = document.getElementById('pdfViewer');
-            // Quitar la clase 'hidden' para mostrar la tabla
-            pdfContainer.classList.remove('hidden');
-            tablaDocumentosInfo();
-        }
-        
-    }
-}
-
 const dropzoneBox = document.getElementsByClassName('dropzone-box')[0];
 const inputFiles = document.querySelectorAll(".dropzone-area input[type='file']");
 
@@ -271,3 +240,35 @@ dropzoneBox.addEventListener("submit", (e) => {
     }
 });
 
+function cambiarContenido(seccion) {
+    // Ocultar todos los formularios
+    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf');
+    formularios.forEach(form => form.classList.add('hidden'));
+
+    // Mostrar el formulario específico
+    if (seccion === 'Home') {
+
+    } else if (seccion === 'Profile') {
+        const formularioProfile = document.getElementById('profileForm');
+        if (formularioProfile) {
+            formularioProfile.classList.remove('hidden');
+        }
+    } else if (seccion === 'Subir Documentos') {
+        const formularioDocumentos = document.getElementById('documentosForm');
+        if (formularioDocumentos) {
+            formularioDocumentos.classList.remove('hidden');
+        }
+    } else if (seccion === 'Documentos') {
+        const tablaDocumentos = document.getElementById('pdfViewer');
+        if (tablaDocumentos) {
+            const pdfContainer = document.getElementById('pdfViewer');
+            // Quitar la clase 'hidden' para mostrar la tabla
+            pdfContainer.classList.remove('hidden');
+            tablaDocumentosInfo();
+        } 
+    } else if (seccion === 'ExamenesR') {
+        console.log('examenes Revisadas');
+    } else if (seccion === 'conf') {
+        console.log('examenes Revisadas');
+    }
+}

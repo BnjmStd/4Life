@@ -13,8 +13,6 @@ routerUsuarios.get('/info', CookieDocumento, async (req, res) => {
     // Carga la instancia del usuario
     const usuario = await Usuario.findById(req.usuarioId);
     
-    console.log(usuario);
-
     usuarioFront = {
         'correo': usuario.correo,
         'nombre': usuario.nombre,
