@@ -104,7 +104,6 @@ routerDocumento.post('/', CookieDocumento, async (req, res) => {
     }
 });
 
-
 module.exports = {
     routerDocumento: routerDocumento,
 }

@@ -1,5 +1,4 @@
 const JsonWebTokenError  = require('jsonwebtoken');
-const bd =  require('../bd/bd.js');
 const dotenv = require('dotenv');
 
 /* Cargar Modelos */
@@ -113,6 +112,11 @@ async function CookieDocumento(req, res, next){
     return next();
 };
 
+async function soloAdmin(req, res, next){
+    console.log('llegue a admin');
+    console.log(req.usuarioId);
+    return next();
+}
 
 
 module.exports = {
@@ -120,4 +124,5 @@ module.exports = {
     soloPublic,
     revisarIdentidad,
     CookieDocumento, 
+    soloAdmin,
 }

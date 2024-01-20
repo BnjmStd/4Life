@@ -32,7 +32,7 @@ async function login( req, res ){
         }
 
         /* aqui trabajaré exponiendo la _id de la bd en la URL,
-        averigue que por buenas prácticas no se hace pero para enfocarme en la funconalidad final 
+        averigue que por buenas prácticas no se hace pero para enfocarme en la funcionalidad final 
         de la práctica lo omitiré  */
 
         const token = JsonWebTokenError.sign(
@@ -47,6 +47,11 @@ async function login( req, res ){
         };
 
         res.cookie('jwt', token, cookieOption);
+
+        if(usuarioRevisar.tipoUsuario === 1){
+            return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: `/admin/${usuarioRevisar._id.toString()}`});  //redireccionar a la ID PERSONAL
+        }
+
         return res.send({ status: 'ok', message: 'Inicio de sesión exitoso', redirect: `/user/${usuarioRevisar._id.toString()}` });  //redireccionar a la ID PERSONAL
 
     } catch (error) {

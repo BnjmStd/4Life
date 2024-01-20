@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.get('/login', methods.soloPublic, (req, res) => {
     res.sendFile(path.join(__dirname, '../front/loginPage.html'));
 });
-app.get('/admin',methods.soloLogeado, (req, res) => {
+app.get('/admin/:id',methods.soloLogeado, methods.soloAdmin, (req, res) => {
     res.sendFile(path.join(__dirname, '../front/admin.html'));
 });
 app.get('/user/:id',methods.soloLogeado, methods.revisarIdentidad, (req, res) => {
