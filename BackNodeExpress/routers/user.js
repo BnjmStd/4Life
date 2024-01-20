@@ -1,27 +1,27 @@
 const express = require('express');
 const routerUsuarios = express.Router();
+/* Middlewares & controllers */ 
+const { CookieDocumento } = require('../middlewares/authorization.js');
+
 // models
 const Usuario = require('../model/usuario.js');
 
 routerUsuarios.use(express.json());
 
-/* Ruta GET para obtener todos los usuarios */
-routerUsuarios.get('/', async (req, res) => {
-    try {
-        const usuarios = await Usuario.find();
-        res.json(usuarios);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener usuarios' });
-    }
-});
+routerUsuarios.get('/info', CookieDocumento, async (req, res) => {
 
-routerUsuarios.get('/:id', async (req, res) => {
-    try {
-        const usuarios = await Usuario.find();
-        res.json(usuarios);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener usuarios' });
-    }
+    // Carga la instancia del usuario
+    const usuario = await Usuario.findById(req.usuarioId);
+    
+    console.log(usuario);
+
+    usuarioFront = {
+        'correo': usuario.correo,
+        'nombre': usuario.nombre,
+    };
+
+    return res.status(200).send(usuarioFront);
+
 });
 
 routerUsuarios.put('/:id', (req, res) => {

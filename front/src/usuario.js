@@ -7,6 +7,9 @@ document.getElementById('bye').addEventListener('click', () => {
     document.location.href = '/';
 });
 
+
+obtenerInformacionUsuario()
+
 async function tablaDocumentosInfo() {
     try {
 
@@ -22,6 +25,37 @@ async function tablaDocumentosInfo() {
 
         const resJson = await res.json();
         agregarDocumentos(resJson);
+    } catch (error) {
+        console.error('Error en procesar la solicitud', error);
+        throw error;
+    }
+}
+
+async function obtenerInformacionUsuario() {
+    try {
+        const res = await fetch('http://localhost:3000/api/users/info', {
+            method: 'GET',
+            headers: {
+                'Authorization': `${document.cookie}`,
+            },
+        });
+
+        if (!res.ok) {
+            throw new Error('Error en la solicitud fetch');
+        }
+
+        const resJson = await res.json();
+
+        // Obtén el elemento <h1> por su id
+        const h1Bienvenido = document.getElementById('bienvenido');
+
+        // Actualiza el valor del elemento <h1> con la respuesta
+        if(!resJson.nombre){
+            h1Bienvenido.textContent = `Bienvenido, ${resJson.correo}`;
+        } else {
+            h1Bienvenido.textContent = `Bienvenido, ${resJson.nombre}`;
+        }
+        
     } catch (error) {
         console.error('Error en procesar la solicitud', error);
         throw error;
@@ -194,6 +228,7 @@ inputElement.addEventListener("change", (e) => {
     }
 });
 
+
 const updateDropzoneFileList = (dropzoneElement, file) => {
     let dropzoneFileMessage = dropzoneElement.querySelector(".message");
     dropzoneFileMessage.innerHTML = `${file.name}, ${file.size} bytes`;
@@ -235,3 +270,4 @@ dropzoneBox.addEventListener("submit", (e) => {
         alert('No se ha seleccionado ningún archivo.');
     }
 });
+
