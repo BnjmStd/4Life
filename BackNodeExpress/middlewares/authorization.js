@@ -113,11 +113,22 @@ async function CookieDocumento(req, res, next){
 };
 
 async function soloAdmin(req, res, next){
-    console.log('llegue a admin');
-    console.log(req.usuarioId);
-    return next();
-}
 
+    const id = req.usuarioId;
+
+    const usuarioRevisar = await Usuario.findOne({ _id: id });
+
+    if(!usuarioRevisar)
+        return res.status(500).send({ status: 'error', message: 'Error interno Cookie2 del servidor' });
+    else{
+        if(usuarioRevisar.tipoUsuario === 1 ){
+            /* Es admin */
+            return next();
+        } else {
+            return res.status(500).send({ status: 'error', message: 'Sin permiso' });
+        }
+    }
+}
 
 module.exports = {
     soloLogeado,
