@@ -1,5 +1,6 @@
 const express = require('express');
 const routerUsuarios = express.Router();
+
 /* Middlewares & controllers */ 
 const { CookieDocumento } = require('../middlewares/authorization.js');
 
@@ -20,6 +21,12 @@ routerUsuarios.get('/info', CookieDocumento, async (req, res) => {
 
     return res.status(200).send(usuarioFront);
 
+});
+
+routerUsuarios.get('/info/user/admin', CookieDocumento, async (req, res) => {
+    const usuarios = await Usuario.find();
+
+    console.log(usuarios);
 });
 
 routerUsuarios.put('/:id', (req, res) => {

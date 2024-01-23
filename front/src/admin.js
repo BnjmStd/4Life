@@ -40,7 +40,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
 
 // Cargar datos desde la API
 try {
-    fetch("http://localhost:3000/api/users", {
+    fetch("http://localhost:3000/api/users/info/user/admin", {
         method: "GET",
     })
     .then(response => {
