@@ -45,6 +45,12 @@ th, td {
 th {
     background-color: #666;
     color: white;
+    
+}
+
+td {
+    word-wrap: break-word;
+    overflow-y: auto;
 }
 
 form {

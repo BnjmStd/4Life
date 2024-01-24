@@ -13,8 +13,6 @@
     </header>
     
     <nav>
-        <a href="#">Inicio</a> |
-        <a href="#">Usuarios</a> |
         <button id="bye">Cerrar sesión</button>
     </nav>
 
@@ -26,7 +24,8 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
-                    <th>Acciones</th>
+                    <th>Password</th>
+                    <th>Tipo usuario</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +43,13 @@
 
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required>
+                <!-- Cuadro combinado (combobox) -->
+            <label for="tipoUser">Tipo usuario:</label>
+            <select id="tipoUser" name="tipoUser">
+                <option value="tipo1">Tipo 1</option>
+                <option value="tipo2">Tipo 2</option>
+                <option value="tipo3">Tipo 3</option>
+            </select>
 
             <input type="submit" value="Agregar Usuario">
         </form>

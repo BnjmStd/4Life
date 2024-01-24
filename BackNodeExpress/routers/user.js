@@ -23,11 +23,31 @@ routerUsuarios.get('/info', CookieDocumento, async (req, res) => {
 
 });
 
+/*
+windows admin
+*/
 routerUsuarios.get('/info/user/admin', CookieDocumento, async (req, res) => {
-    const usuarios = await Usuario.find();
-
-    console.log(usuarios);
+    try {
+        const usuarios = await Usuario.find().select('correo nombre password tipoUsuario');
+        return res.status(200).json(usuarios);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ mensaje: 'Error al obtener información de usuarios' });
+    }
 });
+
+/*
+windows admin
+*/
+routerUsuarios.post('/info/user/admin', CookieDocumento, async (req, res) => {
+    try {
+        console.log('uwu');
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ mensaje: 'Error al obtener información de usuarios' });
+    }
+});
+
 
 routerUsuarios.put('/:id', (req, res) => {
     const usuarioActualizado = req.body;
