@@ -1,4 +1,4 @@
-
+/* Cerrar sesión, elimina la cookie */
 document.getElementById('bye').addEventListener('click', () => {
     const cookieName = 'jwt';
 
@@ -7,9 +7,7 @@ document.getElementById('bye').addEventListener('click', () => {
     document.location.href = '/';
 });
 
-
 obtenerInformacionUsuario()
-
 
 document.getElementById('profileForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -43,6 +41,15 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
 
         if(res.ok){
             obtenerInformacionUsuario();
+            const urlActual = window.location.href;
+            
+            if (urlActual.indexOf('#Profile') === -1) {
+                const nuevaURL = `${urlActual}#Profile`;
+                location.href = nuevaURL;
+            } else {
+                console.log('El fragmento #Profile ya existe en la URL.');
+            }
+        }{
         }
     } catch (error) {
         console.error(error);
@@ -303,25 +310,68 @@ dropzoneBox.addEventListener("submit", (e) => {
     }
 });
 
+document.getElementById('cambiarContrasenaForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const actualPassword = document.getElementById('actualPassword').value;
+    const nuevaPassword = document.getElementById('nuevaPassword').value;
+    const confirmarPassword = document.getElementById('confirmarPassword').value;
+
+    if (nuevaPassword !== confirmarPassword) {
+        alert('La nueva contraseña y la confirmación no coinciden');
+        return;
+    }
+
+    try {
+        console.log('entre try');
+        const response = await fetch('http://localhost:3000/api/users/pwd', {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `${document.cookie}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                actualPassword: actualPassword,
+                nuevaPassword: nuevaPassword,
+            }),
+        });
+
+        if (response.ok) {
+            alert('Contraseña cambiada exitosamente');
+        } else {
+            alert('Error al cambiar la contraseña. Por favor, verifica tus credenciales y vuelve a intentarlo.');
+        }
+    } catch (error) {
+        console.error('Error de red:', error);
+        alert('Hubo un problema al intentar cambiar la contraseña. Por favor, inténtalo nuevamente.');
+    }
+});
+
 function cambiarContenido(seccion) {
     // Ocultar todos los formularios
-    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf');
+    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf, .cambiarContrasenaForm');
+    console.log(formularios);
     formularios.forEach(form => form.classList.add('hidden'));
 
-    // Mostrar el formulario específico
-    if (seccion === 'Home') {
+    /* Modificar */
+    let formularioPwd = document.getElementById('cambiarContrasenaForm');
+    formularioPwd.classList.add('hidden');
 
-    } else if (seccion === 'Profile') {
+    const urlFicticia = `window.location.hash#${seccion}`;
+    // Mostrar el formulario específico
+    if (seccion === 'Home' || urlFicticia === '#Home') {
+
+    } else if (seccion === 'Profile' || urlFicticia === '#Profile') {
         const formularioProfile = document.getElementById('profileForm');
         if (formularioProfile) {
             formularioProfile.classList.remove('hidden');
         }
-    } else if (seccion === 'Subir Documentos') {
+    } else if (seccion === 'Subir Documentos'  || urlFicticia === '#SubirDocumento') {
         const formularioDocumentos = document.getElementById('documentosForm');
         if (formularioDocumentos) {
             formularioDocumentos.classList.remove('hidden');
         }
-    } else if (seccion === 'Documentos') {
+    } else if (seccion === 'Documentos' || urlFicticia === '#Documentos') {
         const tablaDocumentos = document.getElementById('pdfViewer');
         if (tablaDocumentos) {
             const pdfContainer = document.getElementById('pdfViewer');
@@ -329,9 +379,12 @@ function cambiarContenido(seccion) {
             pdfContainer.classList.remove('hidden');
             tablaDocumentosInfo();
         } 
-    } else if (seccion === 'ExamenesR') {
+    } else if (seccion === 'ExamenesR' || urlFicticia === '#ExamenesR') {
         console.log('examenes Revisadas');
-    } else if (seccion === 'conf') {
-        console.log('examenes Revisadas');
+    } else if (seccion === 'conf' || urlFicticia === '#conf') {
+        let formularioPwd = document.getElementById('cambiarContrasenaForm');
+        if (formularioPwd){
+            formularioPwd.classList.remove('hidden');
+        }
     }
 }

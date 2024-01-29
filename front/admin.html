@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="/style/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <header>
@@ -18,20 +19,24 @@
 
     <section>
         <h2>Listado de Usuarios</h2>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Buscar por nombre..." oninput="buscarUsuarios()">
+        </div>
         <table id="userTable">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
-                    <th>Password</th>
-                    <th>Tipo usuario</th>
+                    <th>Tipo Usuario</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- Datos de usuarios se agregarán aquí dinámicamente -->
             </tbody>
         </table>
+        <div id="paginador" class="page-item"></div>
 
         <h2>Agregar Nuevo Usuario</h2>
         <form id="userForm">

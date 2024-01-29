@@ -95,7 +95,6 @@ routerDocumento.post('/', CookieDocumento, async (req, res) => {
             usuario: req.usuarioId,
             fechaCreacion: Date.now(),
         });
-        
         // Guardar el nuevo documento y obtener una promesa
         const documentoGuardadoPromise = nuevoDocumento.save();
         // Obtener el usuario y su lista de documentos
@@ -105,12 +104,8 @@ routerDocumento.post('/', CookieDocumento, async (req, res) => {
             return res.status(500).send('Error interno del servidor');
         }
         
-        console.log('Documentos del usuario antes:', usuario.documentos);
-
         const documentoGuardado = await documentoGuardadoPromise;
         usuario.documentos.push(documentoGuardado._id);
-
-        console.log('Documentos del usuario después:', usuario.documentos);
 
         await usuario.save();
 

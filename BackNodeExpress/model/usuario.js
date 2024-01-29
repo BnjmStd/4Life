@@ -7,7 +7,6 @@ tipoUsuario = {
     'normal': 2,
     'previlegio': 3,
 }
-
 */
 
 const usuarioSchema = new mongoose.Schema({

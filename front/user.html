@@ -34,22 +34,22 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#" class="active" onclick="cambiarContenido('Home')"> <i class="ri-home-heart-line"></i> Inicio</a>
+                    <a  class="active" onclick="cambiarContenido('Home')"> <i class="ri-home-heart-line"></i> Inicio</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('Profile')"> <i class="ri-bubble-chart-line"></i> Datos</a>
+                    <a   onclick="cambiarContenido('Profile')" > <i class="ri-bubble-chart-line"></i> Datos</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('Subir Documentos')"> <i class="ri-file-upload-line"></i> Subir Exámenes</a>
+                    <a  onclick="cambiarContenido('Subir Documentos')"> <i class="ri-file-upload-line"></i> Subir Exámenes</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('Documentos')"> <i class="ri-file-word-2-line"></i> Tus Exámenes</a>
+                    <a  onclick="cambiarContenido('Documentos')" > <i class="ri-file-word-2-line"></i> Tus Exámenes</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('ExamenesR')"> <i class="ri-file-lock-line"></i> Exámenes revisados</a>
+                    <a   onclick="cambiarContenido('ExamenesR')"> <i class="ri-file-lock-line"></i> Exámenes revisados</a>
                 </li>
                 <li>
-                    <a href="#" onclick="cambiarContenido('conf')"> <i class="ri-tools-line"></i> Configuración</a>
+                    <a  onclick="cambiarContenido('conf')"> <i class="ri-tools-line"></i> Configuración</a>
                 </li>
                 
             </ul>
@@ -78,8 +78,7 @@
             
                 <label for="alergias">Alergias:</label>
                 <textarea id="alergias" name="alergias"></textarea>
-            
-            
+                
                 <button class="nav-btn" type="submit">Guardar Usuario</button>
             </form>
 
@@ -117,6 +116,20 @@
                     </tbody>
                 </table>
             </div> 
+
+            <form id="cambiarContrasenaForm" class="pwd hidden">
+                <h1>Cambiar Contraseña</h1>
+                <label for="actualPassword">Contraseña Actual:</label>
+                <input type="password" id="actualPassword" name="actualPassword" required>
+        
+                <label for="nuevaPassword">Nueva Contraseña:</label>
+                <input type="password" id="nuevaPassword" name="nuevaPassword" required>
+        
+                <label for="confirmarPassword">Confirmar Nueva Contraseña:</label>
+                <input type="password" id="confirmarPassword" name="confirmarPassword" required>
+        
+                <button class="nav-btn" type="submit">Cambiar Contraseña</button>
+            </form>
 
         </div> <!-- Fin secundario-->
     </div> <!-- Fin div primario-->
