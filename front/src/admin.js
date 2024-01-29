@@ -7,38 +7,64 @@ document.getElementById('bye').addEventListener('click', () => {
 });
 
 
+// Set para almacenar los IDs de los usuarios ya cargados en la tabla
+const usuariosCargados = new Set();
+
 // Función para agregar un nuevo usuario a la tabla
 function agregarUsuario(id, nombre, email, password, tipoUsuario) {
     var table = document.getElementById("userTable").getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.rows.length);
 
-    var cell1 = newRow.insertCell(0);
-    var cell2 = newRow.insertCell(1);
-    var cell3 = newRow.insertCell(2);
-    var cell4 = newRow.insertCell(3);
-    var cell5 = newRow.insertCell(4);
+    // Verificar si el usuario ya está cargado en la tabla
+    if (!usuariosCargados.has(id)) {
+        var newRow = table.insertRow(table.rows.length);
 
-    cell1.innerHTML = id;
-    cell2.innerHTML = nombre;
-    cell3.innerHTML = email;
-    cell4.innerHTML = password;
-    cell5.innerHTML = tipoUsuario;
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+
+        cell1.innerHTML = id;
+        cell2.innerHTML = nombre;
+        cell3.innerHTML = email;
+        cell4.innerHTML = password;
+        cell5.innerHTML = tipoUsuario;
+
+        // Agregar el ID del usuario al conjunto
+        usuariosCargados.add(id);
+    }
+}
+
+
+async function FetchRegister(mail, password, type){
+
+    const response = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({mail, password, type}),
+    });
+    if (response.ok){
+
+        resJson = await response.json();
+        return init();
+    } else {
+        const error = await response.json();
+        return 
+    } 
 }
 
 // Event listener para el formulario de usuario
 document.getElementById("userForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Evitar que el formulario se envíe normalmente
+    event.preventDefault();
 
-    // Obtener valores del formulario
-    var nombre = document.getElementById("nombre").value;
-    var email = document.getElementById("email").value;
+    var mail = document.getElementById("email").value;
+    var type = document.getElementById("tipoUser").value;
+    var password = document.getElementById("password").value;
 
-    // Simular obtención del ID (puedes obtenerlo de tu backend)
-    var id = Math.floor(Math.random() * 1000) + 1;
-
-    // Agregar nuevo usuario a la tabla
-    agregarUsuario(id, nombre, email);
-    init()
+    FetchRegister(mail, password, type);
+    //init()
 });
 
 

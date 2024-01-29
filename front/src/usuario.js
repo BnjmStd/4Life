@@ -10,6 +10,46 @@ document.getElementById('bye').addEventListener('click', () => {
 
 obtenerInformacionUsuario()
 
+
+document.getElementById('profileForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Obtener los valores de los campos del formulario
+    let nombre = e.target.elements['nombre'].value;
+    let peso = e.target.elements['peso'].value;
+    let edad = e.target.elements['edad'].value;
+    let altura = e.target.elements['altura'].value;
+    let enfermedadesExistentes = e.target.elements['enfermedades_existentes'].value;
+    let alergias = e.target.elements['alergias'].value;
+
+
+
+    try {
+        const res = await fetch('http://localhost:3000/api/users/info', {
+            method: 'PATCH',
+            headers: {
+                'Authorization': `${document.cookie}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                'nombre': nombre,
+                'peso': peso,
+                'edad': edad,
+                'altura': altura,
+                'enfermedades_existentes': enfermedadesExistentes, 
+                'alergias': alergias,
+                }),
+        }); 
+
+        if(res.ok){
+            obtenerInformacionUsuario();
+        }
+    } catch (error) {
+        console.error(error);
+        return
+    }
+});
+
 async function tablaDocumentosInfo() {
     try {
 
@@ -31,6 +71,29 @@ async function tablaDocumentosInfo() {
     }
 }
 
+function rellenarTablaInfo(resJson){
+    // Obtener el elemento del formulario por su ID
+    const profileForm = document.getElementById('profileForm');
+
+    // Modificar el valor del campo "nombre"
+    profileForm.elements['nombre'].value = resJson.nombre ?? '';
+
+    // Modificar el valor del campo "peso"
+    profileForm.elements['peso'].value = resJson.peso ?? 0; 
+
+    // Modificar el valor del campo "edad"
+    profileForm.elements['edad'].value = resJson.edad ?? 0; 
+
+    // Modificar el valor del campo "altura"
+    profileForm.elements['altura'].value = resJson.altura ?? 0; 
+
+    // Modificar el valor del campo "enfermedades_existentes"
+    profileForm.elements['enfermedades_existentes'].value = resJson.enfermedades_existentes ?? '';
+
+    // Modificar el valor del campo "alergias"
+    profileForm.elements['alergias'].value = resJson.alergias ?? '';
+}
+
 async function obtenerInformacionUsuario() {
     try {
         const res = await fetch('http://localhost:3000/api/users/info', {
@@ -45,8 +108,8 @@ async function obtenerInformacionUsuario() {
         }
 
         const resJson = await res.json();
-
-        // Obtén el elemento <h1> por su id
+        rellenarTablaInfo(resJson);
+        // el elemento <h1> por su id
         const h1Bienvenido = document.getElementById('bienvenido');
 
         // Actualiza el valor del elemento <h1> con la respuesta
