@@ -64,8 +64,8 @@ async function register( req, res ){
     try {
         const correo = req.body.mail;
         const pwd = req.body.password;
-        const pwd2 = req.body.password2;
-
+        const pwd2 = req.body.password2 ?? pwd;
+        const type = req.body.type ?? 2;
         /* Validación datos vacíos */
         if (!correo || !pwd || !pwd2) {
             return res.status(400).send({ status: 'error', message: 'Los campos vacíos no funcionan' });
@@ -93,7 +93,7 @@ async function register( req, res ){
             const nuevoUsuario = new Usuario({
                 correo: correo,
                 password: hashPwd,
-                tipoUsuario: 2, 
+                tipoUsuario: type, 
             });
 
             // Guardar el nuevo usuario en la base de datos

@@ -10,17 +10,23 @@ const Usuario = require('../model/usuario.js');
 routerUsuarios.use(express.json());
 
 routerUsuarios.get('/info', CookieDocumento, async (req, res) => {
-
-    // Carga la instancia del usuario
     const usuario = await Usuario.findById(req.usuarioId);
-    
     usuarioFront = {
         'correo': usuario.correo,
         'nombre': usuario.nombre,
+        'peso': usuario.peso,
+        'edad': usuario.edad,
+        'altura': usuario.altura,
+        'enfermedades_existentes': usuario.enfermedades_existentes,
+        'alergias': usuario.alergias,
+        'password': usuario.password,
     };
-
     return res.status(200).send(usuarioFront);
+});
 
+
+routerUsuarios.patch('/info', CookieDocumento, async (req, res) => {
+    console.log(req.body);
 });
 
 /*
