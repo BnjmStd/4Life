@@ -62,7 +62,8 @@ routerUsuarios.patch('/pwd', CookieDocumento, async(req, res) => {
         return res.status(200).send({ status: 'success'});
 
     }catch(error){
-
+        console.log(error);
+        return res.status(500).send({ status: 'error' , message: 'error inesperado'});
     }
 });
 
@@ -101,7 +102,6 @@ routerUsuarios.patch('/info', CookieDocumento, async (req, res) => {
         console.error(error);
         return res.status(500).send({ status: 'Failed'});
     }
-    return res.status(500).send({ status: 'Failed'});
 });
 
 /* windows admin */
@@ -111,15 +111,22 @@ routerUsuarios.get('/info/user/admin', CookieDocumento, async (req, res) => {
         return res.status(200).json(usuarios);
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ mensaje: 'Error al obtener información de usuarios' });
+        return res.status(500).json({ message: 'Error al obtener información de usuarios' });
     }
 });
 
 
-routerUsuarios.delete('/delete/:id', async (req, res) => {
-    const usuarioId = req.params.id;
+routerUsuarios.delete('/delete/:id', CookieDocumento, async (req, res) => {
+    const usuarioIdCookie = req.usuarioId; /* Cookie ID del users */
+
+    const usuarioId = req.params.id; /* Parámetro del usuario a eliminar */
+
+    if(usuarioIdCookie === usuarioId) {
+        return res.status(400).json({ message: 'No te puedes eliminar a ti mismo!' });
+    }
+    
     if(!usuarioId){
-        return res.status(500).json({ mensaje: 'Error al obtener información de usuarios' });
+        return res.status(500).json({ message: 'Error al obtener información de usuarios' });
     }
     try {
         // Eliminar el usuario

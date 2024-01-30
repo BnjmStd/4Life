@@ -3,6 +3,9 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 
+
+const morgan = require('morgan'); 
+
 /* Middlewares & controllers */ 
 const methods = require('./middlewares/authorization.js');
 const controllers = require('./controllers/authentication.controller.js');
@@ -16,6 +19,9 @@ app.use(fileUpload()); // files en request
 app.use(cors()); // Cors a todos *
 app.use(cookieParser()); // config cookis reads
 app.use(express.static(path.join(__dirname, '../front'))); // Servir archivos estáticos desde la carpeta 'front'
+
+// Configurar morgan para imprimir logs en la consola
+app.use(morgan('dev'));
 
 /* Routers */
 const routerUsuarios = require('./routers/user.js');
