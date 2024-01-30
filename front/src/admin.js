@@ -1,5 +1,3 @@
-
-
 document.getElementById('bye').addEventListener('click', () => {
     const cookieName = 'jwt';
 
@@ -13,15 +11,23 @@ async function fetchAPI(url, options) {
         const response = await fetch(url, options);
 
         if (!response.ok) {
-            throw new Error(`Error en la respuesta: ${response.status} ${response.statusText}`);
+            const errorData = await response.json(); // Obtener el cuerpo del mensaje de error
+            alert(`Error en la respuesta: ${errorData.message}`);
+            return response;
+        } else {
+            const res = await response.json();
+            if(res.message){
+                alert(res.message);
+                return res
+            } else {
+                return res
+            }
         }
-
-        return await response.json();
     } catch (error) {
         console.error('Error en la solicitud:', error);
         throw error; 
     }
-}
+};
 
 async function FetchRegister(mail, password, type) {
     const url = "http://localhost:3000/api/register";
@@ -39,7 +45,7 @@ async function FetchRegister(mail, password, type) {
     } catch (error) {
         console.error('Error en el registro:', error.message);
     }
-}
+};
 
 document.getElementById("userForm").addEventListener("submit", async function (event) {
     event.preventDefault();
@@ -61,20 +67,18 @@ const usuariosPorPagina = 5;
 let paginaActual = 1;
 
 async function eliminarUsuario(id) {
-
     const url = `http://localhost:3000/api/users/delete/${id}`;
     const options = {
         method: "DELETE",
         headers: {
+            'Authorization': `${document.cookie}`,
             "Content-Type": "application/json",
         },
     };
 
-    // const res = await fetchAPI(url, options);
-    console.log(id);
-
+    await fetchAPI(url, options);
+    cargarUsuarios();
 }
-
 
 function agregarUsuario(id, nombre, email, tipoUsuario) {
     var table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
@@ -141,8 +145,7 @@ function agregarUsuario(id, nombre, email, tipoUsuario) {
 
     // Agregar el ID del usuario a la lista de usuarios cargados
     usuariosCargados.add(id);
-}
-
+};
 
 function mostrarPagina(pagina) {
     const inicio = (pagina - 1) * usuariosPorPagina;
@@ -152,7 +155,7 @@ function mostrarPagina(pagina) {
         const user = usuarios[i];
         agregarUsuario(user._id, user.nombre, user.correo, user.tipoUsuario);
     }
-}
+};
 
 function mostrarPaginador() {
     const totalPaginas = Math.ceil(usuarios.length / usuariosPorPagina);
@@ -171,7 +174,7 @@ function mostrarPaginador() {
 
         paginador.appendChild(enlace);
     }
-}
+};
 
 function cambiarPagina(nuevaPagina) {
     if (nuevaPagina >= 1 && nuevaPagina <= Math.ceil(usuarios.length / usuariosPorPagina)) {
@@ -180,13 +183,14 @@ function cambiarPagina(nuevaPagina) {
         mostrarPagina(paginaActual);
         marcarPaginaActual();
     }
-}
+};
 
 function limpiarTabla() {
     const table = document.getElementById("userTable").getElementsByTagName('tbody')[0];
     table.innerHTML = '';
     usuariosCargados.clear();
-}
+};
+
 function marcarPaginaActual() {
     const enlaces = document.querySelectorAll('.page-link');
 
@@ -196,20 +200,30 @@ function marcarPaginaActual() {
             enlace.classList.add('active');
         }
     });
-}
+};
+
 function buscarUsuarios() {
     const input = document.getElementById('search-input');
-    const searchTerm = input.value.toLowerCase();
+    const searchTerm = input.value.toLowerCase().trim();
 
-    // Filtrar usuarios que coincidan con el término de búsqueda
     const resultados = usuarios.filter(user => {
-        // Asegurarse de que user.nombre sea una cadena antes de llamar a toLowerCase()
-        const nombre = user.nombre && typeof user.nombre === 'string' ? user.nombre.toLowerCase() : '';
+        const id = user._id && typeof user._id === 'string' ? user._id.toLowerCase().trim() : '';
+        const nombre = user.nombre && typeof user.nombre === 'string' ? user.nombre.toLowerCase().trim() : '';
+        const correo = user.correo && typeof user.correo === 'string' ? user.correo.toLowerCase().trim() : '';
 
-        return nombre.includes(searchTerm);
+        // Tratar "1" como valor numérico para tipoUsuario
+        const tipoUsuario = user.tipoUsuario !== undefined ? user.tipoUsuario : '';
+
+        // Manejar búsqueda específica para "1", "2" y "3"
+        if (/^\d$/.test(searchTerm) && (searchTerm === "1" || searchTerm === "2" || searchTerm === "3")) {
+            // Comparar directamente con el número solo en el campo tipoUsuario
+            return tipoUsuario === parseInt(searchTerm);
+        }
+
+        // Búsqueda normal en id, nombre y correo
+        return id.includes(searchTerm) || nombre.includes(searchTerm) || correo.includes(searchTerm);
     });
 
-    // Limpiar la tabla y mostrar los resultados de la búsqueda
     limpiarTabla();
     resultados.map(user =>
         agregarUsuario(user._id, user.nombre, user.correo, user.tipoUsuario)
@@ -239,6 +253,6 @@ async function cargarUsuarios() {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 cargarUsuarios();
