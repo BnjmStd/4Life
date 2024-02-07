@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-/* modificar */
+/* modificar fechadecreacion = fechadesubida
+
+
+
+
+
+ */
 
 const documentoSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
@@ -9,6 +15,7 @@ const documentoSchema = new mongoose.Schema({
   fechaCreacion: { type: Date, default: Date.now },
   contenidoDoc: { type: String },
   usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario' }
+
 });
 
 const Documento = mongoose.model('Documento', documentoSchema);
