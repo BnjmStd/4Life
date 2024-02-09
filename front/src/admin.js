@@ -11,7 +11,7 @@ async function fetchAPI(url, options) {
         const response = await fetch(url, options);
 
         if (!response.ok) {
-            const errorData = await response.json(); // Obtener el cuerpo del mensaje de error
+            const errorData = await response.json(); 
             alert(`Error en la respuesta: ${errorData.message}`);
             return response;
         } else {
@@ -54,7 +54,6 @@ document.getElementById("userForm").addEventListener("submit", async function (e
     var password = document.getElementById("password").value;
     await FetchRegister(mail, password, type);
 
-    // Vaciar los campos del formulario después de enviarlo
     document.getElementById("email").value = "";
     document.getElementById("tipoUser").value = "";
     document.getElementById("password").value = "";
@@ -83,67 +82,45 @@ async function eliminarUsuario(id) {
 function agregarUsuario(id, nombre, email, tipoUsuario) {
     var table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
 
-    // Si el usuario ya está cargado, no hacer nada
     if (usuariosCargados.has(id)) {
         return;
     }
 
-    // Insertar una nueva fila en la tabla
-    var newRow = table.insertRow(table.rows.length - 1); // Restar 1 para tener en cuenta los encabezados
+    
+    var newRow = table.insertRow(table.rows.length - 1); 
 
-    // Insertar las celdas en la fila
+    
     var cell1 = newRow.insertCell(0);
     var cell2 = newRow.insertCell(1);
     var cell3 = newRow.insertCell(2);
     var cell4 = newRow.insertCell(3);
     var cell5 = newRow.insertCell(4);
 
-    // Agregar los datos a las celdas
     cell1.innerHTML = id;
     cell2.innerHTML = nombre;
     cell3.innerHTML = email;
     cell4.innerHTML = tipoUsuario;
 
-    // Crear un botón de eliminar
     var deleteButton = document.createElement("button");
     deleteButton.innerHTML = "Eliminar";
 
-    // Agregar el evento de clic al botón
     deleteButton.addEventListener("click", function () {
-        // Obtener el ID del usuario
         var userId = newRow.cells[0].innerHTML;
-
-        // Mostrar el cuadro de diálogo de confirmación antes de eliminar
         var confirmacion = window.confirm("¿Estás seguro de que quieres eliminar este usuario?");
-
         if (confirmacion) {
-            // Eliminar el evento de clic del botón
             deleteButton.removeEventListener("click", arguments.callee);
-
-            // Eliminar el usuario
             eliminarUsuario(userId);
-
             // Obtener el índice de la fila
             var rowIndex = newRow.rowIndex - 1; // Restar 1 para tener en cuenta los encabezados
-
-            // Validar el índice de la fila
             if (rowIndex < 0 || rowIndex >= table.rows.length) {
                 console.error("Índice de fila no válido: " + rowIndex);
                 return;
             }
-
-            // Eliminar la fila de la tabla
             table.deleteRow(rowIndex);
-
-            // Eliminar el ID del usuario de la lista de usuarios cargados
             usuariosCargados.delete(userId);
         }
     });
-
-    // Agregar el botón a la última celda
     cell5.appendChild(deleteButton);
-
-    // Agregar el ID del usuario a la lista de usuarios cargados
     usuariosCargados.add(id);
 };
 
@@ -171,7 +148,6 @@ function mostrarPaginador() {
         enlace.addEventListener('click', function() {
             cambiarPagina(i);
         });
-
         paginador.appendChild(enlace);
     }
 };
@@ -214,13 +190,10 @@ function buscarUsuarios() {
         // Tratar "1" como valor numérico para tipoUsuario
         const tipoUsuario = user.tipoUsuario !== undefined ? user.tipoUsuario : '';
 
-        // Manejar búsqueda específica para "1", "2" y "3"
+        //  específica para "1", "2" y "3"
         if (/^\d$/.test(searchTerm) && (searchTerm === "1" || searchTerm === "2" || searchTerm === "3")) {
-            // Comparar directamente con el número solo en el campo tipoUsuario
             return tipoUsuario === parseInt(searchTerm);
         }
-
-        // Búsqueda normal en id, nombre y correo
         return id.includes(searchTerm) || nombre.includes(searchTerm) || correo.includes(searchTerm);
     });
 
@@ -242,8 +215,7 @@ async function cargarUsuarios() {
     try {
         const respuesta = await fetchAPI(url, options);
         if (Array.isArray(respuesta)) {
-            // Cambia el nombre de la variable global
-            usuarios.length = 0; // Limpiar el array original
+            usuarios.length = 0; 
             usuarios.push(...respuesta);
             mostrarPagina(paginaActual);
             mostrarPaginador();

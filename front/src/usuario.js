@@ -20,8 +20,6 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
     let enfermedadesExistentes = e.target.elements['enfermedades_existentes'].value;
     let alergias = e.target.elements['alergias'].value;
 
-
-
     try {
         const res = await fetch('http://localhost:3000/api/users/info', {
             method: 'PATCH',
@@ -181,7 +179,6 @@ function agregarDocumentos(resJson) {
         pdfFecha.textContent = new Date(doc.fechaCreacion).toLocaleDateString();
         celdaFecha.appendChild(pdfFecha);
 
-        // Celda para los botones
         const celdaBoton = document.createElement('td');
         const botonAnalizar = document.createElement('button');
         const botonBorrar = document.createElement('button');
@@ -208,13 +205,10 @@ function agregarDocumentos(resJson) {
         botonBorrar.setAttribute('type', 'borrar');
         botonBorrar.setAttribute('data-documento-id', doc._id.toString()); 
         botonBorrar.addEventListener('click', (event) => {
-            // Obtener el documentoId del atributo de datos
-            const documentoId = event.target.getAttribute('data-documento-id');
 
-            // Confirmar si deseas eliminar el documento con este ID
-            if (confirm(`¿Estás seguro de que deseas eliminar el documento con ID ${documentoId}?`)) {
+            if (confirm(`¿Estás seguro de que deseas eliminar el documento con ID ${doc._id}?`)) {
                 // Llamar a la función para eliminar el documento
-                eliminarDocumento(documentoId);
+                eliminarDocumento(doc._id);
 
                 // Obtener la fila y eliminarla del DOM
                 const fila = event.target.closest('tr');
@@ -227,7 +221,6 @@ function agregarDocumentos(resJson) {
 
         celdaBoton.appendChild(botonAnalizar);
         celdaBoton.appendChild(botonBorrar);
-
         // Agregar las celdas a la fila
         fila.appendChild(celdaIcono);
         fila.appendChild(celdaNombre);
@@ -253,10 +246,8 @@ inputElement.addEventListener("change", (e) => {
     if (inputElement.files.length) {
         const file = inputElement.files[0];
         const fileName = file.name.toLowerCase();
-        // Verificar la extensión del archivo
         if (fileName.endsWith('.pdf')) {
-            // Es un document pdf
-            // Verificar el tamaño del archivo (ejemplo: máximo 10 MB)
+            // máximo 10 MB
             const maxSizeMB = 3;
             const maxSizeBytes = maxSizeMB * 1024 * 1024;
             if (file.size <= maxSizeBytes) {
@@ -294,10 +285,8 @@ dropzoneBox.addEventListener("submit", (e) => {
     const file = myFileInput.files[0];
     
     if (file) {
-        // Crear un objeto FormData para enviar el archivo
         const formData = new FormData();
         formData.append('uploadedFile', file);
-        // Realizar la solicitud fetch y manejarla como una promesa
         fetch('http://localhost:3000/api/documentos', {
             method: 'POST',
             body: formData,

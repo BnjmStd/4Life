@@ -18,7 +18,6 @@ async function login( req, res ){
             return res.status(400).send({ status: 'error', message: 'Ingrese datos' });
         }
 
-        // Verificación de si el correo ya existe
         const usuarioRevisar = await Usuario.findOne({ correo: mail });
 
         if (!usuarioRevisar) {
@@ -32,11 +31,11 @@ async function login( req, res ){
         }
 
         /* aqui trabajaré exponiendo la _id de la bd en la URL,
-        averigue que por buenas prácticas no se hace pero para enfocarme en la funcionalidad final 
-        de la práctica lo omitiré  */
+        averigue que por buenas prácticas no se hace pero para enfocarme en la 
+        funcionalidad final de la práctica lo omitiré  */
 
         const token = JsonWebTokenError.sign(
-            { id: usuarioRevisar._id.toString() }, // Convertir el ObjectId a una cadena
+            { id: usuarioRevisar._id.toString() }, 
             process.env.JWT_SECRET,
             { expiresIn: process.env.JWT_TIME },
         );
@@ -78,12 +77,10 @@ async function register( req, res ){
         /* Verificación de si el correo ya existe */
         const usuarioEncontrado = await Usuario.findOne({ correo: correo });
 
-        if (usuarioEncontrado) { // El correo ya está en uso
+        if (usuarioEncontrado) { 
             return res.status(400).send({ status: 'error', message: 'Correo en uso' });
         
-        } else { // El correo no está en uso
-            /* Crear un nuevo usuario basado en los datos 
-                recibidos en el cuerpo de la solicitud */
+        } else { 
 
             /* inscriptar la contraseña
             agregaremos sal */
@@ -96,10 +93,8 @@ async function register( req, res ){
                 tipoUsuario: type, 
             });
 
-            // Guardar el nuevo usuario en la base de datos
             const usuarioGuardado = await nuevoUsuario.save();
 
-            // Responder con el usuario recién creado
             return res.status(201).send({ status: 'ok', message: `Usuario registrado exitosamente:` , redirect: '/login'});
         }
     } catch (error) {

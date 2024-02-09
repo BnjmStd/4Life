@@ -46,7 +46,7 @@ section {
     "grid-3 grid-4 ";
 }
 
-/* Detiene la animación cuando se pasa el mouse sobre los elementos de la cuadrícula */
+
 section:hover {
   animation-play-state: paused;
 }
@@ -63,8 +63,8 @@ section:hover {
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  overflow: hidden; /* Oculta el desbordamiento para evitar scroll innecesario */
-  transition: transform 0.3s ease; /* Agrega una transición suave al efecto de carta */
+  overflow: hidden; 
+  transition: transform 0.3s ease; 
 }
 
 .grid-1:hover,
@@ -72,7 +72,7 @@ section:hover {
 .grid-3:hover,
 .grid-4:hover {
   border: 3px solid rgb(230, 89, 180);
-  transform: scale(1.1); /* Amplía el elemento al pasar el mouse por encima */
+  transform: scale(1.1); 
 }
 
 .grid-1 {
@@ -135,7 +135,6 @@ img {
 }
 
 @media (max-width: 400px) {
-  /* Estilos específicos para pantallas pequeñas */
   body {
     align-items: center;
   }
@@ -149,7 +148,7 @@ img {
   }
 
   .nav-btn {
-    margin-top: 10px; /* Añade margen superior al botón */
+    margin-top: 10px; 
   }
   .footer{
     grid-template-columns: 1fr;
@@ -157,7 +156,6 @@ img {
 }
 
 @media (max-width: 850px) {
-  /* Estilos específicos para pantallas menores a 850px */
   .grid-content {
     margin: auto;
     grid-template-areas: 

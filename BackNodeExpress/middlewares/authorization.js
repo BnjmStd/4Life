@@ -13,13 +13,13 @@ async function soloPublic(req, res, next) {
         const logeado = await revisarCookie(req);
 
         if (!logeado) {
-            return next();  // Continuar con el siguiente middleware o ruta
+            return next(); 
         }
         const cookies = req.headers.cookie;
         const cookieJWT = cookies.split('; ').find(cookie => cookie.startsWith('jwt'));
         const token = cookieJWT.slice(4);
         const cookieDecof = JsonWebTokenError.verify(token, process.env.JWT_SECRET);
-        return res.redirect(`/user/${cookieDecof.id.toString()}`);  // Redireccionar a la página de usuarios
+        return res.redirect(`/user/${cookieDecof.id.toString()}`); 
     } catch (error) {
         console.error('Error al verificar la cookie:', error);
         return res.status(500).send({ status: 'error', message: 'Error interno del servidor' });
@@ -84,7 +84,6 @@ async function revisarIdentidad(req, res, next){
             return res.status(403).send({ status: 'error', message: 'Acceso no autorizado al recurso' });
         }
 
-        // Si el id coincide, permitir el acceso
         return next();
     } catch (error) {
         console.error('Error al revisar la identidad:', error);

@@ -7,8 +7,8 @@
 
 body {
     color: var(--color-blanco);
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: 100%; /* Ocupa toda la altura de la pantalla */
+    width: 100%; 
+    height: 100%; 
     background-color: var(--color-negro);
 }
 

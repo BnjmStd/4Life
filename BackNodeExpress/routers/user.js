@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs');
 /* Middlewares & controllers */ 
 const { CookieDocumento } = require('../middlewares/authorization.js');
 
-// models
+/* models */
 const Usuario = require('../model/usuario.js');
 const Documento = require('../model/documento.js');
 
@@ -37,7 +37,6 @@ function validarCamposUsuario(body) {
 }
 
 routerUsuarios.patch('/pwd', CookieDocumento, async(req, res) => {
-
     try{
         const {
             actualPassword,

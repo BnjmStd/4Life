@@ -18,14 +18,12 @@ routerDocumento.use(express.json());
 /* Ruta GET para obtener los documentos del usuario */
 routerDocumento.get('/', CookieDocumento, async (req, res) => {
     try {
-      // Obtener el usuario actual
         const usuario = await Usuario.findById(req.usuarioId).populate('documentos');
 
         if (!usuario) {
             return res.status(404).send({ status: 'error', message: 'Usuario no encontrado' });
         }
 
-        // Devolver la lista de documentos del usuario
         return res.status(200).send({ status: 'success', documentos: usuario.documentos });
 
     } catch (error) {
@@ -67,7 +65,7 @@ routerDocumento.delete('/:id', CookieDocumento, async (req, res) => {
             console.log('No se encontró el documento para eliminar.');
         }
 
-        return res.status(204).send(); // 204 significa "No Content" después de una eliminación exitosa
+        return res.status(204).send(); 
     } catch (error) {
         console.error('Error al intentar eliminar el documento:', error);
         return res.status(500).send('Error interno del servidor');

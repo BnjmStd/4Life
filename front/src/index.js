@@ -5,10 +5,8 @@ async function fetching() {
         });
     
         if (response.ok) {
-            // Si la respuesta es exitosa, simplemente redirige a la nueva página
             return window.location.href = "http://localhost:3000/login";
         } else {
-            // Si hay un error en la respuesta, muestra el mensaje de error
             const error = await response.json();
             return error();
         }
