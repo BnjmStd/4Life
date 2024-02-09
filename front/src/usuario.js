@@ -186,11 +186,21 @@ function agregarDocumentos(resJson) {
         const botonAnalizar = document.createElement('button');
         const botonBorrar = document.createElement('button');
 
-        botonAnalizar.textContent = 'Analizar';
+        botonAnalizar.textContent = 'Visualizar';
         botonAnalizar.classList.add('btn-new');
-        botonAnalizar.setAttribute('type', 'analizar');
+        botonAnalizar.setAttribute('type', 'view');
         botonAnalizar.addEventListener('click', () => {
-            console.log('Algo pasa aquí (Analizar):', doc.nombre);
+            fetch(`http://localhost:3000/api/documentos/view/${doc._id}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener el documento.');
+                }
+                const newWindow = window.open();
+                newWindow.document.write(`<iframe src="${response.url}" width="100%" height="600px"></iframe>`);
+            })
+            .catch(error => {
+                alert(error.message);
+            });
         });
 
         botonBorrar.textContent = 'Borrar';
@@ -298,6 +308,7 @@ dropzoneBox.addEventListener("submit", (e) => {
         .then(response => {
             if (response.ok) {
                 alert('Documento enviado con éxito.');
+                tablaDocumentosInfo();
             } else {
                 alert('Error al enviar el documento:', response.message);
             }
@@ -347,10 +358,33 @@ document.getElementById('cambiarContrasenaForm').addEventListener('submit', asyn
     }
 });
 
+
+/* modal */
+// Obtén elementos del DOM
+var modal = document.getElementById('myModal');
+var btn = document.getElementById('openModalBtn');
+var span = document.getElementsByClassName('close')[0];
+
+// Función para abrir el modal
+btn.onclick = function() {
+    modal.style.display = 'block';
+}
+
+// Función para cerrar 
+span.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Función para cerrar el modal click
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
 function cambiarContenido(seccion) {
     // Ocultar todos los formularios
-    const formularios = document.querySelectorAll('.encuestaForm, .dropzone-box, .pdf, .cambiarContrasenaForm');
-    console.log(formularios);
+    const formularios = document.querySelectorAll('.encuestaForm, .pdf, .cambiarContrasenaForm');
     formularios.forEach(form => form.classList.add('hidden'));
 
     /* Modificar */
@@ -366,11 +400,6 @@ function cambiarContenido(seccion) {
         if (formularioProfile) {
             formularioProfile.classList.remove('hidden');
         }
-    } else if (seccion === 'Subir Documentos'  || urlFicticia === '#SubirDocumento') {
-        const formularioDocumentos = document.getElementById('documentosForm');
-        if (formularioDocumentos) {
-            formularioDocumentos.classList.remove('hidden');
-        }
     } else if (seccion === 'Documentos' || urlFicticia === '#Documentos') {
         const tablaDocumentos = document.getElementById('pdfViewer');
         if (tablaDocumentos) {
@@ -379,8 +408,6 @@ function cambiarContenido(seccion) {
             pdfContainer.classList.remove('hidden');
             tablaDocumentosInfo();
         } 
-    } else if (seccion === 'ExamenesR' || urlFicticia === '#ExamenesR') {
-        console.log('examenes Revisadas');
     } else if (seccion === 'conf' || urlFicticia === '#conf') {
         let formularioPwd = document.getElementById('cambiarContrasenaForm');
         if (formularioPwd){

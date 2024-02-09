@@ -74,26 +74,31 @@
                 <button class="nav-btn" type="submit">Guardar Usuario</button>
             </form>
 
-
-            <form class="dropzone-box hidden " id="documentosForm" enctype="multipart/form-data">
-                <h2>Cargar y adjuntar tus exámenes</h2>
-                <p>Adjuntar archivos en este proyecto</p>
-                <div class="dropzone-area">
-                    <div class="file-upload-icon">
-                        <i class="ri-file-add-line fa-file"></i>
-                    </div>
-                    <p>Haga click para cargar archivos, arrastre o suelte</p>
-                    <input type="file" required id="upload-file" name="uploadedFile"> 
-                    <p class="message"> No hay archivos seleccionados </p>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form class="dropzone-box" id="documentosForm" enctype="multipart/form-data">
+                        <h2>Cargar y adjuntar tus exámenes</h2>
+                        <p>Adjuntar archivos en este proyecto</p>
+                        <div class="dropzone-area">
+                            <div class="file-upload-icon">
+                                <i class="ri-file-add-line fa-file"></i>
+                            </div>
+                            <p>Haga click para cargar archivos, arrastre o suelte</p>
+                            <input type="file" required id="upload-file" name="uploadedFile"> 
+                            <p class="message"> No hay archivos seleccionados </p>
+                        </div>
+                        <div class="dropzone-actions">
+                            <button class="nav-btn" type="reset">Cancelar</button>
+                            <button type="submit" id="submit-button" class="nav-btn">Subir</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="dropzone-actions">
-                    <button class="nav-btn" type="reset">Cancelar</button>
-                    <button type="submit" id="submit-button" class="nav-btn">Subir</button>
-                </div>
-            </form>
+            </div>
 
             <div id="pdfViewer" class="pdf hidden">
-                <h1>Sus Exámenes</h1>
+                
+                <h1>Sus Exámenes</h1> <button class="nav-btn" id="openModalBtn">Agregar +</button>
                 <table id="documentosTable">
                     <thead>
                         <tr>
@@ -104,7 +109,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- fetch GET -->
+                        
                     </tbody>
                 </table>
             </div> 

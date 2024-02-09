@@ -100,7 +100,7 @@ async function register( req, res ){
             const usuarioGuardado = await nuevoUsuario.save();
 
             // Responder con el usuario recién creado
-            return res.status(201).send({ status: 'ok', message: `Usuario registrado exitosamente: ${usuarioGuardado}` , redirect: '/login'});
+            return res.status(201).send({ status: 'ok', message: `Usuario registrado exitosamente:` , redirect: '/login'});
         }
     } catch (error) {
         console.log(error);

@@ -115,7 +115,6 @@ routerUsuarios.get('/info/user/admin', CookieDocumento, async (req, res) => {
     }
 });
 
-
 routerUsuarios.delete('/delete/:id', CookieDocumento, async (req, res) => {
     const usuarioIdCookie = req.usuarioId; /* Cookie ID del users */
 

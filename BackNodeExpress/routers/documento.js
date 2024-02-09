@@ -116,6 +116,28 @@ routerDocumento.post('/', CookieDocumento, async (req, res) => {
     }
 });
 
+/* View pdf */
+routerDocumento.get('/view/:id', async (req, res) => {
+    const documentoId = req.params.id;
+
+    try {
+        const documento = await Documento.findById(documentoId);
+
+        if (!documento) {
+            return res.status(404).send('Documento no encontrado');
+        }
+
+        const contenidoBase64 = documento.contenidoDoc;
+        const contenidoBuffer = Buffer.from(contenidoBase64, 'base64');
+
+        res.setHeader('Content-Type', documento.formato); 
+        res.send(contenidoBuffer);
+    } catch (error) {
+        console.error('Error al obtener el documento:', error);
+        res.status(500).send('Error interno del servidor');
+    }
+});
+
 module.exports = {
     routerDocumento: routerDocumento,
 }

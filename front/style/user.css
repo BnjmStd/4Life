@@ -76,21 +76,21 @@ header .logo{
 
 /*scroll*/
 .contendor_secundario::-webkit-scrollbar {
-    width: 10px; /* ancho del scrollbar */
+    width: 10px; 
 }
 
 .contendor_secundario::-webkit-scrollbar-thumb {
-    background-color: rgb(230, 89, 180); /* color del thumb (la parte deslizable) */
-    border-radius: 5px; /* bordes redondeados del thumb */
+    background-color: rgb(230, 89, 180); 
+    border-radius: 5px; 
 }
 
 .contendor_secundario::-webkit-scrollbar-track {
-    background-color: rgba(230, 89, 180, 0.5); /* color del track (la parte no deslizable) */
+    background-color: rgba(230, 89, 180, 0.5);
 }
 
 .encuestaForm  {
-    width: 100%; /* Garantiza que el formulario ocupe el 100% del ancho disponible */
-    margin: 20px auto; /* Centra el formulario en la página */
+    width: 100%; 
+    margin: 20px auto; 
     max-width: 50rem; 
 }
 
@@ -117,7 +117,7 @@ textarea {
 
 .dropzone-box {
     padding-top: 2%;
-    color: var(--color-blanco);
+    color: var(--color-negro);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -144,9 +144,9 @@ textarea {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px dashed var(--color-blanco);
+    border: 2px dashed var(--color-negro);
     border-radius: 1rem;
-    color: var(--color-blanco);
+    color: var(--color-negro);
 }
 
 .dropzone-area:hover {
@@ -197,7 +197,7 @@ textarea {
 #documentosTable {
     border-collapse: collapse;
     width: 100%;
-    margin-top: 20px; /* Espacio superior */
+    margin-top: 20px; 
 }
 
 #documentosTable th, #documentosTable td {
@@ -210,7 +210,7 @@ textarea {
 #documentosTable img {
     max-width: 30px;
     max-height: 30px;
-    margin-right: 5px; /* Espacio entre el ícono y el texto */
+    margin-right: 5px; 
 }
 
 .btn-new {
@@ -226,18 +226,51 @@ textarea {
     background: red;
 }
 
-.hidden {
-    display: none;
+.btn-new[type="view"] {
+    background: mistyrose;
 }
 
+#openModalBtn {
+    align-self: flex-end;
+}
 
-@media (max-width: 800px) {
-    .contenedor_primario {
+/*modal*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    display: flex;
+    justify-content: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-    }
-    .grid-1 {
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-    }
+.hidden {
+    display: none;
 }
 
 @media (max-width: 500px) {
