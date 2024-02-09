@@ -138,6 +138,9 @@ routerDocumento.get('/view/:id', async (req, res) => {
     }
 });
 
+
+
+
 module.exports = {
     routerDocumento: routerDocumento,
 }
