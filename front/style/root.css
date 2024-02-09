@@ -26,3 +26,18 @@ h1, h2, h3, h4 {
 p {
   text-wrap: pretty;
 }
+
+.nav-btn {
+  display: inline-block;
+  background: rgb(230, 89, 180);
+  border-radius: 16px;
+  color: #fff;
+  padding: 16px 16px;
+  min-width: 120px;
+  box-shadow: 0px 0px 5px #d67cc3;
+  transition: all .2s ease; 
+}
+
+.nav-btn:hover {
+  background: #e87ec8;
+}

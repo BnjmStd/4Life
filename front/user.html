@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" type="text/css" href="/style/user.css">
+    <link rel="icon" href="img/favi.png" type="image/png">
 
     <link
     href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css"
@@ -31,28 +32,19 @@
     </div> 
 
     <div class="contenedor_primario">
-        <nav>
-            <ul>
-                <li>
-                    <a  class="active" onclick="cambiarContenido('Home')"> <i class="ri-home-heart-line"></i> Inicio</a>
-                </li>
-                <li>
-                    <a   onclick="cambiarContenido('Profile')" > <i class="ri-bubble-chart-line"></i> Datos</a>
-                </li>
-                <li>
-                    <a  onclick="cambiarContenido('Subir Documentos')"> <i class="ri-file-upload-line"></i> Subir Exámenes</a>
-                </li>
-                <li>
-                    <a  onclick="cambiarContenido('Documentos')" > <i class="ri-file-word-2-line"></i> Tus Exámenes</a>
-                </li>
-                <li>
-                    <a   onclick="cambiarContenido('ExamenesR')"> <i class="ri-file-lock-line"></i> Exámenes revisados</a>
-                </li>
-                <li>
-                    <a  onclick="cambiarContenido('conf')"> <i class="ri-tools-line"></i> Configuración</a>
-                </li>
-                
-            </ul>
+        <nav class="grid-1">
+            <div>
+                <a class="active" onclick="cambiarContenido('Home')"> <i class="ri-home-heart-line"></i> Inicio</a>
+            </div>
+            <div>
+                <a onclick="cambiarContenido('Profile')"> <i class="ri-bubble-chart-line"></i> Datos</a>
+            </div>
+            <div>
+                <a onclick="cambiarContenido('Documentos')"> <i class="ri-file-word-2-line"></i> Tus Exámenes</a>
+            </div>
+            <div>
+                <a onclick="cambiarContenido('conf')"> <i class="ri-tools-line"></i> Configuración</a>
+            </div>
         </nav>
 
         <div class="contendor_secundario" id="contenido">

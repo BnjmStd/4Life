@@ -1,15 +1,20 @@
 @import 'root.css';
 
+:root {
+    --color-negro: #333;
+    --color-blanco: #fff;
+}
+
 body {
     color: var(--color-blanco);
     width: 100%; /* Ocupa todo el ancho disponible */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    height: 100%; /* Ocupa toda la altura de la pantalla */
     background-color: var(--color-negro);
 }
 
 header{
     display: flex;
-    padding: 10px 3%;
+    padding: 30px 3%;
     width: auto;
     align-items: center;  
     justify-content: space-between;
@@ -24,9 +29,8 @@ header .logo{
     align-content: center;
 }
 
-
 .banner {
-    background: var(--color-azul);
+    background:  rgba(230, 89, 180, 0.5);
     padding: 20px;
     text-align: center;
 }
@@ -37,75 +41,51 @@ header .logo{
 
 .contenedor_primario {
     display: flex;
-    align-items: center;
-
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 20px;
+    gap: 30px;
 }
 
-nav {
-    margin-top: 10%;
-    margin-left: 10%;
-    padding-bottom: 1rem;
-    width: 200px;
-    position: flex;
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--color-blanco);
-    border-radius: 16px;
-    box-shadow: 5px 20px 50px #7c7b7be7;
+.grid-1 {
+    padding: 20px;
+    height: 200px;
+    width: 245px;
+    min-width: 160px;
+    border: 3px solid rgba(230, 89, 180, 0.5);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 
-nav ul {
-    list-style-type: none;
-    width: 200px;
-}
-nav ul li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    margin-top: 1rem;
-    color: var(--color-blanco);
-    text-decoration: none;
-}
-
-nav ul li a:hover {
-    background-color: var(--color-azul);
-    color: var(--color-blanco);
+.contendor_secundario {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+    align-items: start;
+    justify-content: start;
+    border: 3px solid rgba(230, 89, 180, 0.5);
+    box-shadow: 0 0 5px rgba(230, 89, 180, 0.5);
+    max-width: 500px;
+    max-height: 450px;
+    min-width: 450px;
+    min-height: 300px;
+    overflow: auto;
 }
 
-.nav-btn {
-    display: inline-block;
-    background: var(--color-azul);
-    border-radius: 16px;
-    color: var(--color-blanco);
-    padding: 16px 16px;
-    transition: all .6s ease; 
-    cursor: pointer;
+/*scroll*/
+.contendor_secundario::-webkit-scrollbar {
+    width: 10px; /* ancho del scrollbar */
 }
 
-.nav-btn:hover {
-    transform: translateY(-3px);
-    text-decoration-skip-ink: none;
+.contendor_secundario::-webkit-scrollbar-thumb {
+    background-color: rgb(230, 89, 180); /* color del thumb (la parte deslizable) */
+    border-radius: 5px; /* bordes redondeados del thumb */
 }
 
-.contendor_secundario{
-    padding-left: 5%;
-    padding-bottom: 1rem;
-
-    margin-top: 5%;
-    margin-left: 5%;
-
-    width: 55rem;
-    position: flex;
-    max-height: 550px;
-    min-height: 550px;
-    overflow-y: auto;
-    
-    
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--color-blanco);
-    border-radius: 16px;
-    box-shadow: 5px 20px 50px #7c7b7be7;
+.contendor_secundario::-webkit-scrollbar-track {
+    background-color: rgba(230, 89, 180, 0.5); /* color del track (la parte no deslizable) */
 }
 
 .encuestaForm  {
@@ -248,4 +228,20 @@ textarea {
 
 .hidden {
     display: none;
+}
+
+
+@media (max-width: 800px) {
+    .contenedor_primario {
+
+    }
+    .grid-1 {
+
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        flex-direction: column;
+    }
 }

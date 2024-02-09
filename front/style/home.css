@@ -1,10 +1,176 @@
 
 @import 'root.css';
 
+body {
+  color: #fff;
+  background: #333;
+  height: 100vh;
+  min-width: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-content{
+  display: flex;
+  width: auto;
+  padding: 16px;
+  margin: 1rem 3rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid rgb(230, 89, 180);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: large;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+section {
+  padding: 0 3%;
+  margin: 2rem 3rem;
+  border-radius: 10px;
+  border: 3px solid;
+  animation: borderAnimation .9s linear infinite;
+}
+
+.grid-content {
+  display: grid;
+  gap: 40px;
+  box-sizing: border-box;
+  padding: 10px;
+  grid-template-areas: 
+    "grid-1 grid-2 "
+    "grid-3 grid-4 ";
+}
+
+/* Detiene la animación cuando se pasa el mouse sobre los elementos de la cuadrícula */
+section:hover {
+  animation-play-state: paused;
+}
+
+.grid-1,
+.grid-2,
+.grid-3,
+.grid-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden; /* Oculta el desbordamiento para evitar scroll innecesario */
+  transition: transform 0.3s ease; /* Agrega una transición suave al efecto de carta */
+}
+
+.grid-1:hover,
+.grid-2:hover,
+.grid-3:hover,
+.grid-4:hover {
+  border: 3px solid rgb(230, 89, 180);
+  transform: scale(1.1); /* Amplía el elemento al pasar el mouse por encima */
+}
+
+.grid-1 {
+  grid-area: grid-1;
+}
+
+.grid-2 {
+  grid-area: grid-2;
+}
+
+.grid-2 ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.grid-2 li {
+  margin-bottom: 10px;
+}
+
+.grid-3 {
+  grid-area: grid-3;
+}
+
+.grid-3 p {
+  margin-bottom: 20px;
+}
+
+.grid-3 .nav-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.grid-4 {
+  grid-area: grid-4;
+}
+
+.grid-4 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+img {
+  height: 200px;
+  width: auto;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.footer-item {
+  text-align: center;
+}
+
+@media (max-width: 400px) {
+  /* Estilos específicos para pantallas pequeñas */
+  body {
+    align-items: center;
+  }
+
+  .header-content {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 10px; 
+  }
+
+  .nav-btn {
+    margin-top: 10px; /* Añade margen superior al botón */
+  }
+  .footer{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 850px) {
+  /* Estilos específicos para pantallas menores a 850px */
+  .grid-content {
+    margin: auto;
+    grid-template-areas: 
+      "grid-1"
+      "grid-2"
+      "grid-3"
+      "grid-4";
+  }
+}
 
 @keyframes borderAnimation {
   0% {
-    border-top-color: #09f; /* Color para el borde superior */
+    border-top-color: rgb(230, 89, 180); /* Color para el borde superior */
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
@@ -13,119 +179,24 @@
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
-    border-left-color: #000; /* Color para el borde izquierdo */
+    border-left-color: rgb(230, 89, 180); /* Color para el borde izquierdo */
   }
   50% {
     border-top-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: #09f; /* Color para el borde inferior */
+    border-bottom-color: rgb(230, 89, 180); /* Color para el borde inferior */
     border-left-color: transparent;
   }
   75% {
     border-top-color: transparent;
-    border-right-color: #000; /* Color para el borde derecho */
+    border-right-color: rgb(230, 89, 180); /* Color para el borde derecho */
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
   100% {
-    border-top-color: #09f; /* Color para el borde superior */
+    border-top-color: rgb(230, 89, 180); /* Color para el borde superior */
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-  }
-}
-
-body {
-  color: #4D4D4D;
-  background:#F3F7F2;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
-}
-
-header{
-  display: flex;
-  width: auto;
-  align-items: center;  
-  justify-content: space-between;
-  margin: 1rem 3rem;
-  padding: 16px;
-  border-bottom: 3px solid #000;
-  box-sizing: border-box;
-
-  & .logo {
-    color: #4D4D4D;
-    font-weight: 800;
-    font-size: large;
-    text-decoration: none;
-  }
-}
-
-section {
-  position: relative;
-  padding: 0 3%;
-  margin: 4rem 3rem;
-  border-radius: 10px;
-  border: 3px solid;
-  animation: borderAnimation 3s linear infinite;
-}
-
-.grid-content {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: auto;
-  gap: 20px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.grid-1 {
-  padding: 15px;
-}
-
-.grid-2 {
-  background: salmon;
-}
-
-.grid-3 {
-  background: red;
-
-}
-
-.grid-4{
-  align-self: center;
-  justify-self: center;
-}
-
-img {
-  height: 250px;
-  width: auto;
-}
-
-/* boton */
-.nav-btn {
-  display: inline-block;
-  background: #09f;
-  border-radius: 16px;
-  color: #F3F7F2;
-  padding: 16px 16px;
-  min-width: 120px;
-  box-shadow: 0px 0px 5px #000;
-  transition: all .2s ease; 
-}
-
-.nav-btn:hover{
-    background: salmon;
-    color: black;
-    text-decoration-skip-ink: none;
-}
-
-/* responsive */
-@media (width < 400px) {
-  header {
-    flex-direction: column;
-    margin: auto;
-  }
-  .logo {
-    margin-bottom: 10px; 
   }
 }
