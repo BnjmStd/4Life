@@ -16,9 +16,8 @@ header{
     display: flex;
     padding: 30px 3%;
     width: auto;
-    align-items: center;  
-    justify-content: space-between;
-    margin: 1rem 1rem;
+    place-content: center space-between;
+    margin: 1rem;
     border-bottom: 2px solid var(--color-negro);
 }
 header .logo{
@@ -48,44 +47,26 @@ header .logo{
 }
 
 .grid-1 {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
     padding: 20px;
     height: 200px;
-    width: 245px;
+    width: fit-content;
     min-width: 160px;
     border: 3px solid rgba(230, 89, 180, 0.5);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
 }
 
 .contendor_secundario {
     display: flex;
     flex-flow: column nowrap;
     padding: 20px;
-    align-items: start;
-    justify-content: start;
+    place-items: start;
     border: 3px solid rgba(230, 89, 180, 0.5);
     box-shadow: 0 0 5px rgba(230, 89, 180, 0.5);
-    max-width: 500px;
-    max-height: 450px;
-    min-width: 450px;
-    min-height: 300px;
+    width: clamp(450px, fit-content 500px);
+    height: clamp(300px, 100%, 450px);
     overflow: auto;
-}
-
-/*scroll*/
-.contendor_secundario::-webkit-scrollbar {
-    width: 10px; 
-}
-
-.contendor_secundario::-webkit-scrollbar-thumb {
-    background-color: rgb(230, 89, 180); 
-    border-radius: 5px; 
-}
-
-.contendor_secundario::-webkit-scrollbar-track {
-    background-color: rgba(230, 89, 180, 0.5);
 }
 
 .encuestaForm  {
@@ -110,9 +91,7 @@ textarea {
     padding: 8px;
     margin-bottom: 16px;
     color: #000;
-    border-style: solid;
-    border-width: 2px;
-    border-color: var(--color-blanco);
+    border: 2px solid var(--color-blanco);
 }
 
 .dropzone-box {
@@ -120,9 +99,10 @@ textarea {
     color: var(--color-negro);
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-flow: column;
     max-width: 36rem;
     width: 100%;
+    
 }
 
 .fa-file {
@@ -141,8 +121,7 @@ textarea {
     margin-top: 1rem;
     display: flex;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    place-items: center;
     flex-direction: column;
     border: 2px dashed var(--color-negro);
     border-radius: 1rem;
@@ -157,10 +136,7 @@ textarea {
     cursor: pointer;
     position: absolute;
     opacity: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    inset: 0;
 }
 
 .dropzone-actions {
@@ -239,13 +215,16 @@ textarea {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px; 
+    max-height: 80vh; 
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0);
 }
+
 .modal-content {
     display: flex;
     justify-content: center;

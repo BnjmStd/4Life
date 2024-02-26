@@ -13,6 +13,8 @@
     border: none;
     text-decoration: none;
     min-width: 0;
+    scrollbar-color: rgb(230, 89, 180) #fff;
+    scrollbar-width: auto;
 } 
 
 body {
