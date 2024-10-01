@@ -1,3 +1,0 @@
-# Lechuga
-
-Mi primer sv
