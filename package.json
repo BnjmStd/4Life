@@ -4,6 +4,7 @@
   "description": "Mi primer sv",
   "main": "index.js",
   "scripts": {
+    "c": "sui-mono commit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
