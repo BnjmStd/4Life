@@ -9,9 +9,24 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
       - ./sql:/docker-entrypoint-initdb.d
     restart: always
+    networks:
+      - backend
 
 volumes:
-  pgdata:
+  db-data:
+    driver: local
+    driver_opts:
+        type: none
+        device: ./data/pgdata
+        o: bind 
+    labels:
+      com.example.description: "database"  
+      com.example.department: "Laboratorio Bioinformática"  
+      com.example.label-with-empty-value: "" 
+
+networks:
+  backend:
+    driver: bridge
