@@ -7,6 +7,20 @@
     flex-direction: column;
     gap: 0.425rem;
 
+    & button {
+        display: inline-block;
+        background-color: #4caf4fd6;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+
+        &:hover {
+            background-color: #4caf4f;
+        }
+    }
+
     & .content__main {
         flex: 1;
         border-radius: 1rem;
@@ -26,7 +40,7 @@
 
     & .content__upload-container {
         display: flex;
-        gap: 0.250rem;
+        gap: 0.350rem;
         align-items: center;
 
         & .content__file-label {
