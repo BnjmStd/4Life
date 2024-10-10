@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="header__message">
+            <h1 class="header__title">Welcome back, XXX</h1>
+            <p class="header__text">Here are today's stats from your online store!</p>
+        </div>
+    
+        <form class="header__form">
+            <input class="header__input" type="text" placeholder="Search">
+        </form>
+    
+        <div class="header__notification">
+            <span class="header__notification-icon">🔔</span>
+            <span class="header__notification-badge">2</span>
+
+            <div class="header__notification-dropdown" id="notifDropdown">
+                <a class="header__notification-link" href="#">Notificación 1</a>
+                <a class="header__notification-link" href="#">Notificación 2</a>
+            </div>
+
+        </div>
+    
+        <div class="header__user-info" onclick="toggleUserMenu()">
+            <img class="header__user-img" src="https://via.placeholder.com/40" alt="Usuario">
+            <span class="header__user-name">Juan Pérez</span>
+
+            <div class="header__dropdown" id="userDropdown">
+                <a class="header__dropdown-link" href="#">Perfil</a>
+                <a class="header__dropdown-link" href="#">Configuraciones</a>
+                <a class="header__dropdown-link" href="#">Cerrar sesión</a>
+            </div>
+            
+        </div>
+    
+    </header>
+    
+
+    <div class="overlay"></div>
+
+    <aside class="sidebar">
+        <ul class="sidebar__list"> 
+            
+            <li class="sidebar__element">
+
+                <img
+                class="sidebar__icon sidebar__icon--logo" 
+                src="./assets/image.png" alt="">
+
+                <div class="sidebar__hide">
+                    <p>Data4Life</p>
+                </div>
+
+            </li>
+
+            <li class="sidebar__element">
+
+                <svg  class="sidebar__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM15.8329 7.33748C16.0697 7.17128 16.3916 7.19926 16.5962 7.40381C16.8002 7.60784 16.8267 7.92955 16.6587 8.16418C14.479 11.2095 13.2796 12.8417 13.0607 13.0607C12.4749 13.6464 11.5251 13.6464 10.9393 13.0607C10.3536 12.4749 10.3536 11.5251 10.9393 10.9393C11.3126 10.5661 12.9438 9.36549 15.8329 7.33748ZM17.5 11C18.0523 11 18.5 11.4477 18.5 12C18.5 12.5523 18.0523 13 17.5 13C16.9477 13 16.5 12.5523 16.5 12C16.5 11.4477 16.9477 11 17.5 11ZM6.5 11C7.05228 11 7.5 11.4477 7.5 12C7.5 12.5523 7.05228 13 6.5 13C5.94772 13 5.5 12.5523 5.5 12C5.5 11.4477 5.94772 11 6.5 11ZM8.81802 7.40381C9.20854 7.79433 9.20854 8.4275 8.81802 8.81802C8.4275 9.20854 7.79433 9.20854 7.40381 8.81802C7.01328 8.4275 7.01328 7.79433 7.40381 7.40381C7.79433 7.01328 8.4275 7.01328 8.81802 7.40381ZM12 5.5C12.5523 5.5 13 5.94772 13 6.5C13 7.05228 12.5523 7.5 12 7.5C11.4477 7.5 11 7.05228 11 6.5C11 5.94772 11.4477 5.5 12 5.5Z"></path></svg>
+
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        DashBoard
+                    </p>
+                </div>
+            
+            </li>
+
+            <li class="sidebar__element">
+
+                <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m10.198 9.127 3.309-4.799c.628-.902 1.434-1.354 2.427-1.354.806 0 1.506.287 2.097.861.59.574.885 1.26.885 2.059 0 .59-.155 1.113-.469 1.563l-2.983 4.34 3.649 4.627c.363.461.547 1 .547 1.617 0 .816-.286 1.518-.86 2.105a2.81 2.81 0 0 1-2.084.879c-.895 0-1.577-.291-2.047-.873L10.2 14.574v3.074c0 .879-.152 1.561-.457 2.049-.555.885-1.356 1.328-2.417 1.328-.963 0-1.711-.328-2.24-.977-.496-.602-.744-1.396-.744-2.387V6.258c0-.936.253-1.709.755-2.318.525-.643 1.255-.965 2.186-.965.887 0 1.624.322 2.216.965.329.357.537.717.625 1.082.053.227.079.646.079 1.266v2.84h-.005z"></path></svg>
+                
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        Exámenes
+                    </p>
+                </div>
+            
+            </li>
+
+            
+            <li class="sidebar__element">
+
+                <svg  class="sidebar__icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path></svg>
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        Usuarios
+                    </p>
+                </div>
+            
+            </li>
+
+            
+            <li class="sidebar__element">
+
+                <svg class="sidebar__icon" width="24" height="24" viewBox="0 0 24 24" ><path d="M12 8v5h5v-2h-3V8z"></path><path d="M21.292 8.497a8.957 8.957 0 0 0-1.928-2.862 9.004 9.004 0 0 0-4.55-2.452 9.09 9.09 0 0 0-3.626 0 8.965 8.965 0 0 0-4.552 2.453 9.048 9.048 0 0 0-1.928 2.86A8.963 8.963 0 0 0 4 12l.001.025H2L5 16l3-3.975H6.001L6 12a6.957 6.957 0 0 1 1.195-3.913 7.066 7.066 0 0 1 1.891-1.892 7.034 7.034 0 0 1 2.503-1.054 7.003 7.003 0 0 1 8.269 5.445 7.117 7.117 0 0 1 0 2.824 6.936 6.936 0 0 1-1.054 2.503c-.25.371-.537.72-.854 1.036a7.058 7.058 0 0 1-2.225 1.501 6.98 6.98 0 0 1-1.313.408 7.117 7.117 0 0 1-2.823 0 6.957 6.957 0 0 1-2.501-1.053 7.066 7.066 0 0 1-1.037-.855l-1.414 1.414A8.985 8.985 0 0 0 13 21a9.05 9.05 0 0 0 3.503-.707 9.009 9.009 0 0 0 3.959-3.26A8.968 8.968 0 0 0 22 12a8.928 8.928 0 0 0-.708-3.503z"></path></svg>
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        Historial médico
+                    </p>
+                </div>
+            
+            </li>
+            
+            <li class="sidebar__element">
+
+                <svg class="sidebar__icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 2C10.5523 2 11 2.44772 11 3V7C11 7.55228 10.5523 8 10 8H8V10H13V9C13 8.44772 13.4477 8 14 8H20C20.5523 8 21 8.44772 21 9V13C21 13.5523 20.5523 14 20 14H14C13.4477 14 13 13.5523 13 13V12H8V18H13V17C13 16.4477 13.4477 16 14 16H20C20.5523 16 21 16.4477 21 17V21C21 21.5523 20.5523 22 20 22H14C13.4477 22 13 21.5523 13 21V20H7C6.44772 20 6 19.5523 6 19V8H4C3.44772 8 3 7.55228 3 7V3C3 2.44772 3.44772 2 4 2H10ZM19 18H15V20H19V18ZM19 10H15V12H19V10ZM9 4H5V6H9V4Z"></path></svg>
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        Arbol familiar
+                    </p>
+                </div>
+            
+            </li>
+            
+            <li class="sidebar__element sidebar__element--conf">
+
+                <svg class="sidebar__icon" width="24" height="24" viewBox="0 0 24 24" ><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
+                
+                <div class="sidebar__hide">
+                    <p class="sidebar__text">
+                        Configuraciones
+                    </p>
+                </div>
+            
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <main class="main">
+        hola
+    </main>
+
+</body>
+</html>

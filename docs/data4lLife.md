@@ -39,8 +39,6 @@ flowchart TD
     Y --> Z[Redirigir a inicio de sesión]:::myNodeStyle
     W --> K
 
-
-
 :::
 
 
@@ -154,10 +152,7 @@ flowchart TD
 
 <h3 style="color:pink; text-align:start;">Carga automática desde archivos (PDF, imágenes)</h3>
 
-
 ::: mermaid
-
-
 sequenceDiagram
     participant User as Usuario
     participant UI as Interfaz
@@ -172,14 +167,11 @@ sequenceDiagram
     DB-->>-Backend: Confirmación de almacenamiento
     Backend-->>-UI: Confirmación de carga exitosa
     UI-->>-User: Muestra mensaje de éxito
-
-
 :::
 
 <h3 style="color:pink; text-align:start;">Escaneo y reconocimiento de texto (OCR)</h3>
 
 ::: mermaid
-
 sequenceDiagram
     participant User as Usuario
     participant UI as Interfaz
@@ -193,14 +185,11 @@ sequenceDiagram
     DB-->>-OCR: Confirmación de almacenamiento
     OCR-->>-UI: Devuelve texto reconocido
     UI-->>-User: Muestra resultados del OCR
-
 :::
 
 <h3 style="color:pink; text-align:start;">Almacenar y analizar prescripciones médicas para hacer recordatorios</h3>
 
-
 ::: mermaid
-
 sequenceDiagram
     participant User as Usuario
     participant UI as Interfaz
@@ -208,7 +197,6 @@ sequenceDiagram
     participant DB as Base de Datos
     participant Analysis as Analizador
 
-    %% Proceso de almacenamiento y análisis de prescripciones médicas
     User->>+UI: Envía prescripción médica
     UI->>+Backend: Transmite prescripción al servidor
     Backend->>+DB: Almacena prescripción en la base de datos
@@ -221,21 +209,16 @@ sequenceDiagram
 
 :::
 
-
-
 <h3 style="color:pink; text-align:start;">implementar la base de datos</h3>
 
 ::: mermaid
-
 sequenceDiagram
     participant DevFront as Frontend de Desarrollo
     participant TestFront as Frontend de Testeo
     participant Backend as Servidor
     participant Migration as Migraciones
     participant DB as Base de Datos (PostgreSQL)
-
-
-    %% Proceso de implementación de la base de datos
+    
     DevFront->>+Backend: Envía cambios de implementación
     Backend->>+Migration: Realiza migraciones
     Migration->>+DB: Actualiza la base de datos
@@ -243,7 +226,6 @@ sequenceDiagram
     Migration-->>-Backend: Confirma que las migraciones se realizaron
     Backend-->>-DevFront: Confirma implementación exitosa
 
-    %% Proceso de testeo
     TestFront->>+Backend: Envía solicitudes de testeo
     Backend->>+DB: Consulta la base de datos
     DB-->>-Backend: Devuelve resultados
@@ -621,31 +603,27 @@ Diagrama Correo
 
 ::: mermaid 
 flowchart TD
-    %% Parte 1: Preprocessing Data
+
     A[Image or PDF] --> B{Image JPEG or PDF}
     B -->|Yes| C[Quality Improvement]
     C --> D[Convert to PDF]
     B -->|No| E[PDF to Analyze]
     D --> E
 
-    %% Parte 2: API OpenAI
     F[Inicio: API OpenAI] --> G[Patient and Healthcare Provider Data Detection]
     F --> H[Medical Exam Type]
     F --> I[Medical Exam Results Detection]
 
-    %% Unir las salidas
+
     G --> J[Data Extraction]
     H --> J
     I --> J
 
-    %% Parte 3: Data Extraction
     J --> K[Database Feed]
 
-    %% Definición de estilos
     classDef myNodeStyle fill:#f9f,stroke:#333,stroke-width:2px, color:#333, border-radius: 16px;
     classDef rombo fill:#09f, stroke:#09f, stroke-width:2px, color:#fff;
 
-    %% Aplicar estilos a los nodos
     class A,B,C,D,E,F,G,H,I,J,K myNodeStyle;
     class B rombo;
 

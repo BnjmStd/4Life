@@ -1,0 +1,212 @@
+*,
+::after,
+::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: light;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main main"
+        "main main";
+    height: 100vh;
+    background-color: #ddd;
+}
+
+.header {
+    grid-area: header;
+    display: flex;
+    padding: .8rem;
+    margin: 1rem;
+    background-color: #fff;
+    color: black;
+    height: 100px;
+    border-radius: 1rem;
+
+    & .header__message {
+        & .header__title {}
+
+        & .header__text {}
+    }
+
+    & .header__form {
+        & .header__input {}
+    }
+
+    & .header__notification {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+
+        & .header__notification-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        & .header__notification-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        & .header__notification-dropdown {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: #f9f9f9;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            min-width: 150px;
+            padding: 10px;
+            border-radius: 4px;
+
+            & .header__notification-link {
+                display: block;
+                padding: 8px;
+                color: #333;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: #ddd;
+                }
+            }
+        }
+    }
+
+    & .header__user-info {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 10px;
+
+        & .header__user-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        & .header__user-name {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        & .header__dropdown {
+            display: none;
+        }
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 50;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar {
+    position: fixed;
+    top: 40px;
+    bottom: 40px;
+    left: 10px;
+    background: #333;
+    width: max-content;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    z-index: 100;
+
+    &:hover .sidebar__element {
+        grid-template-columns: 40px 1fr;
+    }
+
+    & .sidebar__list {
+        list-style: none;
+        padding: 0;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        height: 100%;
+    }
+
+    & .sidebar__element--conf {
+        margin-top: auto;
+        border-top: 2px solid rgb(215, 149, 174);
+        margin-bottom: 0.4rem;
+    }
+
+    & .sidebar__element {
+        padding: .8rem;
+        border-radius: 0.3rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 40px 0fr;
+        
+        color: #fff;
+        fill: #fff;
+
+        transition: grid-template-columns .4s ease;
+
+        &:not(:has(.sidebar__icon--logo)):hover {
+            background: rgb(215, 149, 174);
+            color: #fff;
+            fill: #000;
+            cursor: pointer;
+        }
+
+        &:has(.sidebar__icon--logo) {
+            margin-bottom: 1.3rem;
+
+        }
+
+        & .sidebar__icon--logo {
+            max-width: 30px;
+        }
+
+        & .sidebar__icon {
+            width: 100%;
+            overflow: hidden;
+            justify-self: center;
+        }
+
+        & .sidebar__hide {
+            overflow: hidden;
+
+            & .sidebar__logo,
+            .sidebar__text {
+                text-wrap: nowrap;
+                padding-left: 1.3rem;
+            }
+
+            & .sidebar__title,
+            .sidebar__info {
+                padding-left: 1.3rem;
+            }
+        }
+    }
+}
+
+.main {
+    grid-area: main;
+    padding: 0.5rem;
+    margin: 1rem;
+    background-color: rgb(72, 52, 160);
+}

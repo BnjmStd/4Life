@@ -1,0 +1,118 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/pages/admin/layout.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.custom-background {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    background-image:
+        linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 6rem 4rem;
+}
+
+.custom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: radial-gradient(circle 800px at 100% 200px, #d5c5ff, transparent);
+}
+
+.layout__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    max-width: 80rem; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem 1rem ;
+}
+
+.sidebar {
+    position: fixed;
+    top: 40px;
+    bottom: 40px;
+    left: 10px;
+    background: #333;
+    width: max-content;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    z-index: 100;
+
+    &:hover .sidebar__element {
+        grid-template-columns: 40px 1fr;
+    }
+
+    & .sidebar__list {
+        list-style: none;
+        padding: 0;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        height: 100%;
+    }
+
+    & .sidebar__element--conf {
+        margin-top: auto;
+        border-top: 2px solid rgb(215, 149, 174);
+        margin-bottom: 0.4rem;
+    }
+
+    & .sidebar__element {
+        padding: .8rem;
+        border-radius: 0.3rem;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 40px 0fr;
+
+        color: #fff;
+        fill: #fff;
+
+        transition: grid-template-columns .4s ease;
+
+        &:not(:has(.sidebar__icon--logo)):hover {
+            background: rgb(215, 149, 174);
+            color: #fff;
+            fill: #000;
+            cursor: pointer;
+        }
+
+        &:has(.sidebar__icon--logo) {
+            margin-bottom: 1.3rem;
+
+        }
+
+        & .sidebar__icon--logo {
+            max-width: 30px;
+        }
+
+        & .sidebar__icon {
+            width: 100%;
+            overflow: hidden;
+            justify-self: center;
+        }
+
+        & .sidebar__hide {
+            overflow: hidden;
+
+            & .sidebar__logo,
+            .sidebar__text {
+                text-wrap: nowrap;
+                padding-left: 1.3rem;
+            }
+
+            & .sidebar__title,
+            .sidebar__info {
+                padding-left: 1.3rem;
+            }
+        }
+    }
+}
