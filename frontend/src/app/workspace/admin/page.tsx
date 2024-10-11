@@ -1,5 +1,6 @@
 import Header from "@/components/common/Header"
 import StatCard from "@/components/common/StatCard"
+import Graph from "@/components/dashboard/Graph";
 
 import "@styles/pages/admin/admin.css"
 import { FaUserAlt } from "react-icons/fa";
@@ -13,31 +14,44 @@ const salesStats = {
 
 export default function page() {
     return (
+        <div className="overview-page">
+            <Header title="Overview" />
+            <main className="overview-page__main">
 
-        <div>
+                {/* STATS */}
+                <div className="overview-page__stats">
+                    <StatCard
+                        name='Total Revenue'
+                        Icon={FaUserAlt}
+                        value={salesStats.totalRevenue}
+                        color='#6366F1'
+                    />
+                    <StatCard
+                        name='Avg. Order Value'
+                        Icon={FaUserAlt}
+                        value={salesStats.averageOrderValue}
+                        color='#10B981'
+                    />
+                    <StatCard
+                        name='Conversion Rate'
+                        Icon={FaUserAlt}
+                        value={salesStats.conversionRate}
+                        color='#F59E0B'
+                    />
+                    <StatCard
+                        name='Sales Growth'
+                        Icon={FaUserAlt}
+                        value={salesStats.salesGrowth}
+                        color='#EF4444'
+                    />
 
-            <Header title='DashBoard Admin' />
+                </div>
 
-            <div className="container">
-
-                <StatCard name='Total Revenue' Icon={FaUserAlt} value={salesStats.totalRevenue} color='#6366F1' />
-                <StatCard
-                    name='Avg. Order Value'
-                    Icon={FaUserAlt}
-                    value={salesStats.averageOrderValue}
-                    color='#10B981'
-                />
-                <StatCard
-                    name='Conversion Rate'
-                    Icon={FaUserAlt}
-                    value={salesStats.conversionRate}
-                    color='#F59E0B'
-                />
-                <StatCard name='Sales Growth' Icon={FaUserAlt} value={salesStats.salesGrowth} color='#EF4444' />
-            </div>
-
-
+                {/* CHARTS */}
+                <div className="overview-page__charts">
+                    <Graph />
+                </div>
+            </main>
         </div>
-
-    )
+    );
 }

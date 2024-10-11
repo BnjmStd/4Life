@@ -1,3 +1,10 @@
+import { IoIosNotifications } from "react-icons/io";
+
+import Image from "next/image";
+
+import "@styles/components/common/header.css"
+import { FaSearch } from "react-icons/fa";
+
 export default function Header({
     title
 }: {
@@ -5,9 +12,26 @@ export default function Header({
 }) {
 
     return (
-        <header className='bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg border-b border-gray-700'>
-            <div className='max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8'>
-                <h1 className='text-2xl font-semibold text-gray-100'>{title}</h1>
+        <header className="header">
+            <main>
+                <h1 className="header__logo">{title}</h1>
+                <p className="header__description">
+                    un sitio web empeznado
+                </p>
+            </main>
+            <span className="search-bar">
+                <input type="text" placeholder="Search..." />
+                <FaSearch className="search-icon" />
+            </span>
+            <div className="header__right">
+                <div className="header__notification">
+                    <IoIosNotifications />
+                </div>
+                <div className="header__user">
+                    <Image width={24}
+                        height={24} src="" alt="User" className="header__user-img" />
+                    <span className="header__user-name">John Doe</span>
+                </div>
             </div>
         </header>
     );

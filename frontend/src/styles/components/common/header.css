@@ -1,0 +1,83 @@
+.header {
+    position: fixed;
+    top: 10px;
+    width: calc(100% - 350px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 1rem;
+    z-index: 12;
+
+    & .header__logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    & .search-bar {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: 300px;
+
+        & .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%); /* Para centrar el ícono verticalmente */
+            color: #aaa; /* Cambia el color si quieres */
+            font-size: 1.2rem; /* Ajusta el tamaño del ícono */
+        }
+
+        & input {
+            width: 100%;
+            padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+
+            &:input {
+                border-color: #999;
+            }
+        }
+    }
+
+    & .header__right {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem; 
+
+        & .header__notification {
+            position: relative;
+            cursor: pointer;
+
+            .icon {
+                fill: white;
+                stroke: white;
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        & .header__user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            & .header__user-img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            & .header__user-name {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+}

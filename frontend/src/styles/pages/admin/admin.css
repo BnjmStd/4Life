@@ -1,21 +1,63 @@
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-    margin-inline: auto;
+.overview-page {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    z-index: 10;
+    margin-top: 2.5rem ;
 }
 
-@media (width > 640px) {
-    .container {
+.overview-page__main {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem 1rem;
+}
+
+.overview-page__stats {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.25rem;
+    opacity: 1;
+    animation: fade-in-up 1s ease-out;
+}
+
+.overview-page__charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 640px) {
+    .overview-page__stats {
         grid-template-columns: repeat(2, 1fr);
+        /* equivale a sm:grid-cols-2 */
     }
 }
 
-@media (width > 1024px) {
-    .container {
+@media (min-width: 1024px) {
+    .overview-page__stats {
         grid-template-columns: repeat(4, 1fr);
-        /* lg:grid-cols-4 */
+        /* equivale a lg:grid-cols-4 */
+    }
+}
+
+/* Animation */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 1024px) {
+    .overview-page__charts {
+        grid-template-columns: repeat(2, 1fr);
+        /* equivale a lg:grid-cols-2 */
     }
 }
