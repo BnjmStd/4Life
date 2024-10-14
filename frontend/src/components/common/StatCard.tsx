@@ -12,16 +12,32 @@ export default function StatCard(
         value: string | number,
         color: string
     }) {
-    {/*  */ }
     return (
         <div className="card">
-            <div className="card__content">
-                <span className="card__name">
-                    {name}
+            <main className="card__content">
+                <div className="card__main">
+                    <header className="card__header">
+                        <Icon color={color}/>
+                    </header>
+                    <div className="card__subheader">
+                        <span className="card__name">
+                            {name}
+                        </span>
+                        <p className="card__description">
+                            description
+                        </p>
+                    </div>
+                </div>
+                <span className="card__arrow">
+                    -
                 </span>
-                <Icon color={color}/>
-                <p className="card__value">{value}</p>
-            </div>
+            </main>
+            <p className="card__value">
+                {value}
+            </p>
+            <footer className="card__footer">
+                hola
+            </footer>
         </div>
     );
 }

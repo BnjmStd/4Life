@@ -1,54 +1,76 @@
-/* Bloque principal */
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: #2d2d2d;
-  /* bg-gray-800 */
-
-  backdrop-filter: blur(10px);
-  /* backdrop-blur-md */
+  align-items: start;
+  justify-content: center;
   overflow: hidden;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-  /* shadow-lg */
-  border-radius: 15px;
-  /* rounded-xl */
-  border: 1px solid #4b4b4b;
-  /* border-gray-700 */
-  transition: transform 300ms ease-in-out;
-  /* transition-transform duration-300 ease-in-out */
-}
+  border-radius: 1.25rem;
+  padding: 1rem;
+  transition: transform .3s ease-in-out;
 
-.card:hover {
-  transform: translateY(-4px);
-  /* hover:-translate-y-1 */
-  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.3);
-  /* hover:shadow-2xl */
-}
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.3);
+  }
 
-/* Elemento: Contenido */
-.card__content {
-  padding: 1.25rem 1rem;
-  /* px-4 py-5 sm:p-6 */
-}
+  & .card__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-/* Elemento: Nombre */
-.card__name {
-  display: flex;
-  align-items: center;
-  font-size: 0.875rem;
-  /* text-sm */
-  font-weight: 500;
-  /* font-medium */
-  color: #9e9e9e;
-  /* text-gray-400 */
-}
+    & .card__arrow {
+      color: #fff;
+    }
 
-/* Elemento: Valor */
-.card__value {
-  margin-top: 0.25rem;
-  /* mt-1 */
-  font-size: 1.875rem;
-  /* text-3xl */
-  font-weight: 600;
-  /* font-semibold */
-  color: #f0f0f0;
-  /* text-gray-100 */
+    & .card__main {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+
+      & .card__header {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        background-color: rgb(99, 98, 98);
+        padding: 0.45rem 0.40rem;
+        border-radius: 1rem;
+      }
+
+      & .card__subheader {
+        display: flex;
+        flex-direction: column;
+
+        & .card__name {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #fff;
+          margin: 0;
+        }
+
+        & .card__description {
+          margin: 0;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: #9e9e9e;
+        }
+      }
+    }
+  }
+
+  & .card__value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.25rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #f0f0f0;
+  }
+
+  & .card__footer {
+    color: white;
+  }
 }

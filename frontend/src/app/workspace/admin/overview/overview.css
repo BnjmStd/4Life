@@ -1,0 +1,52 @@
+.overview {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+    z-index: 12;
+}
+
+.overview-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.overview-page__main {
+    max-width: 1120px; 
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.overview-page__stats {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(300px, 1fr)
+    );
+    gap: 1.25rem;
+    opacity: 1;
+    animation: fade-in-up 1s ease-out;
+}
+
+.overview-page__charts {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(400px, 1fr)
+    );
+    gap: 1.25rem;
+    animation: fade-in-up 1s ease-in-out;
+}
+
+/* Animation */
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

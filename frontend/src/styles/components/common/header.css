@@ -4,11 +4,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(183, 183, 183, 0.795);
+    background-color: rgba(255, 255, 255, 0.795);
     color: rgb(0, 0, 0);
     padding: .5rem;
     border-radius: 1.25rem;
     z-index: 12;
+    animation: header-loading 2s linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
 
     & .header__logo {
         font-size: 1.5rem;
@@ -19,8 +22,8 @@
         position: relative;
         width: 100%;
         max-width: 300px;
-        display: none;
-        opacity: 0;
+        display: inline-block;
+        opacity: 1;
 
         & .search-icon {
             position: absolute;
@@ -85,14 +88,10 @@
     }
 }
 
-@media (width > 700px) {
-    .nav__menu {
-        display: none;
-        opacity: 0;
-    }
-
-    .search-bar {
-        display: inline-block;
-        opacity: 1;
+@keyframes header-loading {
+    to {
+        backdrop-filter: blur(1000px);
+        color: rgb(255, 0, 0);
+        border: 2px solid  rgba(86, 102, 122, 0);;
     }
 }

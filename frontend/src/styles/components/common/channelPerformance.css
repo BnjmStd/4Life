@@ -1,0 +1,18 @@
+.channel__performance {
+    margin-top: 2rem;
+    background-color: #333; 
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); 
+    border-radius: 1rem; 
+    padding: 1.5rem;
+    border: 1px solid #374151; 
+    margin-bottom: 2rem; 
+
+    & h2 {
+        font-size: 1.25rem; 
+        line-height: 1.75rem; 
+        font-weight: bold;
+        color: rgb(224, 224, 224);
+        margin-bottom: 1.2rem;
+    }
+}
