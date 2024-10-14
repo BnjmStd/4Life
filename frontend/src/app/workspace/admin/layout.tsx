@@ -7,17 +7,9 @@ export default function AdminLayout({
     children: React.ReactNode
 }) {
     return (
-        <>
-            <div className="custom-background">
-                <div className="custom-gradient"></div>
-            </div>
-
-            <div className="container__layout">
-
-                <Aside />
-
-                {children}
-            </div>
-        </>
+        <div className="container__layout">
+            <Aside />
+            {children}
+        </div>
     );
 }

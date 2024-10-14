@@ -1,11 +1,11 @@
 .sidebar {
     position: relative;
-    background: #333;
-    height: 100vh;
+    transition: all .3s ease-in-out;
     flex-shrink: 0;
-    z-index: 10;
+    background: #333;
+    z-index: 12;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: .5rem;
 
     & .sidebar__list {
         list-style: none;
@@ -24,56 +24,37 @@
         color: #fff;
         width: 100%;
 
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: rgb(206, 78, 170);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
         &:first-child {
             margin-bottom: 2rem;
             position: relative;
-            &::after {
-
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: rgb(206, 78, 170);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.4s ease;
-            }
         }
 
         &:last-child {
             margin-top: auto;
-            /* Empuja hacia abajo */
             padding-top: 0.4rem;
             margin-bottom: 2rem;
             position: relative;
-
-            &::after {
-
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background-color: rgb(206, 78, 170);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.4s ease;
-            }
         }
 
         &:not(:first-child):not(:last-child):hover {
             background-color: rgb(206, 78, 170);
         }
 
-        &:first-child:hover {
-            &::after {
-                transform: scaleX(1);
-            }
-        }
-
+        &:first-child:hover,
         &:last-child:hover {
             &::after {
                 transform: scaleX(1);
@@ -84,8 +65,10 @@
     & .sidebar__icon {
         margin-right: 0.8rem;
     }
+}
 
-    & .sidebar__hide p {
-        margin: 0;
+@media (width < 700px) {
+    .sidebar {
+        display: none;
     }
 }

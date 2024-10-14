@@ -3,6 +3,7 @@ import StatCard from "@/components/common/StatCard"
 import Graph from "@/components/dashboard/Graph";
 
 import "@styles/pages/admin/admin.css"
+
 import { FaUserAlt } from "react-icons/fa";
 
 const salesStats = {
@@ -13,8 +14,8 @@ const salesStats = {
 };
 
 export default function page() {
-    return (
-        <div className="overview-page">
+    return ( 
+        <div className="overview">
             <Header title="Overview" />
             <main className="overview-page__main">
 
@@ -49,6 +50,9 @@ export default function page() {
 
                 {/* CHARTS */}
                 <div className="overview-page__charts">
+                    <Graph />
+                    <Graph />
+                    <Graph />
                     <Graph />
                 </div>
             </main>

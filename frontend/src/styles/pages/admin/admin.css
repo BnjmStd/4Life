@@ -1,17 +1,20 @@
+.overview {
+    flex: 1;
+    position: relative;
+    overflow: auto;
+    z-index: 12;
+}
+
 .overview-page {
     display: flex;
+    flex-direction: column;
     flex: 1;
-    overflow: auto;
-    position: relative;
-    z-index: 10;
-    margin-top: 2.5rem ;
 }
 
 .overview-page__main {
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.5rem 1rem;
+    max-width: 1120px; /* max-w-7xl */
+    margin: 0 auto;
+    padding: 1.5rem 1rem; /* py-6 px-4 */
 }
 
 .overview-page__stats {
@@ -42,6 +45,13 @@
     }
 }
 
+@media (min-width: 1024px) {
+    .overview-page__charts {
+        grid-template-columns: repeat(2, 1fr);
+        /* equivale a lg:grid-cols-2 */
+    }
+}
+
 /* Animation */
 @keyframes fade-in-up {
     0% {
@@ -52,12 +62,5 @@
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@media (min-width: 1024px) {
-    .overview-page__charts {
-        grid-template-columns: repeat(2, 1fr);
-        /* equivale a lg:grid-cols-2 */
     }
 }

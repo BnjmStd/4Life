@@ -4,7 +4,23 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
+html, body {
+  margin: 0;
+  padding: 0;
   overflow: hidden;
+  height: 100%;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  height: 100vh; /* Equivalente a h-screen */
+  width: 100%;  /* Equivalente a w-screen */
+  background-color: #171717; /* Equivalente a bg-neutral-950 */
+  background: radial-gradient(
+      ellipse 80% 80% at 50% 30%,
+      rgba(57, 54, 207, 0.3),
+      rgba(224, 21, 21, 0)
+  );
 }

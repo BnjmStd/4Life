@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import "@styles/components/common/header.css"
 import { FaSearch } from "react-icons/fa";
+import SidebarMini from "../SidebarMini";
 
 export default function Header({
     title
@@ -13,6 +14,7 @@ export default function Header({
 
     return (
         <header className="header">
+            <SidebarMini />
             <main>
                 <h1 className="header__logo">{title}</h1>
                 <p className="header__description">

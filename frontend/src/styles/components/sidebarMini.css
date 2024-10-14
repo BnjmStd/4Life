@@ -1,0 +1,92 @@
+.nav__container {
+    display: flex;
+    align-items: center;
+    --transform-menu-links: translate(-100%);
+    
+    &:has(:checked) {
+        --transform-menu-links: translate(0);
+    }
+
+    &> :is(.nav__figure, .nav__toggle) {
+        z-index: 10;
+    }
+}
+
+.nav__toggle {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: background-image 0.5s;
+
+    .nav__input {
+        display: none;
+    }
+}
+
+.nav__list {
+    height: 100vh;
+    transform: var(--transform-menu-links);
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    list-style: none;
+    padding: 1.5rem 5%;
+    transition: transform 0.5s;
+
+    .nav__item {
+        border: 0.1px solid rgba(182, 181, 180, 0.692);
+        padding: 25px 100px;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: rgba(182, 181, 180, 0.692);
+        }
+
+        .nav__link {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.icon-container {
+    position: relative;
+    width: 30px;
+    height: 30px;
+
+    .icon-open,
+    .icon-close {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .icon-open {
+        transition:
+            opacity 0.5s ease,
+            visibility 0.5s ease;
+    }
+
+    .icon-close {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.5s ease,
+            visibility 0.5s ease;
+    }
+}
+
+.nav__input:checked~.icon-container .icon-open {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav__input:checked~.icon-container .icon-close {
+    opacity: 1;
+    visibility: visible;
+}
