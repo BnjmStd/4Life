@@ -1,11 +1,11 @@
-
 import { FaUserAlt } from "react-icons/fa";
-import "./overview.css"
 
-import ChannelPerformance from "@/components/graph/ChannelPerformance";
+import ChannelPerformance from "@/components/graphic/ChannelPerformance";
 import Header from "@/components/common/Header";
 import StatCard from "@/components/common/StatCard";
-import Graph from "@/components/graph/Graph";
+import Graph from "@/components/graphic/Graph";
+
+import "@styles/pages/admin/overview/overview.css"
 
 const salesStats = {
   totalRevenue: "$1,234,567",
@@ -39,7 +39,6 @@ export default function page() {
             value={salesStats.conversionRate}
             color='#FFF'
           />
-
         </div>
 
         <div className="overview-page__charts">

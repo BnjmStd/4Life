@@ -2,7 +2,7 @@
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { useState } from "react";
-import "@styles/components/dashboard/graph.css"
+import "@styles/components/graphic/graph.css"
 
 
 const monthlySalesData = [
