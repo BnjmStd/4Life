@@ -42,11 +42,11 @@ export default function page() {
 
         </div>
 
-        {/* CHARTS */}
         <div className="overview-page__charts">
           <Graph />
           <ChannelPerformance />
         </div>
+        
       </main>
     </div>
   )

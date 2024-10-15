@@ -1,0 +1,12 @@
+.setting {
+    flex: 1;
+    overflow: auto;
+    position: relative;
+    z-index: 12;
+
+    & .setting__main {
+        max-width: 56rem;
+        margin-inline: auto;
+        padding: 2rem;
+    }
+}

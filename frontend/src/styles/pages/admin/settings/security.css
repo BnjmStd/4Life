@@ -1,0 +1,20 @@
+.button__container {
+    margin-top: 1rem; /* mt-4 */
+    
+    & .button__change-password {
+        background-color: #4f46e5; /* bg-indigo-600 */
+        border: none;
+        color: #ffffff; /* text-white */
+        font-weight: bold; /* font-bold */
+        padding-top: 0.5rem; /* py-2 */
+        padding-bottom: 0.5rem; /* py-2 */
+        padding-left: 1rem; /* px-4 */
+        padding-right: 1rem; /* px-4 */
+        border-radius: 1rem;
+        transition: background-color 200ms; /* transition duration-200 */
+    
+        &:hover {
+            background-color: #4338ca; /* hover:bg-indigo-700 */
+        }
+    }
+}

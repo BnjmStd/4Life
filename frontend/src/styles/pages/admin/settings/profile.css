@@ -1,0 +1,44 @@
+.profile__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    object-fit: cover;
+    margin-right: 1.25rem;
+    gap: 1rem;
+
+    & .profile__img {
+        border-radius: 50%;
+        border: 1px solid #333;
+    }
+
+    & div {
+        & h3 {
+            font-size: 1.125rem; /* equivalente a text-lg */
+            font-weight: 600; /* equivalente a font-semibold */
+            color: #f3f4f6; /* equivalente a text-gray-100 */
+            margin: 0;
+        }
+
+        & p {
+            padding: 0;
+            margin: 0;
+            color: #b7b9bb; /* equivalente a text-gray-400 */
+        }
+    }
+}
+
+.profile__button {
+    background-color: #4f46e5; /* Equivalente a bg-indigo-600 */
+    color: white; /* Equivalente a text-white */
+    font-weight: bold; /* Equivalente a font-bold */
+    padding: 0.8rem 1.3rem; /* Equivalente a py-2 px-4 */
+    transition: background-color 0.3s ease; /* Suaviza el cambio de color al hacer hover */
+    width: auto;
+    border-radius: 1rem;
+    border: none;
+
+    &:hover {
+        background-color: #4338ca;
+    }
+}

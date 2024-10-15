@@ -1,0 +1,49 @@
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+}
+
+.toggle-switch__label {
+    color: #d1d5db; /* text-gray-300 */
+}
+
+.toggle-switch__button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 1.5rem; /* h-6 */
+    border-radius: 9999px; /* rounded-full */
+    width: 2.75rem; /* w-11 */
+    transition-property: background-color; /* transition-colors */
+    transition-duration: 150ms;
+    outline: none; /* focus:outline-none */
+}
+
+.toggle-switch__button--on {
+    background-color: #4f46e5; /* bg-indigo-600 */
+}
+
+.toggle-switch__button--off {
+    background-color: #4b5563; /* bg-gray-600 */
+}
+
+.toggle-switch__circle {
+    display: inline-block;
+    height: 1rem; /* size-4 */
+    width: 1rem; /* size-4 */
+    background-color: #f90091; /* bg-white */
+    border-radius: 9999px; /* rounded-full */
+    transition-property: transform; /* transition-transform */
+    transition-duration: 150ms;
+}
+
+.toggle-switch__circle--on {
+    transform: translateX(1.5rem); /* translate-x-6 */
+}
+
+.toggle-switch__circle--off {
+    transform: translateX(0.25rem); /* translate-x-1 */
+}

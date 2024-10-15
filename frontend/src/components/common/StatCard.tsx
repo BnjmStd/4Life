@@ -1,4 +1,6 @@
 import "@styles/components/common/statcard.css"
+import { BsFillLightningChargeFill } from "react-icons/bs";
+import { IoMdTrendingUp } from "react-icons/io";
 
 export default function StatCard(
     {
@@ -17,7 +19,7 @@ export default function StatCard(
             <main className="card__content">
                 <div className="card__main">
                     <header className="card__header">
-                        <Icon color={color}/>
+                        <Icon color={color} />
                     </header>
                     <div className="card__subheader">
                         <span className="card__name">
@@ -36,7 +38,20 @@ export default function StatCard(
                 {value}
             </p>
             <footer className="card__footer">
-                hola
+                <span>
+                    <BsFillLightningChargeFill /> 
+                    <strong>
+                        +15.6%
+                    </strong>
+                </span>
+                <span>
+                    <IoMdTrendingUp />
+                    +1.4k
+                    <small>
+                        this weeks
+                    </small>
+                </span>
+
             </footer>
         </div>
     );

@@ -1,0 +1,65 @@
+.account-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem; /* py-3 */
+    padding-bottom: 0.75rem; /* py-3 */
+}
+
+.account-details {
+    display: flex;
+    gap: 0.25rem; /* gap-1 */
+}
+
+.account-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover; /* object-cover */
+    border-radius: 9999px; /* rounded-full */
+    margin-right: 0.5rem; /* mr-2 */
+}
+
+.account-name {
+    color: #d1d5db; /* text-gray-300 */
+}
+
+.account-button {
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem; /* px-3 */
+    padding-top: 0.25rem; /* py-1 */
+    padding-bottom: 0.25rem; /* py-1 */
+    border-radius: 0.25rem; /* rounded */
+    transition: background-color 200ms; /* transition duration-200 */
+}
+
+.account-button.connected {
+    background-color: #16a34a; /* bg-green-600 */
+}
+
+.account-button.connected:hover {
+    background-color: #15803d; /* hover:bg-green-700 */
+}
+
+.account-button.disconnected {
+    background-color: #4b5563; /* bg-gray-600 */
+}
+
+.account-button.disconnected:hover {
+    background-color: #374151; /* hover:bg-gray-700 */
+}
+
+.add-account-button {
+    margin-top: 1rem; /* mt-4 */
+    display: flex;
+    align-items: center;
+    color: #6366f1; /* text-indigo-400 */
+    transition: color 200ms; /* transition duration-200 */
+}
+
+.add-account-button:hover {
+    color: #818cf8; /* hover:text-indigo-300 */
+}
+
+.icon-add-account {
+    margin-right: 0.5rem; /* mr-2 */
+}

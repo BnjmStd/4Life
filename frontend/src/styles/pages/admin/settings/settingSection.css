@@ -1,0 +1,29 @@
+.setting__section {
+    background-color: rgba(27, 29, 28, 0.851); /* Equivalente a bg-gray-800 bg-opacity-50 */
+    backdrop-filter: blur(1rem); /* Equivalente a backdrop-blur-lg */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5); /* Equivalente a shadow-lg */
+    border-radius: 1rem; /* Equivalente a rounded-xl */
+    padding: 1.3rem; /* Equivalente a p-6 */
+    border: 1px solid #374151; /* Equivalente a border-gray-700 */
+    margin-bottom: 2rem; /* Equivalente a mb-8 */
+
+    & .setting__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.1rem;
+        gap: 1rem;
+
+        & .setting__icon {
+            display: flex;
+            align-items: center;
+            padding: .6rem;
+            color: white;
+        }
+
+        & .setting__title {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: aliceblue;
+        }
+    }
+}
