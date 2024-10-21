@@ -1,6 +1,6 @@
 import Header from "@/components/common/Header";
 import StatCard from "@/components/common/StatCard";
-import TableUser from "@/components/table/TableUser";
+import TableUser from "@/components/pages/users/table/TableUser";
 
 
 import { FaUserAlt } from "react-icons/fa";
@@ -44,7 +44,7 @@ export default function page() {
                 
                 
                 
-                				<div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8'>
 					<UserGrowthChart />
 					<UserActivityHeatmap />
 					<UserDemographicsChart />
