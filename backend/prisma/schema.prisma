@@ -6,3 +6,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique @db.VarChar(100)
+  telephone String?
+  firstName String
+  lastName  String?
+  createAt  DateTime @default(now())
+  updated   DateTime @updatedAt
+  password  String
+
+  tipoUsuario   TipoUsuario
+  paciente      Paciente?
+  medico        Medico?
+  administrador Administrador?
+}
+
+model Paciente {
+  id              Int     @id @default(autoincrement())
+  historialMedico String  @db.Text
+  usuario         Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId       Int     @unique
+}
+
+model Medico {
+  id           Int     @id @default(autoincrement())
+  especialidad String  @db.VarChar(100)
+  usuario      Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId    Int     @unique
+}
+
+model Administrador {
+  id           Int     @id @default(autoincrement())
+  departamento String  @db.VarChar(100)
+  usuario      Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId    Int     @unique
+}
+
+enum TipoUsuario {
+  PACIENTE
+  MEDICO
+  ADMINISTRADOR
+}
