@@ -24,10 +24,29 @@ model Usuario {
 }
 
 model Paciente {
-  id              Int     @id @default(autoincrement())
-  historialMedico String  @db.Text
-  usuario         Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  usuarioId       Int     @unique
+  id              Int         @id @default(autoincrement())
+  usuario         Usuario     @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId       Int         @unique
+  historialMedico MedicalHistory[] // Relación con la tabla Historial
+  exams           Exam[]      // Relación uno a muchos con Exam
+}
+
+model MedicalHistory {
+  id          Int      @id @default(autoincrement())
+  descripcion String   @db.Text // Texto del historial médico
+  fecha       DateTime @default(now()) // Fecha de la entrada
+  pacienteId  Int
+  paciente    Paciente @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+}
+
+model Exam {
+  id           Int         @id @default(autoincrement())
+  nombre       String
+  numero_orden Int
+  contenido    String      @db.Text
+  format       FormatExam
+  pacienteId   Int         // Clave foránea para la relación con Paciente
+  paciente     Paciente    @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
 }
 
 model Medico {
@@ -48,4 +67,9 @@ enum TipoUsuario {
   PACIENTE
   MEDICO
   ADMINISTRADOR
+}
+
+enum FormatExam {
+  IMAGEN
+  PDF
 }
