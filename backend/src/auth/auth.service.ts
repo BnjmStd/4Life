@@ -4,6 +4,7 @@ import {
 } from '@nestjs/jwt'
 import { LoginDto } from './dto/login.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { SignupDto } from './dto/singup.dto';
 
 @Injectable()
 export class AuthService {
@@ -28,6 +29,16 @@ export class AuthService {
                     email: foundUser.email,
                 }
             )
+        }
+    }
+
+    async createUserSignUp(user: SignupDto) {
+        if (!user) return
+
+        console.log(user)
+
+        return {
+            isValid: true
         }
     }
 }

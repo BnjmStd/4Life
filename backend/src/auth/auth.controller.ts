@@ -2,8 +2,11 @@ import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/commo
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { Public } from './decorators/public.decorator';
+import { ApiTags } from '@nestjs/swagger';
+import { SignupDto } from './dto/singup.dto';
 
 @Controller('auth')
+@ApiTags('Authentication and registration')
 export class AuthController {
 
     constructor(
@@ -18,5 +21,11 @@ export class AuthController {
         if (!userToken) throw new HttpException('user not found', HttpStatus.NOT_FOUND)
         
         return userToken 
+    }
+
+    @Post('Singup')
+    @Public()
+    async signup(@Body() data: SignupDto) {
+        return this.authService.createUserSignUp(data)
     }
 }

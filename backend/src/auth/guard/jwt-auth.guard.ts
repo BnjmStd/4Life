@@ -8,22 +8,23 @@ import { IS_PUBLIC_KEY } from "../decorators/public.decorator";
 export class JwtAuthGuard extends AuthGuard('jwt') {
 
     constructor(private reflector: Reflector) {
-        super()
+        super();
     }
 
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
-        context.switchToHttp().getRequest()
-        return super.canActivate(context)
-
+        
+        // Verifica si la ruta es pública
         const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
             context.getHandler(),
             context.getClass(),
         ]);
 
-        if (isPublic) { return true }
+        // Si es pública, permite el acceso sin autenticación
+        if (isPublic) {
+            return true;
+        }
 
+        // Si no es pública, procede con la autenticación JWT
         return super.canActivate(context);
-
-
     }
 }
