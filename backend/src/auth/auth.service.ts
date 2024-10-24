@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import {
-    JwtService
-} from '@nestjs/jwt'
+import { JwtService } from '@nestjs/jwt'
 import { LoginDto } from './dto/login.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { SignupDto } from './dto/singup.dto';
+import { SignupDto } from './dto/signup.dto';
 
 @Injectable()
 export class AuthService {
@@ -33,12 +31,26 @@ export class AuthService {
     }
 
     async createUserSignUp(user: SignupDto) {
-        if (!user) return
 
-        console.log(user)
-
+        if (!user) return;
+    
+        console.log(user);
+    
+        const user1 = await this.prisma.usuario.create({
+            data: {
+                email: user.email, 
+                firstName: user.name, 
+                password: user.password,
+                tipoUsuario: 'PACIENTE', 
+                paciente: { 
+                },
+            },
+        });
+    
         return {
-            isValid: true
-        }
+            isValid: 'ok',
+            createdUser: user1,
+        };
     }
+    
 }

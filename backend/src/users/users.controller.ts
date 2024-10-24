@@ -41,7 +41,9 @@ export class UsersController {
     type: UsersEntity
   })
   async findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+    const userId = parseInt(id);
+    console.log(userId)
+    return this.usersService.findOne(userId);
   }
 
   @Patch(':id')

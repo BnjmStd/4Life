@@ -11,11 +11,15 @@ model Usuario {
   id        Int      @id @default(autoincrement())
   email     String   @unique @db.VarChar(100)
   telephone String?
+  address   String?
   firstName String
+  age       Int
   lastName  String?
   createAt  DateTime @default(now())
   updated   DateTime @updatedAt
   password  String
+  avatarImg String? // Almacena la URL de la imagen
+  rut String?
 
   tipoUsuario   TipoUsuario
   paciente      Paciente?
@@ -24,11 +28,13 @@ model Usuario {
 }
 
 model Paciente {
-  id              Int         @id @default(autoincrement())
-  usuario         Usuario     @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  usuarioId       Int         @unique
+  id              Int                 @id @default(autoincrement())
+  usuario         Usuario             @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId       Int                 @unique
+  updated         DateTime            @updatedAt
   historialMedico MedicalHistory[] // Relación con la tabla Historial
-  exams           Exam[]      // Relación uno a muchos con Exam
+  exams           Exam[] // Relación uno a muchos con Exam
+  prestaciones    PrestacionEntidad[]
 }
 
 model MedicalHistory {
@@ -37,30 +43,96 @@ model MedicalHistory {
   fecha       DateTime @default(now()) // Fecha de la entrada
   pacienteId  Int
   paciente    Paciente @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  updated     DateTime @updatedAt
 }
 
 model Exam {
-  id           Int         @id @default(autoincrement())
+  id           Int                 @id @default(autoincrement())
   nombre       String
   numero_orden Int
-  contenido    String      @db.Text
+  contenido    String              @db.Text
+  updated      DateTime            @updatedAt
   format       FormatExam
-  pacienteId   Int         // Clave foránea para la relación con Paciente
-  paciente     Paciente    @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  pacienteId   Int
+  paciente     Paciente            @relation(fields: [pacienteId], references: [id], onDelete: Cascade)
+  prestaciones PrestacionEntidad[]
 }
 
+// Medico: Representa a los médicos, con su especialidad y relación con un usuario.
 model Medico {
-  id           Int     @id @default(autoincrement())
-  especialidad String  @db.VarChar(100)
-  usuario      Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  usuarioId    Int     @unique
+  id           Int                 @id @default(autoincrement())
+  especialidad String              @db.VarChar(100)
+  usuarioId    Int                 @unique
+  usuario      Usuario             @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  prestaciones PrestacionEntidad[]
+  updated      DateTime            @updatedAt
+}
+
+// Prestacion: Define las prestaciones médicas (servicios) que pueden ofrecerse.
+model Prestacion {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  cobertura   Float?
+  costo       Float?
+  updated     DateTime @updatedAt
+
+  tipoPrestacionId Int
+  tipoPrestacion   TipoPrestacion @relation(fields: [tipoPrestacionId], references: [id], onDelete: Cascade)
+
+  entidades PrestacionEntidad[]
+
+  createdAt DateTime @default(now())
+}
+
+//TipoPrestacion: Clasifica las prestaciones en diferentes tipos (por ejemplo, consultas, cirugías).
+model TipoPrestacion {
+  id           Int          @id @default(autoincrement())
+  nombre       String
+  descripcion  String?
+  prestaciones Prestacion[]
+
+  createdAt DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+// Entidad: Representa las instituciones (públicas o privadas) que ofrecen las prestaciones
+model Entidad {
+  id           Int                 @id @default(autoincrement())
+  nombre       String
+  direccion    String?
+  telefono     String?
+  tipoEntidad  TipoEntidad
+  prestaciones PrestacionEntidad[]
+
+  createdAt DateTime @default(now())
+  updated   DateTime @updatedAt
+}
+
+// PrestacionEntidad: Es una tabla intermedia que conecta médicos, prestaciones y entidades, para manejar las relaciones de muchos a muchos entre ellos.
+model PrestacionEntidad {
+  entidadId    Int
+  prestacionId Int
+  medicoId     Int?
+  examId       Int?
+  pacienteId   Int?
+  updated      DateTime @updatedAt
+
+  entidad    Entidad    @relation(fields: [entidadId], references: [id], onDelete: Cascade)
+  prestacion Prestacion @relation(fields: [prestacionId], references: [id], onDelete: Cascade)
+  medico     Medico?    @relation(fields: [medicoId], references: [id])
+  exam       Exam?      @relation(fields: [examId], references: [id])
+  paciente   Paciente?  @relation(fields: [pacienteId], references: [id])
+
+  @@id([entidadId, prestacionId])
 }
 
 model Administrador {
-  id           Int     @id @default(autoincrement())
-  departamento String  @db.VarChar(100)
-  usuario      Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
-  usuarioId    Int     @unique
+  id           Int      @id @default(autoincrement())
+  departamento String   @db.VarChar(100)
+  usuario      Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  usuarioId    Int      @unique
+  updated      DateTime @updatedAt
 }
 
 enum TipoUsuario {
@@ -73,3 +145,10 @@ enum FormatExam {
   IMAGEN
   PDF
 }
+
+enum TipoEntidad {
+  PUBLICO
+  PRIVADO
+}
+
+// npx prisma migrate dev --name nombre_de_la_migracion

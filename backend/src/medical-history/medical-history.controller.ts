@@ -3,21 +3,26 @@ import { MedicalHistoryService } from './medical-history.service';
 import { CreateMedicalHistoryDto } from './dto/create-medical-history.dto';
 import { UpdateMedicalHistoryDto } from './dto/update-medical-history.dto';
 
-@Controller('medical-history')
+@Controller('history')
 export class MedicalHistoryController {
-  constructor(private readonly medicalHistoryService: MedicalHistoryService) {}
+  
+  constructor(
+    private readonly medicalHistoryService: MedicalHistoryService
+  ) {}
 
   @Post()
   create(@Body() createMedicalHistoryDto: CreateMedicalHistoryDto) {
     return this.medicalHistoryService.create(createMedicalHistoryDto);
   }
 
-  @Get()
-  findAll() {
+  @Get(':id')
+  // todo el historial médico del usuario
+  findAll(@Param('id') id: string) { 
     return this.medicalHistoryService.findAll();
   }
 
-  @Get(':id')
+  @Get('antecedent/:id')
+  // un historial médico específico
   findOne(@Param('id') id: string) {
     return this.medicalHistoryService.findOne(+id);
   }
